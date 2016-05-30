@@ -1098,9 +1098,9 @@
 		@font-face {
     font-family: 'icomoon-loshs';
     src:
-        url('fonts/icomoon-loshs.ttf?i71zhr') format('truetype'),
-        url('fonts/icomoon-loshs.woff?i71zhr') format('woff'),
-        url('fonts/icomoon-loshs.svg?i71zhr#icomoon-loshs') format('svg');
+        url('./fonts/icomoon-loshs.ttf?i71zhr') format('truetype'),
+        url('./fonts/icomoon-loshs.woff?i71zhr') format('woff'),
+        url('./fonts/icomoon-loshs.svg?i71zhr#icomoon-loshs') format('svg');
     font-weight: normal;
     font-style: normal;
 }
