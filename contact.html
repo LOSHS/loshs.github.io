@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Loshs - Offshore Development Services</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="software, consulting, profit, outsourcing, nearshoring, web development, reliable, innovation, engagement" />
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<link rel="stylesheet" href="css/skeleton.css" />		
+		<link rel="stylesheet" type="text/css" href="css/style.css" >		
+		
+		<noscript>						
+			<link rel="stylesheet" href="css/style-xlarge.css" />			
+		</noscript>
+		
+	</head>
+	<body id="top">
+
+		<!-- Header con opacity -->
+		
+			<header id="header" class="skel-layers-fixed">				
+				<div class="band navigation">
+					<nav id="nav" class="container">
+						<ul>												
+							<li class="one column"><a href="index.html" >home</a></li>
+							<li class="one column"><a href="services.html">services</a></li>											
+							<li class="two columns"><a href="index.html" ><img src="images/logo-mini-blanco.png" href="#"></a></img><li>
+							<li class="one column"><a href="about.html">about</a></li>						
+							<li class="one column"><a href="contact.html">contact</a></li>
+						</ul>
+					</nav>
+				<div>
+			</header>
+		<!-- One -->
+			<section id="one" class="wrapper style1">
+				
+				<div class="container">
+					<div class="row">
+						<div id="googleMap" class="six columns">
+						</div>
+						<div class="six columns">
+							<h4><b>Guadalajara Development Center</b></h1>							
+							<p>
+								<address>
+								Pedro simon laplace 3935B. int. 12
+								<br/>
+								Col. Arboledas. C.P. 45070
+								<br/>
+								Zapopan, Jal. Mexico
+								</address>								
+								<b>+52 (1) 331893 5068</b>
+								<br/>								
+								<a href="mailto:sales@loshs.com" class="no-decoration">Send us an email!</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<div class="row double">
+						<div class="6u">
+							<div class="row collapse-at-2">
+								<div class="6u">
+									<h3>our services</h3>
+									<ul class="alt">
+										<li><a href="#">project-based contract</a></li>
+										<li><a href="#">offshore staff augmentation</a></li>
+										<li><a href="#">onsite development</a></li>										
+									</ul>
+								</div>
+								<div class="6u">
+									<h3>Learn more</h3>
+									<ul class="alt">
+										<li><a href="contact.html">contact</a></li>										
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="6u">
+							<h2><img src="images/logo-mini.png" alt="loshs logo regular"></h2>
+							<p>
+								CONNECT WITH US
+								</br>
+								Pedro simon laplace 3935B. int. 12
+								</br>
+								<a href="tel:+5213318935068">+52 (1) 331893 5068</a>
+							</p>												
+							<ul class="icons">
+								<li><a target="_blank" href="https://twitter.com/loshstechnology" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a target="_blank" href="https://www.facebook.com/loshsconsulting/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>								
+								<li><a target="_blank" href="https://www.linkedin.com/company/loshs" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							</ul>
+						</div>
+					</div>
+					<ul class="copyright">
+						<li>&copy; Loshs. All rights reserved.</li>
+					</ul>
+				</div>
+				<script src="http://maps.googleapis.com/maps/api/js"></script>
+				<script>
+					function initialize() {
+					  var mapProp = {
+						center:new google.maps.LatLng(20.6323984,-103.420584),
+						zoom: 16,
+						mapTypeId:google.maps.MapTypeId.ROADMAP
+					  };
+					  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+					}
+					google.maps.event.addDomListener(window, 'load', initialize);
+				</script>
+
+			</footer>
+
+	</body>
+</html>
