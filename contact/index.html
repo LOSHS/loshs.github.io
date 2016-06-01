@@ -13,55 +13,53 @@
 		<link rel="stylesheet" href="css/skeleton.css" />		
 		<link rel="stylesheet" type="text/css" href="css/style.css" >		
 		
+		<noscript>						
+			<link rel="stylesheet" href="css/style-xlarge.css" />			
+		</noscript>
+		
 	</head>
 	<body id="top">
 
-		<!-- Header con opacity -->		
-			<header id="header" class="skel-layers-fixed opacity-header">				
+		<!-- Header con opacity -->
+		
+			<header id="header" class="skel-layers-fixed">				
 				<div class="band navigation">
 					<nav id="nav" class="container">
 						<ul>												
-							<li class="one column"><a href="index.html" >home</a></li>
-							<li class="one column"><a href="services.html">services</a></li>											
-							<li class="two columns"><a href="index.html" ><img src="images/logo-mini-blanco.png" href="#"></a></img><li>
-							<li class="one column"><a href="about.html">about</a></li>						
-							<li class="one column"><a href="contact.html">contact</a></li>
+							<li class="one column"><a href="www.loshs.com" >home</a></li>
+							<li class="one column"><a href="www.loshs.com/services">services</a></li>											
+							<li class="two columns"><a href="www.loshs.com" ><img src="images/logo-mini-blanco.png" href="#"></a></img><li>
+							<li class="one column"><a href="www.loshs.com/about">about</a></li>						
+							<li class="one column"><a href="www.loshs.com/contact">contact</a></li>
 						</ul>
 					</nav>
 				<div>
 			</header>
-		
-			<section id="three" class="wrapper style1">
+		<!-- One -->
+			<section id="one" class="wrapper style1">
+				
 				<div class="container">
 					<div class="row">
-						<div class="8u">
-							<section>
-								
-								<a href="#" class="image fit"><img src="images/coding.jpg" alt="" /></a>
-								<h2>It's all about software</h2>
-								<p>LOSHS is a software consultancy company, created by engineers with high problem-solving skills.</p>
-								
-								<h2>Mission</h2>
-								<p>Provide top-quality software engineering services for global companies.</p>
-								
-								
-								<h2>Vision</h2>
-								<p>Enhance productivity in global industries with technology.</p>
-							</section>
+						<div id="googleMap" class="six columns">
 						</div>
-						<div class="4u">						
-							<section>
-								<h3>Meet the founders</h3>
-								<ul class="alt">
-									<li><a href="https://mx.linkedin.com/in/hugo-labra-57651957/es">Hugo Labra</a></li>
-									<li><a href="https://www.linkedin.com/in/h%C3%A9ctor-p%C3%A9rez-97a74165?trk=nav_responsive_tab_profile_pic">Hector Perez</a></li>									
-								</ul>
-							</section>
+						<div class="six columns">
+							<h4><b>Guadalajara Development Center</b></h1>							
+							<p>
+								<address>
+								Pedro simon laplace 3935B. int. 12
+								<br/>
+								Col. Arboledas. C.P. 45070
+								<br/>
+								Zapopan, Jal. Mexico
+								</address>								
+								<b>+52 (1) 331893 5068</b>
+								<br/>								
+								<a href="mailto:sales@loshs.com" class="no-decoration">Send us an email!</a>
+							</p>
 						</div>
 					</div>
 				</div>
-			</section>		
-			
+			</section>
 		<!-- Footer -->
 			<footer id="footer">
 				<div class="container">
@@ -79,7 +77,7 @@
 								<div class="6u">
 									<h3>Learn more</h3>
 									<ul class="alt">
-										<li><a href="contact.html">contact</a></li>										
+										<li><a href="www.loshs.com/contact">contact</a></li>										
 									</ul>
 								</div>
 							</div>
@@ -87,13 +85,11 @@
 						<div class="6u">
 							<h2><img src="images/logo-mini.png" alt="loshs logo regular"></h2>
 							<p>
-								<address>
-								CONNECT WITH US 
+								CONNECT WITH US
 								</br>
 								Pedro simon laplace 3935B. int. 12
-								</address>								
 								</br>
-								<a href="tel:+5213318935068">+52 (1) 331893 5068</a>								
+								<a href="tel:+5213318935068">+52 (1) 331893 5068</a>
 							</p>												
 							<ul class="icons">
 								<li><a target="_blank" href="https://twitter.com/loshstechnology" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
@@ -106,6 +102,19 @@
 						<li>&copy; Loshs. All rights reserved.</li>
 					</ul>
 				</div>
+				<script src="http://maps.googleapis.com/maps/api/js"></script>
+				<script>
+					function initialize() {
+					  var mapProp = {
+						center:new google.maps.LatLng(20.6323984,-103.420584),
+						zoom: 16,
+						mapTypeId:google.maps.MapTypeId.ROADMAP
+					  };
+					  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+					}
+					google.maps.event.addDomListener(window, 'load', initialize);
+				</script>
+
 			</footer>
 
 	</body>
