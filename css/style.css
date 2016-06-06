@@ -1200,3 +1200,11 @@
 		#googleMap{
 			height:380px;
 		}
+		
+		.hidden{
+			display: none;
+		}
+		
+		.container.first{
+			margin-top : 4%;
+		}
