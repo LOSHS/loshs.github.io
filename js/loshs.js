@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-
 	$('.toggle').on('click', function() {
 	
 		var hiddenDivId = '#' + $(this).data('hidden-div');
@@ -12,5 +11,5 @@ $(document).ready(function() {
 		$(this).text($(this).text() == 'less...' ? 'Learn more...' : 'less...');		
 		
 		return false;
-	});
+	});	
 });
