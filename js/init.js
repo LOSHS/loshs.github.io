@@ -48,7 +48,7 @@
 			// Medium.
 				medium: {
 					range: '-980',
-					href: 'css/style-medium.css',
+					href: '../css/style-medium.css',
 					containers: '90%',
 					grid: {
 						collapse: 1
@@ -58,7 +58,7 @@
 			// Small.
 				small: {
 					range: '-736',
-					href: 'css/style-small.css',
+					href: '../css/style-small.css',
 					containers: '90%',
 					grid: {
 						gutters: {
@@ -70,7 +70,7 @@
 			// XSmall.
 				xsmall: {
 					range: '-480',
-					href: 'css/style-xsmall.css',
+					href: '../css/style-xsmall.css',
 					grid: {
 						collapse: 2
 					}
