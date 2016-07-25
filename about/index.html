@@ -9,6 +9,8 @@
 		<script src="../js/jquery.min.js"></script>
 		<script src="../js/skel.min.js"></script>
 		<script src="../js/skel-layers.min.js"></script>
+		
+		<script src="../js/loshs.js"></script>
 		<script src="../js/init.js"></script>
 		<link rel="stylesheet" href="../css/skeleton.css" />		
 		<link rel="stylesheet" type="text/css" href="../css/style.css" >	
@@ -20,15 +22,15 @@
 	<body id="top">
 
 		<!-- Header con opacity -->		
-			<header id="header" class="skel-layers-fixed opacity-header">				
+			<header id="header" class="skel-layers-fixed">				
 				<div class="band navigation">
 					<nav id="nav" class="container">
 						<ul>												
-							<li class="one column"><a href="/" >home</a></li>
-							<li class="one column"><a href="/services">services</a></li>											
+							<li class="one column"><a class="translatable" href="/" data-spanishtext="hogar">home</a></li>
+							<li class="one column"><a class="translatable" data-spanishtext="servicios" href="/services">services</a></li>											
 							<li class="two columns"><a href="/" ><img src="../images/logo-mini-blanco.png" href="/"></a></img><li>
-							<li class="one column"><a class="selected" href="/about">about</a></li>						
-							<li class="one column"><a href="/contact">contact</a></li>
+							<li class="one column"><a class="selected translatable" data-spanishtext="nosotros"href="/about">about</a></li>						
+							<li class="one column"><a class="translatable" data-spanishtext="contacto" href="/contact">contact</a></li>
 						</ul>
 					</nav>
 				<div>
@@ -41,30 +43,27 @@
 							<section>
 								
 								<a href="#" class="image fit"><img src="../images/coding.jpg" alt="" /></a>
-								<h2>It's all about software</h2>
-								<p>LOSHS is a software engineering services provider located in Guadalajara, Mexico. Our main focus is in the area of Software development Engineering, Software Support and Software Testing.</p>
-								<p>It was founded on May 2016, by 2 visionary software engineers with a wide understanding of how the software market works and with the commmitment to provide a unique experience in software engineering services for any customer.</p>
-								
-								<h2>Mission</h2>
-								<p>
+								<h2 class="translatable" data-spanishtext="Se trata del software">It's all about software</h2>
+								<p class="translatable" data-spanishtext="LOSHS es un proveedor de servicios profesionales de tecnología ubicados en Guadalajara, Jalisco, que pretende ayudar a las pequeñas y medianas empresas a incrementar su eficiencia y potencial, generando un mayor valor para su negocio.">LOSHS is a Software Engineering Services company located in Guadalajara, Mexico, which aims to help small and mid-size companies to improve their process' efficiency and potential and generate more value for their business.</p>
+								<p class="translatable" data-spanishtext="En la era de la información, LOSHS refuerza la competitividad de sus clientes, sistematizando y simplificando sus procesos internos a través de soluciones de software  inteligentes, multi-plataforma con una innovadora y elegante experiencia de usuario.">In the information-era, LOSHS helps their clients to be more competitive by automating and simplifying their internal processes through multi-platform software solutions providing an innovative and elegant user experience.</p>
+								<p class="translatable" data-spanishtext="Nuestra cultura de compromiso y pasión por la tecnología crea soluciones que marcan la diferencia.">Our culture of commitment and passion for technology creates solutions which make a difference.</p>
+								<h2 class="translatable" data-spanishtext="Misión">Mission</h2>
+								<p class="translatable" data-spanishtext="Proveer servicios de software con la más alta calidad y colaborar con nuestros clientes para lograr sus objetivos, dándoles herramientas de software que los ayuden a enfocarse en la esencia de su negocio.">
 									Provide top quality software engineering services and collaborating with customers
-									to achieve their objectives, giving them software tools which help them focus in their core business .
-									
-								</p>
-								
-								
-								<h2>Vision</h2>
-								<p>Provide innovative technology solutions for worldwide customers which reduce the complexity of daily problems
+									to achieve their objectives, giving them software tools which help them focus in their core business .									
+								</p>													
+								<h2 class="translatable" data-spanishtext="Visión">Vision</h2>
+								<p class="translatable" data-spanishtext="Proveer soluciones tecnológicas e innovadoras para clientes locales y globales que les ayuden a reducir la complejidad de los problemas con los que se enfrentan diariamente, para que alcancen cada día más.">Provide innovative technology solutions for worldwide customers which reduce the complexity of daily problems
 								 and will help them achieve more every time.
 								</p>
 							</section>
 						</div>
 						<div class="4u">						
 							<section>
-								<h3>Meet the founders</h3>
+								<h3 class="translatable" data-spanishtext="acerca del equipo">Meet the founders</h3>
 								<ul class="alt">
 									<li><a href="https://mx.linkedin.com/in/hugo-labra-57651957/es">Hugo Labra</a></li>
-									<li><a href="https://www.linkedin.com/in/h%C3%A9ctor-p%C3%A9rez-97a74165?trk=nav_responsive_tab_profile_pic">Hector Perez</a></li>									
+									<li><a href="https://mx.linkedin.com/in/héctor-pérez-97a74165">Hector Perez</a></li>									
 								</ul>
 							</section>
 						</div>
@@ -79,17 +78,19 @@
 						<div class="6u">
 							<div class="row collapse-at-2">
 								<div class="6u">
-									<h3>our services</h3>
+									<h3 class="translatable" data-spanishtext="Nuestros servicios">our services</h3>
 									<ul class="alt">
-										<li><a href="#">project-based contract</a></li>
-										<li><a href="#">offshore staff augmentation</a></li>
-										<li><a href="#">onsite development</a></li>										
+										<li><a class="translatable" data-spanishtext="proyecto basado en contrato" href="#">project-based contract</a></li>
+										<li><a class="translatable" data-spanishtext="aumento de personal"         href="#">offshore staff augmentation</a></li>
+										<li><a class="translatable" data-spanishtext="desarrollo en sitio"         href="#">onsite development</a></li>										
 									</ul>
 								</div>
 								<div class="6u">
-									<h3>Learn more</h3>
+									<h3 class="translatable" data-spanishtext="Saber más">Learn more</h3>
 									<ul class="alt">
-										<li><a href="/contact">contact</a></li>										
+										<li><a class="translatable" data-spanishtext="contacto" href="/contact">contact</a></li>										
+										<li><a class="translatable" data-spanishtext="portafolio" href="/portfolio">portfolio</a></li>										
+									
 									</ul>
 								</div>
 							</div>
@@ -97,13 +98,14 @@
 						<div class="6u left-border">
 							<img src="../images/logo-mini.png" alt="loshs logo regular">
 							<p>
-								CONNECT WITH US
+								<span class="translatable" data-spanishtext="CONÉCTATE CON NOSOTROS">						
+								CONNECT WITH US</span>
 								</br>
-								Pedro simon laplace 3935B. int. 12
+								<span>Pedro Simon Laplace 3935B. int. 12</span>
 								</br>
 								<a href="tel:+5213318935068">+52 (1) 331893 5068</a>
 								</br>								
-								<a href="mailto:sales@loshs.com" class="no-decoration">sales@loshs.com</a>
+								<a href="mailto:sales@loshs.com" class="no-decoration translatable" data-spanishtext="contacto@loshs.com">sales@loshs.com</a>
 							</p>													
 							<ul class="icons">
 								<li><a target="_blank" href="https://twitter.com/loshstechnology" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
@@ -113,9 +115,11 @@
 						</div>
 					</div>
 					<ul class="copyright">
-						<li>&copy; Loshs. All rights reserved.</li>
+						<li class="translatable" data-spanishtext="&copy; Loshs. Todos los derechos reservados.">&copy; Loshs. All rights reserved.</li>
 					</ul>
 				</div>
+				
+			<script src="js/loshs.js"></script>
 			</footer>
 
 	</body>
