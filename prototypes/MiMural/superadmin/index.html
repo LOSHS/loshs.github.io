@@ -27,14 +27,23 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse">
-               <a href="#" class="navbar-brand">
-                  <img alt="Brand" id="sep-logo" src="../img/sep-logo.png" />
-                  <ul class="nav navbar-nav navbar-right">
-               <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#">Bienvenido a Mi Mural  
-               <span class="caret"></span></a><ul class="dropdown-menu">
-               <a href="#">Mi Perfil</a>
-               <a href="#">Cerrar sesión</a>
-               </ul>
+               <img alt="Brand" class="navbar-brand" id="sep-logo" src="../img/sep-logo.png" />
+               <ul class="nav navbar-nav navbar-right pull-right">
+               	  <li>
+               	  	<img alt="user profile picture" id="user-profile-pic"  src="../img/user-icon.png"/>
+               	  </li>
+                  <li class="dropdown">
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                     Bienvenido a Mi Mural
+                     <b class="caret"></b>
+                     <small id="rol-tag" style="display:block">
+                     Super administrador</small>
+                     </a>
+                     <ul class="dropdown-menu">
+                        <li><a href="#">Mi Perfil</a></li>
+                        <li><a href="#">Cerrar Sesión</a></li>
+                     </ul>
+                  </li>
                </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -44,7 +53,7 @@
       <!-- LOGIN FORM -->
       <div class="row">
          <div class="col-md-2 left-sidebar">
-            <br/>
+            <br/><br />
             <br/>  
             <div id="main-menu">
                <div class="row">
@@ -126,7 +135,7 @@
             </div>
          </div>
          <div class="col-md-8 middle-content" >
-            <br /><br />
+            <br /><br /><br />
             <h3>Usuarios</h3>
             <!-- end:Main Form -->
             <br />
@@ -155,7 +164,7 @@
             <div class="row">
                <div class="col-md-8">
                   <div class="input-group pull-left"> 
-                     <input class="form-control"  placeholder="Busca..."/>
+                     <input class="form-control" id="tblUsuariosSearchText"  placeholder="Busca..."/>
                      <span class="input-group-btn">
                      <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
                      </span>
@@ -163,18 +172,17 @@
                </div>
                <div class="col-md-4">
                   <div class="btn-group ">
-                     <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-save"></i>&nbsp;Exportar</button>
-                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-open"></i>&nbsp;Exportar</button>
+                     <button type="button" class="btn btn-default dropdown-toggle dropdown-export-caret"data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      <span class="caret"></span>
                      </button>
-                     <ul class="dropdown-menu">
-                        <a href="#">Excel</a>
-                        <a href="#">XML</a>
-                        <a href="#">JSON</a>
+                     <ul class="dropdown-menu" id="export-options">
+                        <li><a href="#">Excel</a></li>
+                        <li><a href="#">XML</a></li>
+                        <li><a href="#">JSON</a></li>
                      </ul>
                   </div>
-                  
-               		<a class="btn btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i>&nbsp;Añadir</a>
+                  <a class="btn btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i>&nbsp;Añadir</a>
                </div>
             </div>
             <br />
@@ -351,7 +359,7 @@
          </div>
          <div class="col-md-2 right-sidebar">
             <div class="row">
-               <br/>
+               <br/><br />
                <br />
                <div class="col-md-12">
                   <h4 style="color:#fff">Notificaciones</h4>
