@@ -36,7 +36,6 @@ function lookupCountryWithFreegeoip() {
 }
 
 function localizeText() {
-	debugger;
 	if(isMx) {
 		
 		$.each($('.translatable'), function(index, element){
