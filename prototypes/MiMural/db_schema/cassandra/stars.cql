@@ -39,6 +39,12 @@ CREATE TABLE IF NOT EXISTS posts_stars_users (
 ) WITH CLUSTERING ORDER BY (user_id ASC, posted_date DESC, posted_time DESC, comment_date DESC, comment_time DESC);
 
 
+// CREACION DE INDICES SECUNDARIOS Y SASI PARA BUSQUEDAS MAS COMPLEJAS
+CREATE INDEX IF NOT EXISTS psu_uid_idx ON posts_stars_users(user_id);
+CREATE INDEX IF NOT EXISTS psu_psu_idx ON posts_stars_users(post_stars_user);
+CREATE CUSTOM INDEX IF NOT EXISTS psu_psu_sasi_idx ON posts_stars_users(post_stars_user) USING 'org.apache.cassandra.index.sasi.SASIIndex';
+
+
 // SELECCIONA TODO DE LA TABLA
 SELECT * FROM posts_stars_users;
 SELECT * FROM posts_stars;
@@ -209,11 +215,11 @@ SELECT * FROM posts_stars WHERE total_stars > 10 ALLOW FILTERING;
 
 // BUSQUEDAS CON INDICE SECUNDARIO (NO REALIZAN FILTRADO POR LO QUE SON MAS RAPIDAS)
 // BUSQUEDA DE CALIFICACIONES DE CIERTO USUARIO USANDO UN INDICE SECUNDARIO;
-CREATE INDEX psu_uid_idx ON posts_stars_users(user_id);
+CREATE INDEX IF NOT EXISTS psu_uid_idx ON posts_stars_users(user_id);
 SELECT * FROM posts_stars_users WHERE user_id = 1001;
 
 // BUSQUEDA DE CALIFICACIONES DE CIERTO USUARIO USANDO UN INDICE SECUNDARIO;
-CREATE INDEX psu_psu_idx ON posts_stars_users(post_stars_user);
+CREATE INDEX IF NOT EXISTS psu_psu_idx ON posts_stars_users(post_stars_user);
 // BUSQUEDA DE PUBLICACIONES A LAS QUE ALGUN USUARIO HAYA CALIFICADO CON SOLO UNA ESTRELLA
 SELECT * FROM posts_stars_users WHERE post_stars_user = 1;
 
@@ -222,7 +228,7 @@ SELECT * FROM posts_stars_users WHERE post_stars_user = 1;
 // LOS INDICES SASI SON AUN MAS RAPIDOS QUE LOS INDICES SECUNDARIOS
 // Y PERMITEN BUSQUEDAS COMPLEJAS
 // BUSQUEDA DE PUBLICACIONES A LAS QUE ALGUN USUARIO HAYA CALIFICADO CON MENOS DE TRES ESTRELLAS
-CREATE CUSTOM INDEX psu_psu_sasi_idx ON posts_stars_users(post_stars_user) USING 'org.apache.cassandra.index.sasi.SASIIndex';
+CREATE CUSTOM INDEX IF NOT EXISTS psu_psu_sasi_idx ON posts_stars_users(post_stars_user) USING 'org.apache.cassandra.index.sasi.SASIIndex';
 SELECT * FROM posts_stars_users WHERE post_stars_user < 3;
 
 

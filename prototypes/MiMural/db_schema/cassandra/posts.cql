@@ -1,13 +1,13 @@
 // CREACION DE LA BASE DE DATOS
 
-CREATE KEYSPACE mi_mural
+CREATE KEYSPACE IF NOT EXISTS mi_mural
 WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 1};
 
 USE mi_mural;
 
 // CREAR TABLA DE PUBLICACIONES 
 
-CREATE TABLE posts (
+CREATE TABLE IF NOT EXISTS posts (
   school_id bigint,
   posted_date date,
   posted_time time,
@@ -27,6 +27,28 @@ CREATE TABLE posts (
  
   PRIMARY KEY (school_id, posted_date, posted_time, comment_date, comment_time)
 ) WITH CLUSTERING ORDER BY (posted_date DESC, posted_time DESC, comment_date DESC, comment_time DESC);
+
+
+// CREACION DE INDICES SECUNDARIOS Y SASI PARA BUSQUEDAS MAS COMPLEJAS
+CREATE INDEX IF NOT EXISTS posts_posterid_idx ON posts(poster_id);
+CREATE CUSTOM INDEX IF NOT EXISTS posts_content_idx ON posts(content) USING 'org.apache.cassandra.index.sasi.SASIIndex';
+CREATE CUSTOM INDEX IF NOT EXISTS posts_content_ic_idx ON posts(content) USING 'org.apache.cassandra.index.sasi.SASIIndex'
+WITH OPTIONS = { 
+'mode': 'CONTAINS',
+'analyzer_class': 'org.apache.cassandra.index.sasi.analyzer.NonTokenizingAnalyzer',
+'case_sensitive': 'false'
+};
+CREATE CUSTOM INDEX IF NOT EXISTS post_comments_idx ON posts(comment_content) USING 'org.apache.cassandra.index.sasi.SASIIndex'
+WITH OPTIONS = {
+'mode': 'CONTAINS',
+'analyzer_class': 'org.apache.cassandra.index.sasi.analyzer.StandardAnalyzer',
+'analyzed': 'true',
+'tokenization_skip_stop_words': 'y, el, la, o',
+'tokenization_enable_stemming': 'true',
+'tokenization_normalize_lowercase': 'true',
+'tokenization_locale': 'es'
+};
+
 
 
 // SELECCIONA TODO DE LA TABLA
@@ -68,7 +90,7 @@ VALUES (11, '2016-09-03', '20:10:06.000', 2008, 'POST 6 comment 5 user 2008', '2
 
 // SELECCIONA TODO DE LA TABLA
 SELECT * FROM posts;
-// SELECCIONA SOLO DE UNA ESCUELA (CARGA TODOS LOS POSTS EN EL MURAL DE LA ESCUELA)
+// SELECCIONA SOLO DE UNA ESCUELA (CARGA TODOS LOS POSTS CON SUS RESPECTIVOS COMENTARIOS EN EL MURAL DE LA ESCUELA)
 SELECT * FROM posts WHERE school_id = 11;
 // SELECCIONA SOLO DE UNA ESCUELA, MENOR A CIERTO DIA (MUY UTIL PARA AL INICIO EL MURAL DE UNA ESCUELA HASTA EL DIA DE 'HOY')
 SELECT * FROM posts WHERE school_id = 11 AND posted_date <= '2016-08-31';
@@ -107,7 +129,7 @@ SELECT * FROM posts WHERE content = 'POST 4 user 1003 school 12' ALLOW FILTERING
 
 // BUSQUEDAS CON INDICE SECUNDARIO (NO REALIZAN FILTRADO POR LO QUE SON MAS RAPIDAS)
 
-CREATE INDEX posts_posterid_idx ON posts(poster_id);
+CREATE INDEX IF NOT EXISTS posts_posterid_idx ON posts(poster_id);
 // BUSQUEDA DE PUBLICACIONES DE CIERTO USUARIO USANDO UN INDICE SECUNDARIO;
 SELECT * FROM posts WHERE poster_id = 1001;
 
@@ -116,13 +138,13 @@ SELECT * FROM posts WHERE poster_id = 1001;
 // LOS INDICES SASI SON AUN MAS RAPIDOS QUE LOS INDICES SECUNDARIOS
 // Y PERMITEN BUSQUEDAS COMPLEJAS
 
-CREATE CUSTOM INDEX posts_content_idx ON posts(content) USING 'org.apache.cassandra.index.sasi.SASIIndex';
+CREATE CUSTOM INDEX IF NOT EXISTS posts_content_idx ON posts(content) USING 'org.apache.cassandra.index.sasi.SASIIndex';
 // BUSQUEDA DE PUBLICACIONES DE CON DETERMINADO CONTENIDO USANDO INDICE SASI;
 SELECT * FROM posts WHERE content = 'POST 4 user 1003 school 12';
 // BUSQUEDA DE PUBLICACIONES DE CON CONTENIDO QUE EMPIECE CON 'POST 2' USANDO INDICE SASI;
 SELECT * FROM posts WHERE content LIKE 'POST 2%';
 
-CREATE CUSTOM INDEX posts_content_ic_idx ON posts(content) USING 'org.apache.cassandra.index.sasi.SASIIndex'
+CREATE CUSTOM INDEX IF NOT EXISTS posts_content_ic_idx ON posts(content) USING 'org.apache.cassandra.index.sasi.SASIIndex'
 WITH OPTIONS = { 
 'mode': 'CONTAINS',
 'analyzer_class': 'org.apache.cassandra.index.sasi.analyzer.NonTokenizingAnalyzer',
@@ -136,7 +158,7 @@ SELECT * FROM posts WHERE content LIKE '%11';
 // ADEMAS TIENEN LA VENTAJA DE QUE PERMITEN INDEXADO SIMILAR AL INDEXADO DE TEXTO COMPLETO
 // USANDO TOKENS, ESTO PERMITE BUSQUEDAS COMPLEJAS 
 
-CREATE CUSTOM INDEX post_comments_idx ON posts(comment_content) USING 'org.apache.cassandra.index.sasi.SASIIndex'
+CREATE CUSTOM INDEX IF NOT EXISTS post_comments_idx ON posts(comment_content) USING 'org.apache.cassandra.index.sasi.SASIIndex'
 WITH OPTIONS = {
 'mode': 'CONTAINS',
 'analyzer_class': 'org.apache.cassandra.index.sasi.analyzer.StandardAnalyzer',
