@@ -361,9 +361,6 @@ table.dataTable tr.odd { background-color: #CDDEE7; }
 	text-decoration: none;
 	color: #fff;
 }
-#tblUsuariosSearchText{
-	background-color: #CDDEE7;
-}
 #user-profile-pic{
 	height: 100%;
 	width: 40px;
@@ -375,4 +372,42 @@ table.dataTable tr.odd { background-color: #CDDEE7; }
 }
 #export-options > li > a:hover{
 	background-color: #8EC6EC;
+}
+.morado-mejora-aprendizajes{
+	
+	background-color: #945D95;
+	border-radius: 30px;
+	max-height: inherit;
+	color: #fff;
+	min-height: inherit;
+	max-height: inherit;
+}
+.publicacion-mural, .resultados-area, .morado-mejora-aprendizajes, .actividades-listado{
+	
+	min-height: 300px;
+	max-height: 300px;
+}
+.propuesta-mural-titulo{
+	
+	text-align: center;
+}
+.propuesta-mural-descripcion{
+	word-wrap: break-word;	
+	overflow-y: hidden;
+	font-weight: 2em;
+}
+.propuesta-estatus{
+	width: 100%;
+	
+}
+.resultados-area, .actividades-listado{
+	
+	overflow-y:scroll;
+}
+.resultados-header{
+	
+	background-color: #3F5363;
+	word-wrap: wrap;
+	color: #fff;
+	text-align: center;
 }
