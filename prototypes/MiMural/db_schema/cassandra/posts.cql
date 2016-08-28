@@ -1,0 +1,162 @@
+// CREACION DE LA BASE DE DATOS
+
+CREATE KEYSPACE mi_mural
+WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 1};
+
+USE mi_mural;
+
+// CREAR TABLA DE PUBLICACIONES 
+
+CREATE TABLE posts (
+  school_id bigint,
+  posted_date date,
+  posted_time time,
+ 
+  poster_id bigint,
+  content text,
+  photo blob,
+  post_stars bigint,
+  post_stars_users bigint,
+ 
+  comment_date date,
+  comment_time time,
+  commenter_id bigint,
+  comment_content text,
+  comment_stars bigint,
+  comment_stars_users bigint,
+ 
+  PRIMARY KEY (school_id, posted_date, posted_time, comment_date, comment_time)
+) WITH CLUSTERING ORDER BY (posted_date DESC, posted_time DESC, comment_date DESC, comment_time DESC);
+
+
+// SELECCIONA TODO DE LA TABLA
+SELECT * FROM posts;
+
+// PUBLICACIONES SIN COMENTARIOS 
+
+INSERT INTO posts (school_id, posted_date, posted_time, poster_id, content, comment_date, comment_time)
+VALUES (11, '2016-08-26', '10:12:24.000', 1001, 'POST 1 user 1001 school 11', '2016-08-26', '10:12:24.000');
+INSERT INTO posts (school_id, posted_date, posted_time, poster_id, content, comment_date, comment_time)
+VALUES (11, '2016-08-26', '12:15:16.000', 1001, 'POST 2 user 1001 school 11', '2016-08-26', '12:15:16.000');
+INSERT INTO posts (school_id, posted_date, posted_time, poster_id, content, comment_date, comment_time)
+VALUES (11, '2016-08-27', '18:30:05.000', 1002, 'POST 3 user 1002 school 11', '2016-08-27', '18:30:05.000');   
+INSERT INTO posts (school_id, posted_date, posted_time, poster_id, content, comment_date, comment_time)
+VALUES (12, '2016-08-30', '14:42:51.000', 1003, 'POST 4 user 1003 school 12', '2016-08-30', '14:42:51.000');       
+       
+// PUBLICACIONES CON COMENTARIOS 
+       
+INSERT INTO posts (school_id, posted_date, posted_time, poster_id, content, comment_date, comment_time)
+VALUES (11, '2016-09-01', '15:21:01.000', 1001, 'POST 5 user 1001 school 11 with comments', '2016-09-01', '15:21:01.000');
+INSERT INTO posts (school_id, posted_date, posted_time, poster_id, content, comment_date, comment_time)
+VALUES (11, '2016-09-03', '20:10:06.000', 1005, 'POST 6 user 1005 school 11 with comments', '2016-09-03', '20:10:06.000');
+
+// COMENTARIOS 
+
+INSERT INTO posts (school_id, posted_date, posted_time, commenter_id, comment_content, comment_date, comment_time)
+VALUES (11, '2016-09-01', '15:21:01.000', 2001, 'POST 5 comment 1 user 2001', '2016-09-01', '15:25:00.000');   
+INSERT INTO posts (school_id, posted_date, posted_time, commenter_id, comment_content, comment_date, comment_time)
+VALUES (11, '2016-09-01', '15:21:01.000', 2003, 'POST 5 comment 2 user 2003', '2016-09-01', '16:47:16.000');   
+INSERT INTO posts (school_id, posted_date, posted_time, commenter_id, comment_content, comment_date, comment_time)
+VALUES (11, '2016-09-03', '20:10:06.000', 2006, 'POST 6 comment 3 user 2006', '2016-09-03', '20:11:00.000');   
+INSERT INTO posts (school_id, posted_date, posted_time, commenter_id, comment_content, comment_date, comment_time)
+VALUES (11, '2016-09-03', '20:10:06.000', 2007, 'POST 6 comment 4 user 2007', '2016-09-03', '20:11:30.000');
+INSERT INTO posts (school_id, posted_date, posted_time, commenter_id, comment_content, comment_date, comment_time)
+VALUES (11, '2016-09-03', '20:10:06.000', 2008, 'POST 6 comment 5 user 2008', '2016-09-04', '07:00:10.000');
+
+// BUSQUEDAS SIN NECESIDAD DE INDICE
+// LA GRAN MAYORIA DE LAS BUSQUEDAS SERAN DE ESTE TIPO, CASSANDRA Y SU ALMACENAMIENTO INTERNO HACE QUE ESTE TIPO DE BUSQUEDAS SEAN MUY EFICIENTES SIN NECESIDAD DE USAR UN INDICE
+
+// SELECCIONA TODO DE LA TABLA
+SELECT * FROM posts;
+// SELECCIONA SOLO DE UNA ESCUELA (CARGA TODOS LOS POSTS EN EL MURAL DE LA ESCUELA)
+SELECT * FROM posts WHERE school_id = 11;
+// SELECCIONA SOLO DE UNA ESCUELA, MENOR A CIERTO DIA (MUY UTIL PARA AL INICIO EL MURAL DE UNA ESCUELA HASTA EL DIA DE 'HOY')
+SELECT * FROM posts WHERE school_id = 11 AND posted_date <= '2016-08-31';
+// SELECCIONA SOLO DE UNA ESCUELA, EN UN RANGO DE FECHAS (MUY UTIL PARA HACER PAGINADO)
+// ADEMAS EL DRIVER DE CASSANDRA PUEDE HACER OPERACIONES DE BUSCAR EN PARALELO LA SIGUIENTE PAGINA
+// LO QUE NOS PERMITE DESPLEGAR AL USUARIO MUY RAPIDAMENTE LAS PUBLICACIONES MAS RECIENTES Y 
+// AL MISMO TIEMPO IR LEYENDO DE LA BASE DE DATOS LAS QUE SIGUEN
+SELECT * FROM posts WHERE school_id = 11 AND posted_date <= '2016-09-16' AND posted_date >= '2016-09-1';
+// SELECCIONA SOLO DE UNA ESCUELA, EN UN RANGO DE FECHAS Y TIEMPO (MUY UTIL PARA HACER PAGINADO)
+SELECT * FROM posts WHERE school_id = 11 AND posted_date = '2016-09-01'  AND posted_time = '15:21:01.000';
+// SELECCIONA SOLO DE UNA ESCUELA Y PUBLICACION, EN UN RANGO DE FECHAS Y TIEMPO DE LOS COMENTARIOS (MUY UTIL PARA HACER PAGINADO)
+SELECT * FROM posts WHERE school_id = 11 AND posted_date = '2016-09-01'  AND posted_time = '15:21:01.000' AND comment_date = '2016-09-01' AND comment_time < '16:00:00.000';
+// CUENTA TODOS LAS PUBLICACIONES (PARA LAS ESTADISTICAS DE USO)
+SELECT COUNT(*) FROM posts;
+// CUENTA TODOS LAS PUBLICACIONES POR ESCUELA (PARA LAS ESTADISTICAS DE USO)
+SELECT COUNT(*) FROM posts WHERE school_id = 11;
+SELECT COUNT(*) FROM posts WHERE school_id = 12;
+// CUENTA LAS ESCUELAS CON PUBLICACIONES (PARA LAS ESTADISTICAS DE USO)
+SELECT DISTINCT school_id FROM posts;
+// SELECCIONA LOS ULTIMOS 5 REGISTROS DE UNA ESCUELA (LOS MAS RECIENTES POR SU ORDEN)
+SELECT * FROM posts WHERE school_id = 11 LIMIT 5;
+// SELECCIONA LOS ULTIMOS 2 REGISTROS DE CADA ESCUELA (LOS MAS RECIENTES POR SU ORDEN)
+SELECT * FROM posts PER PARTITION LIMIT 2;
+// SELECCIONA LAS PUBLICACIONES DE UNA ESCUELA EN ORDEN INVERSO (EL POST MAS ANTIGUO PRIMERO)
+SELECT * FROM posts WHERE school_id = 11 ORDER BY posted_date;
+// SELECCIONA LA PRIMERA PUBLICACION DE UNA ESCUELA;
+SELECT * FROM posts WHERE school_id = 11 ORDER BY posted_date ASC, posted_time ASC LIMIT 1;
+
+
+// BUSQUEDAS CON FILTRADO
+// BUSQUEDA DE PUBLICACIONES DE CIERTO USUARIO;
+SELECT * FROM posts WHERE poster_id = 1001 ALLOW FILTERING;
+// BUSQUEDA DE PUBLICACIONES DE CON DETERMINADO CONTENIDO;
+SELECT * FROM posts WHERE content = 'POST 4 user 1003 school 12' ALLOW FILTERING;
+
+
+// BUSQUEDAS CON INDICE SECUNDARIO (NO REALIZAN FILTRADO POR LO QUE SON MAS RAPIDAS)
+
+CREATE INDEX posts_posterid_idx ON posts(poster_id);
+// BUSQUEDA DE PUBLICACIONES DE CIERTO USUARIO USANDO UN INDICE SECUNDARIO;
+SELECT * FROM posts WHERE poster_id = 1001;
+
+
+// BUSQUEDAS CON INDICE SASI 
+// LOS INDICES SASI SON AUN MAS RAPIDOS QUE LOS INDICES SECUNDARIOS
+// Y PERMITEN BUSQUEDAS COMPLEJAS
+
+CREATE CUSTOM INDEX posts_content_idx ON posts(content) USING 'org.apache.cassandra.index.sasi.SASIIndex';
+// BUSQUEDA DE PUBLICACIONES DE CON DETERMINADO CONTENIDO USANDO INDICE SASI;
+SELECT * FROM posts WHERE content = 'POST 4 user 1003 school 12';
+// BUSQUEDA DE PUBLICACIONES DE CON CONTENIDO QUE EMPIECE CON 'POST 2' USANDO INDICE SASI;
+SELECT * FROM posts WHERE content LIKE 'POST 2%';
+
+CREATE CUSTOM INDEX posts_content_ic_idx ON posts(content) USING 'org.apache.cassandra.index.sasi.SASIIndex'
+WITH OPTIONS = { 
+'mode': 'CONTAINS',
+'analyzer_class': 'org.apache.cassandra.index.sasi.analyzer.NonTokenizingAnalyzer',
+'case_sensitive': 'false'
+};
+// BUSQUEDA DE PUBLICACIONES DE CON CONTENIDO QUE CONTENGA CON 'post 3' SIN IMPORTAR MAYUSCULAS O MINUSCULAS USANDO INDICE SASI;
+SELECT * FROM posts WHERE content LIKE '%post 3%';
+// BUSQUEDA DE PUBLICACIONES DE CON CONTENIDO QUE TERMINE CON '11' USANDO INDICE SASI;
+SELECT * FROM posts WHERE content LIKE '%11';
+
+// ADEMAS TIENEN LA VENTAJA DE QUE PERMITEN INDEXADO SIMILAR AL INDEXADO DE TEXTO COMPLETO
+// USANDO TOKENS, ESTO PERMITE BUSQUEDAS COMPLEJAS 
+
+CREATE CUSTOM INDEX post_comments_idx ON posts(comment_content) USING 'org.apache.cassandra.index.sasi.SASIIndex'
+WITH OPTIONS = {
+'mode': 'CONTAINS',
+'analyzer_class': 'org.apache.cassandra.index.sasi.analyzer.StandardAnalyzer',
+'analyzed': 'true',
+'tokenization_skip_stop_words': 'y, el, la, o',
+'tokenization_enable_stemming': 'true',
+'tokenization_normalize_lowercase': 'true',
+'tokenization_locale': 'es'
+};
+// BUSQUEDA DE PUBLICACIONES DE CON CONTENIDO QUE CONTENGA EL TOKEN '2006' USANDO INDICE SASI;
+SELECT * FROM posts WHERE comment_content LIKE '2006';
+
+
+// LIMPIAR Y BORRAR TABLA;
+
+TRUNCATE TABLE posts;
+DROP INDEX post_comments_idx;
+DROP INDEX posts_content_ic_idx;
+DROP INDEX posts_content_idx;
+DROP INDEX posts_posterid_idx;
+DROP TABLE posts;
+
+
