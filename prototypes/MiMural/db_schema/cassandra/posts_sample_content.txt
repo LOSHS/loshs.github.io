@@ -1,0 +1,24 @@
+$ cqlsh
+
+Connected to Test Cluster at 127.0.0.1:9042.
+[cqlsh 5.0.1 | Cassandra 3.7 | CQL spec 3.4.2 | Native protocol v4]
+Use HELP for help.
+cqlsh> USE mi_mural;
+cqlsh:mi_mural> SELECT * FROM posts;
+
+ school_id | posted_date | posted_time        | comment_date | comment_time       | comment_content            | comment_stars | comment_stars_users | commenter_id | content                                  | photo | post_stars | post_stars_users | poster_id
+-----------+-------------+--------------------+--------------+--------------------+----------------------------+---------------+---------------------+--------------+------------------------------------------+-------+------------+------------------+-----------
+        12 |  2016-08-30 | 14:42:51.000000000 |   2016-08-30 | 14:42:51.000000000 |                       null |          null |                null |         null |               POST 4 user 1003 school 12 |  null |       null |             null |      1003
+        11 |  2016-09-03 | 20:10:06.000000000 |   2016-09-04 | 07:00:10.000000000 | POST 6 comment 5 user 2008 |          null |                null |         2008 |                                     null |  null |       null |             null |      null
+        11 |  2016-09-03 | 20:10:06.000000000 |   2016-09-03 | 20:11:30.000000000 | POST 6 comment 4 user 2007 |          null |                null |         2007 |                                     null |  null |       null |             null |      null
+        11 |  2016-09-03 | 20:10:06.000000000 |   2016-09-03 | 20:11:00.000000000 | POST 6 comment 3 user 2006 |          null |                null |         2006 |                                     null |  null |       null |             null |      null
+        11 |  2016-09-03 | 20:10:06.000000000 |   2016-09-03 | 20:10:06.000000000 |                       null |          null |                null |         null | POST 6 user 1005 school 11 with comments |  null |       null |             null |      1005
+        11 |  2016-09-01 | 15:21:01.000000000 |   2016-09-01 | 16:47:16.000000000 | POST 5 comment 2 user 2003 |          null |                null |         2003 |                                     null |  null |       null |             null |      null
+        11 |  2016-09-01 | 15:21:01.000000000 |   2016-09-01 | 15:25:00.000000000 | POST 5 comment 1 user 2001 |          null |                null |         2001 |                                     null |  null |       null |             null |      null
+        11 |  2016-09-01 | 15:21:01.000000000 |   2016-09-01 | 15:21:01.000000000 |                       null |          null |                null |         null | POST 5 user 1001 school 11 with comments |  null |       null |             null |      1001
+        11 |  2016-08-27 | 18:30:05.000000000 |   2016-08-27 | 18:30:05.000000000 |                       null |          null |                null |         null |               POST 3 user 1002 school 11 |  null |       null |             null |      1002
+        11 |  2016-08-26 | 12:15:16.000000000 |   2016-08-26 | 12:15:16.000000000 |                       null |          null |                null |         null |               POST 2 user 1001 school 11 |  null |       null |             null |      1001
+        11 |  2016-08-26 | 10:12:24.000000000 |   2016-08-26 | 10:12:24.000000000 |                       null |          null |                null |         null |               POST 1 user 1001 school 11 |  null |       null |             null |      1001
+
+(11 rows)
+
