@@ -382,10 +382,10 @@ table.dataTable tr.odd { background-color: #CDDEE7; }
 	min-height: inherit;
 	max-height: inherit;
 }
-.publicacion-mural{
+.publicacion-mural, .resultados-area, .morado-mejora-aprendizajes, .actividades-listado{
 	
-	min-height: 350px;
-	max-height: 350px;
+	min-height: 300px;
+	max-height: 300px;
 }
 .propuesta-mural-titulo{
 	
@@ -393,4 +393,21 @@ table.dataTable tr.odd { background-color: #CDDEE7; }
 }
 .propuesta-mural-descripcion{
 	word-wrap: break-word;	
+	overflow-y: hidden;
+	font-weight: 2em;
+}
+.propuesta-estatus{
+	width: 100%;
+	
+}
+.resultados-area, .actividades-listado{
+	
+	overflow-y:scroll;
+}
+.resultados-header{
+	
+	background-color: #3F5363;
+	word-wrap: wrap;
+	color: #fff;
+	text-align: center;
 }
