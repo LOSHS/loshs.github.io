@@ -1,0 +1,246 @@
+<!DOCTYPE HTML>
+<html lang="es">
+   <head>
+      <!-- All the files that are required -->
+      <title>Mi Mural</title>
+      <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/datatables.min.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/mimural.fuentes.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/mimural.css" />
+      <script src="../../js/jquery.min.js"></script>	
+      <script src="../../js/bootstrap.min.js"></script>	
+      <script src="../../js/datatables.min.js"></script>	
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   </head>
+   <body>
+      <nav class="navbar navbar-default navbar-fixed-top ">
+         <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse">
+               <img alt="Brand" class="navbar-brand" id="sep-logo" src="../../img/sep-logo.png" />
+               <ul class="nav navbar-nav navbar-right pull-right">
+               	  <li>
+               	  	<img alt="user profile picture" id="user-profile-pic"  src="../../img/user-icon-director.png"/>
+               	  </li>
+                  <li class="dropdown">
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                     Bienvenido a Mi Mural
+                     <b class="caret"></b>
+                     <small id="rol-tag" style="display:block">
+                     Director</small>
+                     </a>
+                     <ul class="dropdown-menu">
+                        <li><a href="#">Mi Perfil</a></li>
+                        <li><a href="#">Cerrar Sesión</a></li>
+                     </ul>
+                  </li>
+               </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+         </div>
+         <!-- /.container-fluid -->
+      </nav>
+      <!-- LOGIN FORM -->
+      <div class="row">
+         <div class="col-md-2 left-sidebar">
+            <br/><br />
+            <br/>  
+            <div id="main-menu">
+               <div class="row">
+                  <div class="col-md-12">
+                     <a href="#"><span class="icon-Fuente-Componentes-mi-mural--03"></span>&nbsp;&nbsp;&nbsp;Mural</a>
+                  </div>
+               </div>
+			   
+               <hr />
+               <div class="row">
+                  <div class="col-md-12">
+                     <a href="#"><span class="icon-Fuente-Componentes-mi-mural--04"></span>&nbsp;&nbsp;&nbsp;Ranking</a>  
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <a href="#"><span class="icon-Fuente-Componentes-mi-mural--05"></span>&nbsp;&nbsp;&nbsp;Reportes</a>       
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <a href="#"><span class="icon-Fuente-Componentes-mi-mural--07"></span>&nbsp;&nbsp;&nbsp;Favoritos</a>   
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <a href="#"><span class="icon-Fuente-Componentes-mi-mural--08"></span>&nbsp;&nbsp;&nbsp;Directorio</a>     
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <a href="#"><span class="icon-Fuente-Componentes-mi-mural--10"></span>&nbsp;&nbsp;&nbsp;Usuarios</a>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <a href="#"><span class="icon-Fuente-Componentes-mi-mural--06"></span>&nbsp;&nbsp;&nbsp;Escuelas</a>
+                  </div>
+               </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="bottom-align-text ">
+               <div class="row">
+                  <div class="col-md-6">            	
+                     <span class="icon-Fuente-Componentes-mi-mural--18 logo-mural "></span>
+                  </div>
+                  <div class="col-md-6">            	
+                     <span class="logo-mural-descripcion">Mejora de los aprendizajes</span>
+                  </div>
+               </div>
+               <br />
+               <div class="row">
+                  <div class="col-md-6">            	
+                     <span class="icon-Fuente-Componentes-mi-mural--20 logo-mural"></span>
+                  </div>
+                  <div class="col-md-6">
+                     <span class=" logo-mural-descripcion">Convivencia escolar</span>
+                  </div>
+               </div>
+               <br />
+               <div class="row">
+                  <div class="col-md-6">            	
+                     <span class="icon-Fuente-Componentes-mi-mural--19 logo-mural "></span>
+                  </div>
+                  <div class="col-md-6">            	
+                     <span class="logo-mural-descripcion">Funcionamiento de la escuela</span>
+                  </div>
+               </div>
+               <br />
+               <div class="row">
+                  <div class="col-md-6">            	
+                     <span class="icon-Fuente-Componentes-mi-mural--21 logo-mural"></span>
+                  </div>
+                  <div class="col-md-6">
+                     <span class="logo-mural-descripcion">Rezago y abandono escolar</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-8 middle-content" >
+            <br /><br /><br />
+			
+                  <div class="input-group "> 
+                     <input class="form-control" id="tblUsuariosSearchText"  placeholder="Busca propuestas, escuelas y temas..."/>
+                     <span class="input-group-btn">
+                     <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                     </span>
+                  </div>
+			<br />
+			<div class="panel panel-default">
+  <div class="panel-heading">
+  
+  <a href="#" class="btn btn-default"><span class="icon-Fuente-Componentes-mi-mural--12">&nbsp;</span>Proponer</a>
+  <a href="#" class="btn btn-primary"><span class="icon-Fuente-Componentes-mi-mural--11">&nbsp;</span>Dar un aviso</a>
+  
+  
+  
+  </div>
+  <div class="panel-body">
+    <textarea id="txtPropuesta" class="form-control" rows="5" placeholder="Comparte tu propuesta..."></textarea>
+  </div>
+</div>
+<br />
+<div class="row publicacion-mural">
+<div class="col-md-7">
+	<div class="col-md-8 morado-mejora-aprendizajes">
+		<h4 class="propuesta-mural-titulo">Mejora de los aprendizajes</h4>
+		<hr />
+		<div class="col-md-3">		
+			<span class="icon-Fuente-Componentes-mi-mural--18 logo-mural "></span>
+		</div>
+		<div class="col-md-9">
+		<p class="propuesta-mural-descripcion">alksdfjsafalksdlkjfsalkjdalkjfdslkjdsalksajkfdsalkjf ksaksajf jsadkfjsalkdfjlkdsajflkdsajflksadj lksajdlkfsajdflkjdsalkfajdslkfjsalkdjfalkdsj flksajflksadjflksadflkasdjkfjdsakfjsalkdjf</p>
+		</div>
+	</div>
+	<div class="col-md-5">
+	</div>
+</div>
+<div>
+</div class="col-md-5">
+</div>
+
+         </div>
+         <div class="col-md-2 right-sidebar">
+            <div class="row">
+               <br/><br />
+               <br />
+               <div class="col-md-12">
+                  <h4 style="color:#fff">Notificaciones</h4>
+               </div>
+               <hr/>
+               <div >
+                  <div class="col-md-12" id="notifications-feed" >
+                     <br />
+                     <p><span class="icon-Fuente-Componentes-mi-mural--10"></span>&nbsp;Hay 123 usuarios nuevos.</p>
+                     <hr />
+                  </div>
+               </div>
+               <div class="col-md-12" id="loshs-logo">
+                  <img  alt="loshs logo" src="../../img/logo-mini-blanco.png" />
+               </div>
+            </div>
+         </div>
+      </div>
+      <footer class="footer">
+         <script>
+            var diccionarioMeses = {
+            	01 : 'Enero',
+            	02 : 'Febrero',
+            	03 : 'Marzo',
+            	04 : 'Abril',		
+            	05 : 'Mayo',
+            	06 : 'Junio',
+            	07 : 'Julio',
+            	08 : 'Agosto',		
+            	09 : 'Septiembre',
+            	10 : 'Octubre',
+            	11 : 'Noviembre',
+            	12 : 'Diciembre'						
+            };
+            
+            $(document).ready(function() {
+            	$('#tableUsuarios').dataTable({
+            		'filter' : false,
+            		'paging' : false,
+            		'scrollInfinite' : true,
+            		'scrollCollapse' : true,
+                   	'scrollY': "250px"
+            	});
+            	
+            	var fechaEnString = '';
+            	var hoy = new Date();
+            	var dd = hoy.getDate();
+            	var mm = hoy.getMonth()+1; //January is 0!
+            	var yyyy = hoy.getFullYear();
+            	
+            	if(dd < 10) {
+            		   dd = '0'+dd;
+            	}
+            	
+            	fechaEnString = dd + ' / ' + diccionarioMeses[mm] + ' / '+ yyyy;
+            	$('#fecha-actual').text(fechaEnString);
+            });
+            
+         </script>
+      </footer>
+   </body>
+</html>
