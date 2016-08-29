@@ -400,7 +400,7 @@ table.dataTable tr.odd { background-color: #CDDEE7; }
 	width: 100%;
 	
 }
-.resultados-area, .actividades-listado{
+.actividades-listado{
 	
 	overflow-y:scroll;
 }
@@ -410,4 +410,28 @@ table.dataTable tr.odd { background-color: #CDDEE7; }
 	word-wrap: wrap;
 	color: #fff;
 	text-align: center;
+}
+.estrellas-container{
+	
+	height: 20px;
+}
+.estrellas-container img{
+	max-height: 100%;
+}
+.post-footer{
+	padding-top: 1em;
+	background-color: #fff;
+}
+.promedio-star{
+	height:30px;
+	
+	width: 30px;
+	background-image: url('../img/estrella-llena.png');
+	background-size: cover;
+	text-align: center;
+}
+.promedio-star-text{
+	
+	padding-top:10px;
+	color: #000;
 }
