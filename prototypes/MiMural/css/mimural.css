@@ -419,19 +419,22 @@ table.dataTable tr.odd { background-color: #CDDEE7; }
 	max-height: 100%;
 }
 .post-footer{
-	padding-top: 1em;
+	margin-top: 1em;
 	background-color: #fff;
 }
-.promedio-star{
-	height:30px;
-	
-	width: 30px;
-	background-image: url('../img/estrella-llena.png');
-	background-size: cover;
-	text-align: center;
+.promedio-estrella{
+	font-size: 1.5em;
+	display: inline-block;
 }
-.promedio-star-text{
-	
-	padding-top:10px;
-	color: #000;
+.promedio-estrellas-container{
+	float: right;
+}
+.publicacion-more-options-container{
+	border-left: 1px solid #C6C5C5;
+}
+.publicacion-more-options{
+	float:right;	
+}
+.publicacion-more-options a{
+	font-size: 1.5em;
 }
