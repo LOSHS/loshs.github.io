@@ -352,7 +352,7 @@ table.dataTable tr.odd { background-color: #CDDEE7; }
 	width: 120px;
 }
 #main-menu{
-	font-size: 1.4em;
+	font-size: 1.8em;
 	text-align: center;
 }
 #main-menu > div.row {
@@ -439,4 +439,11 @@ table.dataTable tr.odd { background-color: #CDDEE7; }
 .publicacion-more-options a{
 	font-size: 1.5em;
 }
-#main-menu div.row div.col-md-12 a:hover{ font-size: 1.05em;}
+/*mouse hover on menu item*/
+#main-menu div.row div.col-md-12 a:hover{ 
+	font-size: 1.05em;
+}
+/*testing start*/
+html, body, .main-container, .left-sidebar, .right-sidebar {
+    height: 100%
+}
