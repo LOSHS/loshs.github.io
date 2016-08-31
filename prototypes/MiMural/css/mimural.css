@@ -447,3 +447,15 @@ table.dataTable tr.odd { background-color: #CDDEE7; }
 html, body, .main-container, .left-sidebar, .right-sidebar {
     height: 100%
 }
+.label-as-badge {
+    border-radius: 1em;
+}
+.caret-notifications{
+	float: right;
+}
+#accionesPorVencer div a{
+	color: #000;
+}
+.titulo-accion-expirar{
+	font-size: 1.2em;
+}
