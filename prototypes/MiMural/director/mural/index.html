@@ -162,11 +162,9 @@
 						<div class="panel-body">
 							<textarea id="txtPropuesta" class="form-control" rows="5" placeholder="Comparte tu propuesta..."></textarea>
 						</div>
-					</div>
-					<br />
-
+					</div>					
 					<div class="publicacion-mural">
-						<div class="col-md-12">
+						<div class="col-md-12 publicacion-header round-top-corners">
 							<div class="col-md-4 morado-mejora-aprendizajes">
 								<h4 class="propuesta-mural-titulo">Mejora de Divisiones</h4> 
 								<hr />
@@ -202,7 +200,7 @@
 							</div>
 
 						</div>
-						<div class="col-md-12">
+						<div class="col-md-12 bottom-publicacion round-bottom-corners">
 							<div class="col-md-12 post-footer well">
 
 								<div class="col-md-5 estrellas-container" >								
@@ -227,14 +225,8 @@
 								</div>
 								<div class="col-md-5">
 									<div class="promedio-estrellas-container">
-									<span><b>Promedio: </b></span>
-										<div class="promedio-estrella">
-											<span class="glyphicon glyphicon-star"></span>
-											<span class="glyphicon glyphicon-star-empty"></span>
-											<span class="glyphicon glyphicon-star-empty"></span>
-											<span class="glyphicon glyphicon-star-empty"></span>
-											<span class="glyphicon glyphicon-star-empty"></span>
-										</div>
+										<span><b>Promedio: </b></span>
+										<img class="promedio-estrella" alt="estrella" src="../../img/estrella-promedio15.png"/>
 									</div>
 								</div>
 								<div class="col-md-2 publicacion-more-options-container"  >
@@ -252,8 +244,10 @@
 						</div>
 
 					</div>
-
-				</div>
+					<br />
+					<div class="publicacion-mural round-top-corners round-bottom-corners">
+					</div>
+			</div>
 			<div class="col-md-2 right-sidebar" >
 					<div class="row">
 						<br/>
@@ -266,8 +260,8 @@
 						<div >
 							<div class="col-md-12" id="notifications-feed" >
 								<br />
-								<div id="accionesPorVencer">
-									<span class="label label-danger label-as-badge pull-left">!</span>
+								<div class="acciones-notificaciones">
+									<span class="label label-danger label-as-badge pull-left notificaciones-expiracion-logo">!</span>
 									<div class="dropdown pull-right" >																								
 										<a alt="acciones-vencer" href="#" class="dropdown-toggle " data-toggle="dropdown">
 										<span><b>&nbsp;Acciones por vencer</b>&nbsp;<span class="caret "></span></span>
@@ -282,11 +276,41 @@
 								<br />
 								<hr />
 								
-								<div class="col-md-4">
-									<span class="icon-Fuente-Componentes-mi-mural--18 logo-mural"></span>
+								<div class="col-md-4">									
+									<img alt="" src="../../img/accion-en-peligro.png" />
 								</div>
 								<div class="col-md-8">
 									<span class="titulo-accion-expirar">Mejora de las divisiones</span>
+								</div>
+								<div class="col-md-12 fecha-expiracion-accion">
+									<small>Expira el 14 de noviembre del 2016</small>
+								</div>
+								<br />
+								<br />
+								<hr />
+								<div class="acciones-notificaciones">									
+									<span class="icon-Fuente-Componentes-mi-mural--15 notificaciones-propuestas-logo"></span>
+									<div class="dropdown pull-right" >																								
+										<a alt="acciones-vencer" href="#" class="dropdown-toggle " data-toggle="dropdown">
+										<span><b>&nbsp;Tienes una propuesta</b>&nbsp;<span class="caret "></span></span>
+										</a>
+										<ul class="dropdown-menu">
+											<li>
+												<a href="#">Convertir en acciones</a>												
+											</li>
+										</ul>
+									</div>
+								</div>
+								
+								<hr />
+								
+								<div class="col-md-4">									
+									<img alt="" src="../../img/propuesta-mejoraprendizaje.png" />
+								</div>
+								<div class="col-md-8">
+									<span class="titulo-propuesta">Juan Perez</span>
+									<br />
+									<small class="fecha-expiracion-accion">Publicado el 16 de octubre del 2016</small>
 								</div>
 								
 							</div>
