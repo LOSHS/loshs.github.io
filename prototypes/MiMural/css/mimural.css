@@ -288,9 +288,6 @@ label:hover:before {
 @media (min-width: 768px ) { 
   .bottom-align-text {
   }
-  .logo-mural{
-  	font-size: 50px;
-  }
   .logo-mural-descripcion{
   	font-size: 12px;
   	text-align:center;
@@ -326,6 +323,11 @@ label:hover:before {
   }
 }
 
+
+  .logo-mural{
+  	font-size: 3.5vw;
+  }
+
 table.dataTable tr.odd { background-color: #CDDEE7; }
 #tableColumnsViews button { background-color: #74CDE1;}
 
@@ -352,7 +354,7 @@ table.dataTable tr.odd { background-color: #CDDEE7; }
 	width: 120px;
 }
 #main-menu{
-	font-size: 1.8em;
+	font-size: 1.8vw;
 	text-align: center;
 }
 #main-menu > div.row {
@@ -377,8 +379,8 @@ table.dataTable tr.odd { background-color: #CDDEE7; }
 .morado-mejora-aprendizajes{
 	
 	background-color: #945D95;
-	border-top-left-radius: 3em;
-	border-bottom-left-radius: 3em;
+	border-top-left-radius: 5em;
+	border-bottom-left-radius: 5em;
 	max-height: inherit;
 	color: #fff;
 	min-height: inherit;
@@ -499,8 +501,7 @@ html, body, .main-container, .left-sidebar, .right-sidebar {
 	border-bottom-right-radius: 1.1em;
 	border-bottom-left-radius: 1.1em;
 }
-.publicacion-accion {
-	margin-top: 1.1em;
+.publicacion-accion {	
 	overflow: hidden;
 	
 }
@@ -521,4 +522,10 @@ html, body, .main-container, .left-sidebar, .right-sidebar {
 }
 .texto-post{
 	text-align:justify;
+}
+.no-top-border{
+	border-top: none;
+}
+.normal-font{
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
