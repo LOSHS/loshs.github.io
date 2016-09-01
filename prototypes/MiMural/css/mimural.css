@@ -389,6 +389,7 @@ table.dataTable tr.odd { background-color: #CDDEE7; }
 	
 	min-height: 300px;
 	max-height: 300px;
+	text-align: justify;
 }
 .propuesta-mural-titulo{
 	
@@ -509,6 +510,7 @@ html, body, .main-container, .left-sidebar, .right-sidebar {
 	color: #fff;
 }
 .publicacion-post{
+	margin-top: 1.1em;
 	background-color: #fff;
 	border-color: #ccc;
 }
