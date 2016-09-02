@@ -30,7 +30,7 @@ CREATE TABLE `users` (
   `mother_lastname` varchar(45) DEFAULT NULL,
   `first_name` varchar(45) NOT NULL,
   `middle_names` varchar(45) DEFAULT NULL,
-  `register` varchar(45) NOT NULL,
+  `user_code` varchar(45) NOT NULL,
   `password_hash` varchar(70) NOT NULL,
   `user_photo` blob,
   `user_cct` varchar(45) DEFAULT NULL,
@@ -65,4 +65,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-08-31  2:02:44
+-- Dump completed on 2016-09-02  1:12:27
