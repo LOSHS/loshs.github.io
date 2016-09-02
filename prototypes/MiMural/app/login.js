@@ -1,15 +1,8 @@
 var crypto = require('crypto');
-var mysql  = require('mysql');
 var bcrypt = require('bcrypt');
 var bodyParser = require('body-parser');
 
-                 
-var pool =  mysql.createPool({
-	host     : 'localhost',
-	user     : 'root',
-	password : 'loshs123',
-  database : 'mi_mural'
-});	
+var mySql = require('./mysqldb');
 
 
 module.exports = function(app){
@@ -43,8 +36,11 @@ module.exports = function(app){
       return;
     }
     
-    pool.getConnection(function(err, connection) {
-      connection.query('SELECT password_hash FROM users WHERE user_code = ' + pool.escape(request.body.lg_username), function(err, rows) {
+    mySql.pool.getConnection(function(err, connection) {
+      if (err) {
+        throw err;
+      }
+      connection.query('SELECT password_hash FROM users WHERE user_code = ' + mySql.pool.escape(request.body.lg_username), function(err, rows) {
       //connection.query('SELECT password_hash FROM users WHERE user_id = 1', function(err, rows) {
         if (err) { 
           throw err;
@@ -97,9 +93,3 @@ module.exports = function(app){
   
   
 };
-
-
-
-
-
-
