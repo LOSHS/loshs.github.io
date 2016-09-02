@@ -381,8 +381,8 @@ table.dataTable tr.odd { background-color: #CDDEE7; }
 
 .mejora-div{
 		
-	border-top-left-radius: 5em;
-	border-bottom-left-radius: 5em;
+	border-top-left-radius: 5vw;
+	border-bottom-left-radius: 5vw;
 	max-height: inherit;
 	color: #fff;
 	min-height: inherit;
@@ -454,7 +454,7 @@ html, body, .main-container, .left-sidebar, .right-sidebar {
     height: 100%
 }
 .label-as-badge {
-    border-radius: 1em;
+    border-radius: 1vw;
 }
 .caret-notifications{
 	float: right;
@@ -485,8 +485,8 @@ html, body, .main-container, .left-sidebar, .right-sidebar {
 .publicacion-header{
 	
 	border: 1px solid;
-	padding-top: 1.1em;
-	padding-bottom: 1.1em;	
+	padding-top: 1.1vw;
+	padding-bottom: 1.1vw;	
 	border-color: #ccc;
 }
 .bottom-publicacion {
@@ -556,8 +556,15 @@ html, body, .main-container, .left-sidebar, .right-sidebar {
 	text-decoration: none;
 }
 .post{
-	margin-top: 1.1em;
+	margin-top: 1.1vw;
 }
 .verde-convivencia{
 	background-color: #28A8AA;
+}
+ul.reportes-tabs > li.active > a {
+	background-color: #74CDE1 !important;
+	color: #fff !important;
+}
+div.amarillo-header-ranking{
+	background-color: #5FBB17;
 }
