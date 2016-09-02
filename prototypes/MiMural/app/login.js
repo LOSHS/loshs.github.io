@@ -18,9 +18,17 @@ module.exports = function(app){
     extended: true
   }));
   
+  
+  
+  app.get('/login-token', function(request, response){
+    response.writeHead(400, {'content-type': 'text/html'});
+    response.end("Use metodo POST para ingresar sus credenciales");
+  });
+  
+  
 
   app.post('/login-token', function(request, response){
-    var token = secureRandomBase64(20);
+    var token = secureRandomBase64(25);
     
     if (!request.body.lg_username || !request.body.lg_password) {
       if (!request.body.lg_username) {
@@ -43,7 +51,7 @@ module.exports = function(app){
         }
         else {
           numRows = rows.length;
-          if(numRows != 1) {
+          if(numRows !== 1) {
             console.log('El usuario ' + request.body.lg_username + ' no existe');
             console.log('');
             //response.redirect('/login');
@@ -57,6 +65,9 @@ module.exports = function(app){
               if(result) {
                 console.log('Contrasena correcta');
                 console.log('');
+                
+                //response.clearCookie('securityToken', { path: '/' });
+                response.cookie('securityToken', token, { path: '/' });
                 response.writeHead(200, {'content-type': 'text/html'});
                 response.end("OK");
               }
@@ -73,10 +84,8 @@ module.exports = function(app){
         connection.release();
       });
     });
-    
-    
-    
   });
+
 
   function secureRandomBase64 (len) {
     return crypto.randomBytes(Math.ceil(len * 3 / 4))
@@ -87,7 +96,7 @@ module.exports = function(app){
   }
   
   
-}
+};
 
 
 

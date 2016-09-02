@@ -8,7 +8,7 @@ require('./login')(app);
 app.get('/', function (req, res) {
   res.redirect('/login');
   console.log("Request at /");
-})
+});
 
 app.use(express.static('static'));
 
@@ -19,12 +19,12 @@ app.use(bodyParser.json());
 
 var server = app.listen(8081, function () {
 
-  var host = server.address().address
-  var port = server.address().port
+  var host = server.address().address;
+  var port = server.address().port;
 
   console.log("Listening at http://%s:%s", host, port);
 
-})
+});
 
 
 
