@@ -10,6 +10,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.all('/director*', [require('./security/requestValidator')]);
+app.all('/superadmin*', [require('./security/requestValidator')]);
+
 
 app.use(express.static('static'));
 

@@ -39,7 +39,7 @@ var auth = {
     //response.cookie('antiCSRFToken', '', {path: '/'});
     response.clearCookie('userLoginToken', {path: '/', httpOnly: true});
     //response.cookie('userLoginToken', '', {path: '/', httpOnly: true});
-    response.redirect('/login'); 
+    response.redirect('/login');
   },
   validateUserPassword: function (username, password, response) {
     /*
@@ -95,7 +95,11 @@ var auth = {
                         response.cookie('userLoginToken', generateLoginToken(dbUserObj), {path: '/', httpOnly: true});
                         //response.json(generateLoginToken(dbUserObj));
                         //response.sendStatus(200);
-                        response.redirect('/director/mural'); 
+                        if (dbUserObj.role === 'Superadmin') {
+                          response.redirect('/superadmin/usuarios');
+                        } else {
+                          response.redirect('/director/mural');
+                        }
                       }
                     });
                   } else {
@@ -115,15 +119,53 @@ var auth = {
       }
     });
   },
-  validateUser: function (username) {
-    var dbUserObj = {
-      id: 1,
-      name: username, //'LAAH000000XXX',
-      role: 'Directivo',
-      nombre: 'Hugo',
-      apellido: 'Labra'
-    };
-    return dbUserObj;
+  validateUser: function (req, response, key, next) {
+
+    if (!mySql || !mySql.pool) {
+      response.sendStatus(500);
+      //throw err;
+    }
+    mySql.pool.getConnection(function (err, connection) {
+      if (err || !connection) {
+        response.sendStatus(500);
+        //throw err;
+      } else {
+        connection.query('SELECT user_code, rol, first_name, father_lastname FROM users WHERE user_id = '
+                + mySql.pool.escape(key) + ' AND status = 2', function (err, rows) {
+          if (err) {
+            response.sendStatus(500);
+          } else {
+            if (rows && rows.length === 1) {
+              var dbUserObj = {
+                id: key,
+                name: rows[0].user_code,
+                role: rows[0].rol,
+                nombre: rows[0].first_name,
+                apellido: rows[0].father_lastname
+              };
+              if ((req.url.indexOf('superadmin') >= 0 && dbUserObj.role === 'Superadmin') ||
+                      (req.url.indexOf('admin') < 0 && req.url.indexOf('/') >= 0)) {
+                next();
+              } else {
+                response.status(403);
+                response.json({
+                  "status": 403,
+                  "message": "Not Authorized"
+                });
+              }
+            } else {
+              response.status(401);
+              response.json({
+                "status": 401,
+                "message": "Usuario inválido"
+              });
+              return;
+            }
+          }
+          connection.release();
+        });
+      }
+    });
   }
 };
 
