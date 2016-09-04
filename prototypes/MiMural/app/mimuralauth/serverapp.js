@@ -10,9 +10,9 @@ app.use(bodyParser.urlencoded({
   }));
  
 
-app.use(express.static('static'));
-
 app.all('/*', [require('./security/requestValidator')]);
+
+app.use(express.static('static'));
 
 app.use('/', require('./routes/router'));
 

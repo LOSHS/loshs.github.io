@@ -1,0 +1,506 @@
+<!DOCTYPE HTML>
+<html lang="es">
+    <head>
+        <!-- All the files that are required -->
+        <title>Mi Mural</title>
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../css/datatables.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../css/mimural.fuentes.css" />
+        <link rel="stylesheet" type="text/css" href="../../css/mimural.css" />
+        <script src="../../js/jquery.min.js"></script>	
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/datatables.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="initial-scale=1" />
+
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top ">
+            <div class="container-fluid">
+
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse">
+                    <img alt="Brand" class="navbar-brand" id="sep-logo" src="../../img/sep-logo.png" />
+                    <ul class="nav navbar-nav navbar-right pull-right">
+                        <li>
+                            <img alt="user profile picture" id="user-profile-pic"  src="../../img/user-icon-director.png"/>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                Bienvenido a Mi Mural
+                                <span class="caret"></span>
+                                <small id="rol-tag" style="display:block">
+                                    Director</small>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="javascript:void(0);">Mi Perfil</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">Cerrar Sesión</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>	
+
+        <div class="row main-container">
+            <div class="col-md-2 left-sidebar" >
+                <br/>
+                <br />
+                <br/>  
+                <div id="main-menu">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="javascript:void(0);">
+                                <span class="icon-Fuente-Componentes-mi-mural--03"></i>&nbsp;&nbsp;&nbsp;<span class="normal-font">Mural</span></a>  
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="javascript:void(0);">
+                                <span class="icon-Fuente-Componentes-mi-mural--04"></i>&nbsp;&nbsp;&nbsp;<span class="normal-font">Ranking</span></a>  
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="javascript:void(0);">
+                                <span class="icon-Fuente-Componentes-mi-mural--05"></i>&nbsp;&nbsp;&nbsp;<span class="normal-font">Reportes</span></a>       
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="javascript:void(0);">
+                                <span class="icon-Fuente-Componentes-mi-mural--07"></i>&nbsp;&nbsp;&nbsp;<span class="normal-font">Favoritos</span></a>   
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="javascript:void(0);">
+                                <span class="icon-Fuente-Componentes-mi-mural--08"></i>&nbsp;&nbsp;&nbsp;<span class="normal-font">Directorio</span></a>     
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="javascript:void(0);">
+                                <span class="icon-Fuente-Componentes-mi-mural--10"></i>&nbsp;&nbsp;&nbsp;<span class="normal-font">Usuarios</span></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="javascript:void(0);">
+                                <span class="icon-Fuente-Componentes-mi-mural--06"></i>&nbsp;&nbsp;&nbsp;<span class="normal-font">Escuelas</span></a>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <br />
+                <div class="bottom-align-text ">
+                    <div class="row">
+                        <div class="col-md-6">            	
+                            <span class="icon-Fuente-Componentes-mi-mural--18 logo-mural "></span>
+                        </div>
+                        <div class="col-md-6">            	
+                            <span class="logo-mural-descripcion">Mejora de los aprendizajes</span>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-6">            	
+                            <span class="icon-Fuente-Componentes-mi-mural--20 logo-mural"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <span class=" logo-mural-descripcion">Convivencia escolar</span>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-6">            	
+                            <span class="icon-Fuente-Componentes-mi-mural--19 logo-mural"></span>
+                        </div>
+                        <div class="col-md-6">            	
+                            <span class="logo-mural-descripcion">Funcionamiento de la escuela</span>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-6">            	
+                            <span class="icon-Fuente-Componentes-mi-mural--21 logo-mural"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <span class="logo-mural-descripcion">Rezago y abandono escolar</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 middle-content" >
+                <br />
+                <br />
+                <br />
+                <div class="input-group "> 
+                    <input class="form-control" id="tblUsuariosSearchText"  placeholder="Busca propuestas, escuelas y temas..."/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                </div>
+                <br />
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a href="javascript:void(0);" class="btn btn-default">
+                            <span class="icon-Fuente-Componentes-mi-mural--12">&nbsp;</span>Proponer</a>
+                        <a href="javascript:void(0);" class="btn btn-primary">
+                            <span class="icon-Fuente-Componentes-mi-mural--11">&nbsp;</span>Dar un aviso</a>
+                    </div>
+                    <div class="panel-body">
+                        <textarea id="txtPropuesta" class="form-control" rows="2" placeholder="Comparte tu propuesta..."></textarea>
+                    </div>
+                </div>					
+                <div class="publicacion-accion post">
+                    <div class="col-md-12 publicacion-header ">
+                        <div class="col-md-4 morado-aprendizajes mejora-div">
+                            <h4 class="propuesta-mural-titulo">Mejora de Divisiones</h4> 
+                            <hr />
+                            <div class="col-md-3">		
+                                <span class="icon-Fuente-Componentes-mi-mural--18 logo-mural"></span>
+                                <br />
+                            </div>
+                            <div class="col-md-9">
+                                <p class="propuesta-mural-descripcion">Esta actividad tiene como proposito desarrollar en el alumno habilidades para dividir y  mejorar sus calificaciones en la prueba que realizamos ante la sep para <a href="javascript:void(0);">Ver mas...</a></p>								
+                            </div>
+                        </div>
+                        <div class="col-md-2 resultados-area">
+                            <a class="btn btn-default disabled propuesta-estatus" href="javascript:void(0);">Terminada</a>
+                            <br />
+                            <ul class="list-group lista-resultados">
+
+                                <li class="list-group-item">71 % de los alumnos son capaces de realizar divisiones de dos cifras</li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-6 actividades-listado">
+                            <ul class="list-group">
+                                <li class="list-group-item list-group-item-info">
+                                    <b>Actividades</b>
+                                </li>
+                                <li class="list-group-item">Realizar divisiones de 1 cifra</li>
+                                <li class="list-group-item">Realizar ejemplos usando objetos cotidianos</li>
+                                <li class="list-group-item">Realizar divisiones de 2 cifras</li>
+                                <li class="list-group-item">Realizar problemas razonados de divisiones</li>
+                                <li class="list-group-item">Realizar divisiones de 3 cifras</li>
+                                <li class="list-group-item">Explicar la similitud con la operacion de multiplicacion</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 bottom-publicacion ">
+                        <div class="col-md-12 post-footer well">
+
+                            <div class="col-md-6 estrellas-container" >								
+                                <span>
+                                    <b>¿ Que te parece esto?</b>
+                                </span>
+                                <a href="javascript:void(0);" name="estrella-1" class="estrella" data-toggle="tooltip" title="Mala idea">
+                                    <img alt="estrella" src="../../img/estrella-vacia.png"/>
+                                </a>
+                                <a href="javascript:void(0);" name="estrella-2" class="estrella" data-toggle="tooltip" title="Me da igual">
+                                    <img alt="estrella" src="../../img/estrella-vacia.png"/>
+                                </a>
+                                <a href="javascript:void(0);" name="estrella-3" class="estrella" data-toggle="tooltip" title="Me parece bien">
+                                    <img alt="estrella" src="../../img/estrella-vacia.png"/>
+                                </a>
+                                <a href="javascript:void(0);" name="estrella-4" class="estrella" data-toggle="tooltip" title="Interesante!">
+                                    <img alt="estrella" src="../../img/estrella-vacia.png"/>
+                                </a>
+                                <a href="javascript:void(0);" name="estrella-5" class="estrella" data-toggle="tooltip" title="Tiene mi apoyo!">
+                                    <img alt="estrella" src="../../img/estrella-vacia.png"/>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="promedio-estrellas-container">
+                                    <span><b>Promedio: </b></span>
+                                    <img class="promedio-estrella" alt="estrella" src="../../img/estrella-promedio15.png"/>
+                                </div>
+                            </div>
+                            <div class="col-md-2 publicacion-more-options-container"  >
+                                <div class="publicacion-more-options">
+                                    <a alt="favorito" href="javascript:void(0);" class="icon" >
+                                        <span class="glyphicon glyphicon-heart" data-toggle="tooltip" title="Marcar como favorito">&nbsp;</span>											
+                                    </a>
+                                    <a alt="compartir publicacion" href="javascript:void(0);" class="icon" data-toggle="tooltip" title="Compartir en facebook">
+                                        <span class="glyphicon glyphicon-share-alt">&nbsp;</span>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>					
+                <div class="post">
+                    <div class="publicacion-accion publicacion-header publicacion-post">
+                        <div class="col-md-12">
+                            <div class="col-md-1">
+                                <img alt="user profile picture" class="publicacion-post-user-profile-pic"  src="../../img/usuario-icono-mujer.png"/>
+                            </div>
+                            <div class="col-md-11">
+                                <span><b>&nbsp;Juan Perez</b> / Padre de Familia</span>
+                            </div>
+                            <div class="col-md-3">
+                                <small class="fecha-expiracion-accion">16 de Octubre del 2016 </small>
+                            </div>
+                        </div>
+                        <div class="col-md-12 texto-post-container">
+                            <div class="col-md-offset-1 col-md-2">
+                                <span class="icon-Fuente-Componentes-mi-mural--19 logo-mural funcionamiento-escuela-post-icon"></span>
+                            </div>
+                            <div class="col-md-9">
+                                <p class="texto-post">Compañeros, cómo ven? Estaba pensando que podríamos realizar un convivio en mi casa para que nuestros hijos se conozcan más y evitemos cualquier comportamiento de bullying que pueda existir, yo puedo poner un terreno, nos podemos cooperar para rentar unos inflables y ponerlos y una carnita asada.</p>
+                            </div>							
+                        </div >
+
+                        <div class="row">
+                            <div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="col-md-12 post-footer-comentario">
+
+                                <div class="col-md-1">
+                                    <img alt="user profile picture" id="postUserProfilePic"  src="../../img/user-icon-director.png"/>
+                                </div>
+                                <div class="col-md-8">
+                                    <textarea class="form-control" rows="2" placeholder="Escribe un comentario..."></textarea>
+
+                                </div>							
+                                <div class="publicacion-more-options dropdown">
+                                    <a alt="favorito" class="icon" href="javascript:void(0);" >
+                                        <span class="icon-Fuente-Componentes-mi-mural--13" data-toggle="tooltip" title="Subir foto">&nbsp;</span>											
+                                    </a>
+                                    <a alt="favorito" class="icon" href="javascript:void(0);" >
+                                        <span class="glyphicon glyphicon-heart" data-toggle="tooltip" title="Marcar como favorito">&nbsp;</span>											
+                                    </a>
+                                    <a alt="compartir publicacion" class="icon" href="javascript:void(0);" data-toggle="tooltip" title="Compartir en facebook">
+                                        <span class="glyphicon glyphicon-share-alt">&nbsp;</span>
+                                    </a>
+
+                                    <a alt="compartir publicacion" class="dropdown-toggle icon" data-toggle="dropdown" href="javascript:void(0);" data-toggle="tooltip" title="Mas opciones">
+                                        <span >...</span>
+                                    </a>
+
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="javascript:void(0);">Calificar</a>												
+                                        </li>
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="publicacion-accion post">
+                    <div class="col-md-12 publicacion-header ">
+                        <div class="col-md-4 verde-convivencia mejora-div">
+                            <h4 class="propuesta-mural-titulo">Paseos mensuales</h4> 
+                            <hr />
+                            <div class="col-md-3">		
+                                <span class="icon-Fuente-Componentes-mi-mural--18 logo-mural"></span>
+                                <br />
+                            </div>
+                            <div class="col-md-9">
+                                <p class="propuesta-mural-descripcion"> Esta actividad servirá para unir al grupo de 3B del turno matutino, permitirá crear lazos entre los alumnos y conocerse más a fondo, esto con el fin <a href="javascript:void(0);">Ver mas...</a></p>								
+                            </div>
+                        </div>
+                        <div class="col-md-2 resultados-area">
+                            <a class="btn btn-default disabled propuesta-estatus" href="javascript:void(0);">Terminada</a>
+                            <br />
+                            <ul class="list-group lista-resultados">
+
+                                <li class="list-group-item">5 papás reportan que sus hijos han pedido permiso para invitar compañeros de su grupo</li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-6 actividades-listado">
+                            <ul class="list-group">
+                                <li class="list-group-item list-group-item-info">
+                                    <b>Actividades</b>
+                                </li>
+                                <li class="list-group-item">Salida al boliche</li>
+                                <li class="list-group-item">Salida a otro estado</li>
+                                <li class="list-group-item">Presentación de trabajos artísticos</li>
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12"><span>&nbsp;</span></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 bottom-publicacion ">
+                        <div class="col-md-12 post-footer well">
+
+                            <div class="col-md-6 estrellas-container" >								
+                                <span>
+                                    <b>¿ Que te parece esto?</b>
+                                </span>
+                                <a href="javascript:void(0);" name="estrella-1" class="estrella" data-toggle="tooltip" title="Mala idea">
+                                    <img alt="estrella" src="../../img/estrella-vacia.png"/>
+                                </a>
+                                <a href="javascript:void(0);" name="estrella-2" class="estrella" data-toggle="tooltip" title="Me da igual">
+                                    <img alt="estrella" src="../../img/estrella-vacia.png"/>
+                                </a>
+                                <a href="javascript:void(0);" name="estrella-3" class="estrella" data-toggle="tooltip" title="Me parece bien">
+                                    <img alt="estrella" src="../../img/estrella-vacia.png"/>
+                                </a>
+                                <a href="javascript:void(0);" name="estrella-4" class="estrella" data-toggle="tooltip" title="Interesante!">
+                                    <img alt="estrella" src="../../img/estrella-vacia.png"/>
+                                </a>
+                                <a href="javascript:void(0);" name="estrella-5" class="estrella" data-toggle="tooltip" title="Tiene mi apoyo!">
+                                    <img alt="estrella" src="../../img/estrella-vacia.png"/>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="promedio-estrellas-container">
+                                    <span><b>Promedio: </b></span>
+                                    <img class="promedio-estrella" alt="estrella" src="../../img/estrella-promedio15.png"/>
+                                </div>
+                            </div>
+                            <div class="col-md-2 publicacion-more-options-container"  >
+                                <div class="publicacion-more-options">
+                                    <a alt="favorito" href="javascript:void(0);" class="icon" >
+                                        <span class="glyphicon glyphicon-heart" data-toggle="tooltip" title="Marcar como favorito">&nbsp;</span>											
+                                    </a>
+                                    <a alt="compartir publicacion" href="javascript:void(0);" class="icon" data-toggle="tooltip" title="Compartir en facebook">
+                                        <span class="glyphicon glyphicon-share-alt">&nbsp;</span>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>					
+
+            </div>
+            <div class="col-md-2 right-sidebar" >
+                <div class="row">
+                    <br/>
+                    <br />
+                    <br />
+                    <div class="col-md-12">
+                        <h4 style="color:#fff">Notificaciones</h4>
+                    </div>
+                    <hr/>
+                    <div >
+                        <div class="col-md-12" id="notifications-feed" >
+                            <br />
+                            <div class="acciones-notificaciones">
+                                <span class="label label-danger label-as-badge pull-left notificaciones-expiracion-logo">!</span>
+                                <div class="dropdown pull-right" >																								
+                                    <a alt="acciones-vencer" href="javascript:void(0);" class="dropdown-toggle " data-toggle="dropdown">
+                                        <span><b>&nbsp;Acciones por vencer</b>&nbsp;<span class="caret "></span></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="javascript:void(0);">Marcar como completadas</a>												
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <br />
+                            <hr />
+
+                            <div class="col-md-4">									
+                                <img alt="" src="../../img/accion-en-peligro.png" />
+                            </div>
+                            <div class="col-md-8">
+                                <span class="titulo-accion-expirar">Mejora de las divisiones</span>
+                            </div>
+                            <div class="col-md-12 fecha-expiracion-accion">
+                                <small>Expira el 14 de noviembre del 2016</small>
+                            </div>
+                            <br />
+                            <br />
+                            <hr />
+                            <div class="acciones-notificaciones">									
+                                <div class="dropdown row" >													
+                                    <div class="col-md-2">
+
+                                        <a alt="acciones-vencer" href="javascript:void(0);">										
+
+                                            <span class="icon-Fuente-Componentes-mi-mural--15 notificaciones-propuestas-logo"></span>
+                                        </a>
+                                    </div>											
+
+                                    <div class="col-md-10">
+
+                                        <a alt="acciones-vencer pull-right" href="javascript:void(0);" class="dropdown-toggle " data-toggle="dropdown">										
+
+                                            <span><b>&nbsp;Propuestas pendientes</b></span><span class="caret">&nbsp;</span>
+                                        </a>
+
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a href="javascript:void(0);">Convertir en acciones</a>												
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <hr />
+
+                            <div class="col-md-4">									
+                                <img alt="propuesta pendiente de mejora aprendizaje" src="../../img/propuesta-mejoraprendizaje.png" />
+                            </div>
+                            <div class="col-md-8">
+                                <span class="titulo-propuesta">Juan Perez</span>
+                                <br />
+                                <small class="fecha-expiracion-accion">Publicado el 16 de octubre del 2016</small>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-12" id="loshs-logo">
+                        <img  alt="loshs logo" src="../../img/logo-mini-blanco.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <script type="text/javascript">
+
+                this.animarEstrellas = function (e) {
+
+                  var estrella = $(e.target).is('img') ? $(e.target).parent() : $(e.target);
+                  var estrellaNivel = $(estrella).attr('name').replace('estrella-', '');
+
+                  var vacioPngPath = $(estrella).siblings().children('img:first').attr('src');
+                  vacioPngPath = vacioPngPath.replace('llena', 'vacia');
+                  var estrellaLlenaPath = vacioPngPath.replace('vacia', 'llena');
+                  $(estrella).siblings().children('img').attr('src', vacioPngPath);
+
+                  for (var i = 1; i <= estrellaNivel; i++) {
+
+                    $(estrella).parent().children('[name="estrella-' + i + '"]:first').children('img').attr('src', estrellaLlenaPath);
+                  }
+                };
+
+                $('.estrella').on('click', this.animarEstrellas);
+
+            </script>
+        </footer>
+    </body>
+</html>

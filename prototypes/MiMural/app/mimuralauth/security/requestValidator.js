@@ -3,7 +3,13 @@ var validateUser = require('../security/authenticator').validateUser;
 
 module.exports = function (req, res, next) {
 
-  if (req.url && req.url === '/loginUser') {
+  if (req.url && (
+          req.url === '/loginUser' || req.url === '/loginUser/' ||
+          req.url === '/login' || req.url === '/login/' || req.url.indexOf('/login/index') === 0 ||
+          req.url.indexOf('/css') === 0 ||
+          req.url.indexOf('/fonts') === 0 ||
+          req.url.indexOf('/img') === 0 ||
+          req.url.indexOf('/js') === 0 )) {
     next();
     return;
   }
@@ -28,7 +34,7 @@ module.exports = function (req, res, next) {
       if (dbUser) {
 
         if ((req.url.indexOf('admin') >= 0 && dbUser.role === 'admin') ||
-                (req.url.indexOf('admin') < 0 && req.url.indexOf('/mimural/') >= 0)) {
+                (req.url.indexOf('admin') < 0 && req.url.indexOf('/') >= 0)) {
           next();
         } else {
           res.status(403);

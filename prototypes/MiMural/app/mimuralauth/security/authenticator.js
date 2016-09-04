@@ -99,7 +99,7 @@ var auth = {
   validateUser: function (username) {
     var dbUserObj = {
       id: 1,
-      name: 'LAAH000000XXX',
+      name: username, //'LAAH000000XXX',
       role: 'Directivo',
       nombre: 'Hugo',
       apellido: 'Labra'
