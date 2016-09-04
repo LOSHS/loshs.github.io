@@ -1,16 +1,15 @@
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 
 var app = express();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-  }));
- 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
 
-app.all('/*', [require('./security/requestValidator')]);
+app.all('/director*', [require('./security/requestValidator')]);
 
 app.use(express.static('static'));
 

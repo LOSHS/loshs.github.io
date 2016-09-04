@@ -3,19 +3,23 @@ var validateUser = require('../security/authenticator').validateUser;
 
 module.exports = function (req, res, next) {
 
-  if (req.url && (
-          req.url === '/loginUser' || req.url === '/loginUser/' ||
-          req.url === '/login' || req.url === '/login/' || req.url.indexOf('/login/index') === 0 ||
-          req.url.indexOf('/css') === 0 ||
-          req.url.indexOf('/fonts') === 0 ||
-          req.url.indexOf('/img') === 0 ||
-          req.url.indexOf('/js') === 0 )) {
-    next();
-    return;
-  }
+  /*
+   if (req.url && (
+   req.url === '/loginUser' || req.url === '/loginUser/' ||
+   req.url === '/login' || req.url === '/login/' || req.url.indexOf('/login/index') === 0 ||
+   req.url.indexOf('/css') === 0 ||
+   req.url.indexOf('/fonts') === 0 ||
+   req.url.indexOf('/img') === 0 ||
+   req.url.indexOf('/js') === 0 )) {
+   next();
+   return;
+   }
+   */
 
-  var token = (req.body && req.body.access_token) || (req.query && req.query.access_token) || req.headers['x-access-token'];
-  var key = (req.body && req.body.x_key) || (req.query && req.query.x_key) || req.headers['x-key'];
+  var token = (req.cookies && req.cookies.userLoginToken && req.cookies.userLoginToken.token);
+  // || (req.body && req.body.access_token) || (req.query && req.query.access_token) || req.headers['x-access-token'];
+  var key =  (req.cookies && req.cookies.userLoginToken && req.cookies.userLoginToken.user && req.cookies.userLoginToken.user.id);
+  // || (req.body && req.body.x_key) || (req.query && req.query.x_key) || req.headers['x-key'];
 
   if (token || key) {
     try {
@@ -25,14 +29,15 @@ module.exports = function (req, res, next) {
         res.status(400);
         res.json({
           "status": 400,
-          "message": "Token Expired"
+          "message": "Token expirado"
         });
         return;
       }
+      
+      
 
       var dbUser = validateUser(key);
       if (dbUser) {
-
         if ((req.url.indexOf('admin') >= 0 && dbUser.role === 'admin') ||
                 (req.url.indexOf('admin') < 0 && req.url.indexOf('/') >= 0)) {
           next();
@@ -49,16 +54,18 @@ module.exports = function (req, res, next) {
         res.status(401);
         res.json({
           "status": 401,
-          "message": "Invalid User"
+          "message": "Usuario inválido"
         });
         return;
       }
+      
+      
 
     } catch (err) {
       res.status(500);
       res.json({
         "status": 500,
-        "message": "Oops something went wrong",
+        "message": "Internal server error",
         "error": err
       });
     }
@@ -66,7 +73,7 @@ module.exports = function (req, res, next) {
     res.status(401);
     res.json({
       "status": 401,
-      "message": "Invalid Token or Key"
+      "message": "Token o usuario inválido"
     });
     return;
   }
