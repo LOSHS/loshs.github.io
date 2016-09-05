@@ -2,6 +2,7 @@ var jwt = require('jwt-simple');
 var bcrypt = require('bcrypt');
 var crypto = require('crypto');
 var mySql = require('../conf/mysqldb');
+
 var auth = {
   loginUser: function (req, res) {
 

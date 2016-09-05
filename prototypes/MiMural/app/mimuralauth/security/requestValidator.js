@@ -36,30 +36,6 @@ module.exports = function (req, res, next) {
 
 
       validateUser(req, res, key, next);
-      /*var dbUser = validateUser(key);
-       if (dbUser) {
-       if ((req.url.indexOf('admin') >= 0 && dbUser.role === 'admin') ||
-       (req.url.indexOf('admin') < 0 && req.url.indexOf('/') >= 0)) {
-       next();
-       } else {
-       res.status(403);
-       res.json({
-       "status": 403,
-       "message": "Not Authorized"
-       });
-       return;
-       }
-       } else {
-       // No existe este usuario
-       res.status(401);
-       res.json({
-       "status": 401,
-       "message": "Usuario inválido"
-       });
-       return;
-       }*/
-
-
 
     } catch (err) {
       res.status(500);
