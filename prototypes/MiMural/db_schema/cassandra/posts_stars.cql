@@ -8,7 +8,7 @@ USE mi_mural;
 // CREAR TABLA DE ESTRELLAS 
 
 CREATE TABLE IF NOT EXISTS posts_stars  (
-  school_id bigint,
+  school_id int,
   posted_date date,
   posted_time time,
 
@@ -24,16 +24,16 @@ CREATE TABLE IF NOT EXISTS posts_stars  (
 ) WITH CLUSTERING ORDER BY (posted_date DESC, posted_time DESC, comment_date DESC, comment_time DESC);
 
 CREATE TABLE IF NOT EXISTS posts_stars_users (
-  school_id bigint,
+  school_id int,
   posted_date date,
   posted_time time,
  
   user_id bigint,
-  post_stars_user bigint,
+  post_stars_user tinyint,
  
   comment_date date,
   comment_time time,
-  comment_stars_users bigint,
+  comment_stars_users tinyint,
  
   PRIMARY KEY (school_id, user_id, posted_date, posted_time, comment_date, comment_time)
 ) WITH CLUSTERING ORDER BY (user_id ASC, posted_date DESC, posted_time DESC, comment_date DESC, comment_time DESC);
