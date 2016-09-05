@@ -9,12 +9,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+// Proteger estas URLs
 app.all('/director*', [require('./security/requestValidator')]);
-
+app.all('/superadmin*', [require('./security/requestValidator')]);
 app.use(express.static('static'));
-
 app.use('/', require('./routes/router'));
-
 
 app.use(function(req, res) {
   res.sendStatus(404);

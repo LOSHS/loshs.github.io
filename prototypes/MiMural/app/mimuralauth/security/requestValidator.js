@@ -18,7 +18,7 @@ module.exports = function (req, res, next) {
 
   var token = (req.cookies && req.cookies.userLoginToken && req.cookies.userLoginToken.token);
   // || (req.body && req.body.access_token) || (req.query && req.query.access_token) || req.headers['x-access-token'];
-  var key =  (req.cookies && req.cookies.userLoginToken && req.cookies.userLoginToken.user && req.cookies.userLoginToken.user.id);
+  var key = (req.cookies && req.cookies.userLoginToken && req.cookies.userLoginToken.user && req.cookies.userLoginToken.user.id);
   // || (req.body && req.body.x_key) || (req.query && req.query.x_key) || req.headers['x-key'];
 
   if (token || key) {
@@ -33,33 +33,9 @@ module.exports = function (req, res, next) {
         });
         return;
       }
-      
-      
 
-      var dbUser = validateUser(key);
-      if (dbUser) {
-        if ((req.url.indexOf('admin') >= 0 && dbUser.role === 'admin') ||
-                (req.url.indexOf('admin') < 0 && req.url.indexOf('/') >= 0)) {
-          next();
-        } else {
-          res.status(403);
-          res.json({
-            "status": 403,
-            "message": "Not Authorized"
-          });
-          return;
-        }
-      } else {
-        // No existe este usuario
-        res.status(401);
-        res.json({
-          "status": 401,
-          "message": "Usuario inválido"
-        });
-        return;
-      }
-      
-      
+
+      validateUser(req, res, key, next);
 
     } catch (err) {
       res.status(500);
