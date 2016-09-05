@@ -58,7 +58,7 @@ CREATE INDEX IF NOT EXISTS task_involved_ids_idx ON actions (task_involved_ids);
 
 
 INSERT INTO actions (school_id, posted_date, posted_time, poster_id, category, title, description, start_date, due_date, status, results, task_date, task_time)
-VALUES (11, '2016-09-02', '15:00:00.000', 1001, 1, 'Mejora de Divisiones', 'Esta actividad tiene como proposito desarrollar en el alumno habilidades para dividir y mejorar sus calificaciones en la prueba que realizamos ante la sep para ', '2016-09-02', '2016-03-02', 3, '71 % de los alumnos son capaces de realizar divisiones de dos cifras', '2016-09-02', '15:00:00.000');
+VALUES (11, '2016-09-02', '15:00:00.000', 1001, 1, 'Mejora de Divisiones', 'Esta actividad tiene como proposito desarrollar en el alumno habilidades para dividir y mejorar sus calificaciones en la prueba que realizamos ante la sep para ', '2016-09-02', '2016-09-04', 3, '71 % de los alumnos son capaces de realizar divisiones de dos cifras', '2016-09-02', '15:00:00.000');
 INSERT INTO actions (school_id, posted_date, posted_time, poster_id, task_date, task_time, task_description, task_start_date, task_due_date, task_status)
 VALUES (11, '2016-09-02', '15:00:00.000', 1001, '2016-09-02', '15:00:01.000', 'Realizar divisiones de 1 cifra', '2016-09-02', '2016-09-03', 3);
 INSERT INTO actions (school_id, posted_date, posted_time, poster_id, task_date, task_time, task_description, task_start_date, task_due_date, task_status)
