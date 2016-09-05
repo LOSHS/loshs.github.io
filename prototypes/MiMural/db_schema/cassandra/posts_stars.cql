@@ -5,7 +5,7 @@ WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 1};
 
 USE mi_mural;
 
-// CREAR TABLA DE ESTRELLAS 
+// CREAR TABLAS DE ESTRELLAS PARA PUBLICACIONES
 
 CREATE TABLE IF NOT EXISTS posts_stars  (
   school_id int,

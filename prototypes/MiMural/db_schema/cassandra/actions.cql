@@ -33,6 +33,30 @@ CREATE TABLE IF NOT EXISTS actions (
 ) WITH CLUSTERING ORDER BY (posted_date DESC, posted_time DESC, task_date DESC, task_time DESC);
 
 
+// CREACION DE INDICES SECUNDARIOS Y SASI PARA BUSQUEDAS MAS COMPLEJAS
+CREATE CUSTOM INDEX IF NOT EXISTS actions_posterid_idx ON actions(poster_id) USING 'org.apache.cassandra.index.sasi.SASIIndex';
+CREATE CUSTOM INDEX IF NOT EXISTS actions_title_idx ON actions(title) USING 'org.apache.cassandra.index.sasi.SASIIndex'
+WITH OPTIONS = { 
+'mode': 'CONTAINS',
+'analyzer_class': 'org.apache.cassandra.index.sasi.analyzer.NonTokenizingAnalyzer',
+'case_sensitive': 'false'
+};
+CREATE CUSTOM INDEX IF NOT EXISTS actions_description_idx ON actions(description) USING 'org.apache.cassandra.index.sasi.SASIIndex'
+WITH OPTIONS = { 
+'mode': 'CONTAINS',
+'analyzer_class': 'org.apache.cassandra.index.sasi.analyzer.NonTokenizingAnalyzer',
+'case_sensitive': 'false'
+};
+CREATE CUSTOM INDEX IF NOT EXISTS task_description_idx ON actions(task_description) USING 'org.apache.cassandra.index.sasi.SASIIndex'
+WITH OPTIONS = { 
+'mode': 'CONTAINS',
+'analyzer_class': 'org.apache.cassandra.index.sasi.analyzer.NonTokenizingAnalyzer',
+'case_sensitive': 'false'
+};
+CREATE INDEX IF NOT EXISTS task_involved_ids_idx ON actions (task_involved_ids);
+
+
+
 INSERT INTO actions (school_id, posted_date, posted_time, poster_id, category, title, description, start_date, due_date, status, results, task_date, task_time)
 VALUES (11, '2016-09-02', '15:00:00.000', 1001, 1, 'Mejora de Divisiones', 'Esta actividad tiene como proposito desarrollar en el alumno habilidades para dividir y mejorar sus calificaciones en la prueba que realizamos ante la sep para ', '2016-09-02', '2016-03-02', 3, '71 % de los alumnos son capaces de realizar divisiones de dos cifras', '2016-09-02', '15:00:00.000');
 INSERT INTO actions (school_id, posted_date, posted_time, poster_id, task_date, task_time, task_description, task_start_date, task_due_date, task_status)
