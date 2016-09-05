@@ -1,287 +1,338 @@
 <!DOCTYPE HTML>
 <html lang="es">
-	<head>
-		<!-- All the files that are required -->
-		<title>Mi Mural</title>
-		<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
-		<link rel="stylesheet" type="text/css" href="../../css/datatables.min.css" />
-		<link rel="stylesheet" type="text/css" href="../../css/mimural.fuentes.css" />
-		<link rel="stylesheet" type="text/css" href="../../css/mimural.css" />
-		<script src="../../js/jquery.min.js"></script>	
-		<script src="../../js/bootstrap.min.js"></script>
-		<script src="../../js/datatables.min.js"></script>
-
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="viewport" content="initial-scale=1" />
-
-	</head>
-	<body>
-		<nav class="navbar navbar-default navbar-fixed-top ">
-			<div class="container-fluid">
-
-
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse">
-					<img alt="Brand" class="navbar-brand" id="sep-logo" src="../../img/sep-logo.png" />
-					<ul class="nav navbar-nav navbar-right pull-right">
-						<li>
-							<img alt="user profile picture" id="user-profile-pic"  src="../../img/user-icon-director.png"/>
-						</li>
-						<li class="dropdown">
-							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-								Bienvenido a Mi Mural
-								<span class="caret"></span>
-								<small id="rol-tag" style="display:block">
-									Director</small>
-							</a>
-							<ul class="dropdown-menu">
-								<li>
-									<a href="javascript:void(0);">Mi Perfil</a>
-								</li>
-								<li>
-									<a href="javascript:void(0);">Cerrar Sesión</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-				<!-- /.navbar-collapse -->
-			</div>
-			<!-- /.container-fluid -->
-		</nav>	
-
-		<div class="row main-container">
-			<div class="col-md-2 left-sidebar" >
-				<br/>
-				<br />
-				<br/>  
-				<div id="main-menu">
-					<div class="row">
-						<div class="col-md-12">
-							<a href="javascript:void(0);">
-								<span class="icon-Fuente-Componentes-mi-mural--03"></i>&nbsp;&nbsp;&nbsp;<span class="normal-font">Mural</span></a>  
-						</div>
-					</div>
-					<hr />
-					<div class="row">
-						<div class="col-md-12">
-							<a href="javascript:void(0);">
-								<span class="icon-Fuente-Componentes-mi-mural--04"></i>&nbsp;&nbsp;&nbsp;<span class="normal-font">Ranking</span></a>  
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<a href="javascript:void(0);">
-								<span class="icon-Fuente-Componentes-mi-mural--05"></i>&nbsp;&nbsp;&nbsp;<span class="normal-font">Reportes</span></a>       
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<a href="javascript:void(0);">
-								<span class="icon-Fuente-Componentes-mi-mural--07"></i>&nbsp;&nbsp;&nbsp;<span class="normal-font">Favoritos</span></a>   
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<a href="javascript:void(0);">
-								<span class="icon-Fuente-Componentes-mi-mural--08"></i>&nbsp;&nbsp;&nbsp;<span class="normal-font">Directorio</span></a>     
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<a href="javascript:void(0);">
-								<span class="icon-Fuente-Componentes-mi-mural--10"></i>&nbsp;&nbsp;&nbsp;<span class="normal-font">Usuarios</span></a>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<a href="javascript:void(0);">
-								<span class="icon-Fuente-Componentes-mi-mural--06"></i>&nbsp;&nbsp;&nbsp;<span class="normal-font">Escuelas</span></a>
-						</div>
-					</div>
-				</div>
-				<br />
-				<br />
-				<br />
-				<div class="bottom-align-text ">
-					<div class="row">
-						<div class="col-md-6">            	
-							<span class="icon-Fuente-Componentes-mi-mural--18 logo-mural "></span>
-						</div>
-						<div class="col-md-6">            	
-							<span class="logo-mural-descripcion">Mejora de los aprendizajes</span>
-						</div>
-					</div>
-					<br />
-					<div class="row">
-						<div class="col-md-6">            	
-							<span class="icon-Fuente-Componentes-mi-mural--20 logo-mural"></span>
-						</div>
-						<div class="col-md-6">
-							<span class=" logo-mural-descripcion">Convivencia escolar</span>
-						</div>
-					</div>
-					<br />
-					<div class="row">
-						<div class="col-md-6">            	
-							<span class="icon-Fuente-Componentes-mi-mural--19 logo-mural"></span>
-						</div>
-						<div class="col-md-6">            	
-							<span class="logo-mural-descripcion">Funcionamiento de la escuela</span>
-						</div>
-					</div>
-					<br />
-					<div class="row">
-						<div class="col-md-6">            	
-							<span class="icon-Fuente-Componentes-mi-mural--21 logo-mural"></span>
-						</div>
-						<div class="col-md-6">
-							<span class="logo-mural-descripcion">Rezago y abandono escolar</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-8 middle-content" >
-			<br /><br /><br />
-			<ul class="nav nav-tabs reportes-tabs">
-				<li><a data-toggle="tab" href="#general">General</a></li>
-  				<li class="active" data-toggle="tab" href="#planea"><a href="#">PLANEA</a></li>
-  				<li><a data-toggle="tab" href="#percepcion">Percepción de la comunidad</a></li>
-  				<li><a data-toggle="tab" href="#acciones">Acciones</a></li>
-			</ul>
-			<div class="tab-content">
-  				<div id="planea" class="tab-pane fade in active">	
-  				<br/>
-				<div class="panel panel-default">
-					<div class="panel-heading amarillo-header-ranking">
-					    <h3 class="panel-title">Escuela Miguel Hidalgo</h3><div class="pull-right"></div>
-					</div>
-					<div class="panel-body">
-						<textarea id="txtPropuesta" class="form-control" rows="2" placeholder="Comparte tu propuesta..."></textarea>
-					</div>
-				</div>			    
-			    	<div class="row">
-			    		<div class="col-md-6">
-			    			<h2>
-			    			Lenguaje y Comunicación
-			    			</h2>
-			    		</div>
-			    		<div class="col-md-6">
-			    		</div>
-			    	</div>
-				</div>
-			</div>
-			</div>
-			<div class="col-md-2 right-sidebar" >
-				<div class="row">
-					<br/>
-					<br />
-					<br />
-					<div class="col-md-12">
-						<h4 style="color:#fff">Notificaciones</h4>
-					</div>
-					<hr/>
-					<div >
-						<div class="col-md-12" id="notifications-feed" >
-							<br />
-							<div class="acciones-notificaciones">
-								<span class="label label-danger label-as-badge pull-left notificaciones-expiracion-logo">!</span>
-								<div class="dropdown pull-right" >																								
-									<a alt="acciones-vencer" href="javascript:void(0);" class="dropdown-toggle " data-toggle="dropdown">
-										<span><b>&nbsp;Acciones por vencer</b>&nbsp;<span class="caret "></span></span>
-									</a>
-									<ul class="dropdown-menu">
-										<li>
-											<a href="javascript:void(0);">Marcar como completadas</a>												
-										</li>
-									</ul>
-								</div>
-							</div>
-							<br />
-							<hr />
-
-							<div class="col-md-4">									
-								<img alt="" src="../../img/accion-en-peligro.png" />
-							</div>
-							<div class="col-md-8">
-								<span class="titulo-accion-expirar">Mejora de las divisiones</span>
-							</div>
-							<div class="col-md-12 fecha-expiracion-accion">
-								<small>Expira el 14 de noviembre del 2016</small>
-							</div>
-							<br />
-							<br />
-							<hr />
-							<div class="acciones-notificaciones">									
-								<div class="dropdown row" >													
-									<div class="col-md-2">
-																	
-										<a alt="acciones-vencer" href="javascript:void(0);">										
-											
-											<span class="icon-Fuente-Componentes-mi-mural--15 notificaciones-propuestas-logo"></span>
-										</a>
-									</div>											
-									
-									<div class="col-md-10">
-																	
-										<a alt="acciones-vencer pull-right" href="javascript:void(0);" class="dropdown-toggle " data-toggle="dropdown">										
-											
-											<span><b>&nbsp;Propuestas pendientes</b></span><span class="caret">&nbsp;</span>
-										</a>
-										
-										<ul class="dropdown-menu">
-										<li>
-											<a href="javascript:void(0);">Convertir en acciones</a>												
-										</li>
-										</ul>
-									</div>
-									
-								</div>
-							</div>
-
-							<hr />
-
-							<div class="col-md-4">									
-								<img alt="propuesta pendiente de mejora aprendizaje" src="../../img/propuesta-mejoraprendizaje.png" />
-							</div>
-							<div class="col-md-8">
-								<span class="titulo-propuesta">Juan Perez</span>
-								<br />
-								<small class="fecha-expiracion-accion">Publicado el 16 de octubre del 2016</small>
-							</div>
-
-						</div>
-					</div>
-					<div class="col-md-12" id="loshs-logo">
-						<img  alt="loshs logo" src="../../img/logo-mini-blanco.png" />
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<footer class="footer">
-			<script type="text/javascript">
-
-				this.animarEstrellas = function(e) {
-
-				var estrella = $(e.target).is('img') ? $(e.target).parent() : $(e.target);
-				var estrellaNivel = $(estrella).attr('name').replace('estrella-', '');
-
-				var vacioPngPath = 	$(estrella).siblings().children('img:first').attr('src');
-				vacioPngPath = vacioPngPath.replace('llena','vacia');
-				var estrellaLlenaPath = vacioPngPath.replace('vacia', 'llena');
-				$(estrella).siblings().children('img').attr('src', vacioPngPath);								
-
-				for(var i = 1; i <= estrellaNivel; i++){
-
-						$(estrella).parent().children('[name="estrella-' + i + '"]:first').children('img').attr('src', estrellaLlenaPath);
-						}
-						};
-
-						$('.estrella').on('click', this.animarEstrellas);					
-
-					</script>
-				</footer>
-			</body>
-		</html>
+   <head>
+      <!-- All the files that are required -->
+      <title>Mi Mural</title>
+      <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/chartist.min.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/datatables.min.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/mimural.fuentes.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/mimural.css" />
+      <script src="../../js/jquery.min.js"></script>	
+      <script src="../../js/bootstrap.min.js"></script>
+      <script src="../../js/chartist.min.js"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+      <meta name="viewport" content="initial-scale=1" />
+   </head>
+   <body>
+      <nav class="navbar navbar-default navbar-fixed-top ">
+         <div class="container-fluid">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse">
+               <img alt="Brand" class="navbar-brand" id="sep-logo" src="../../img/sep-logo.png" />
+               <ul class="nav navbar-nav navbar-right pull-right">
+                  <li>
+                     <img alt="user profile picture" id="user-profile-pic"  src="../../img/user-icon-director.png"/>
+                  </li>
+                  <li class="dropdown">
+                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                     Bienvenido a Mi Mural
+                     <span class="caret"></span>
+                     <small id="rol-tag" style="display:block">
+                     Director</small>
+                     </a>
+                     <ul class="dropdown-menu">
+                        <li>
+                           <a href="javascript:void(0);">Mi Perfil</a>
+                        </li>
+                        <li>
+                           <a href="javascript:void(0);">Cerrar Sesión</a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+         </div>
+         <!-- /.container-fluid -->
+      </nav>
+      <div class="row main-container">
+      <div class="col-md-2 left-sidebar" >
+         <br/> <br/> <br/>       
+         <div id="main-menu">
+            <div class="row-fluid">
+               <div class="col-md-12">
+                  <a href="javascript:void(0);">
+                  <span class="icon-Fuente-Componentes-mi-mural--03"></span>&nbsp;&nbsp;&nbsp;<span class="normal-font">Mural</span></a>          
+               </div>
+            </div>
+            <div class="row-fluid">
+               <div class="col-md-12">
+                  <a href="javascript:void(0);">
+                  <span class="icon-Fuente-Componentes-mi-mural--04"></span>&nbsp;&nbsp;&nbsp;<span class="normal-font">Ranking</span></a>  
+               	
+               	  <hr />
+               </div>
+            </div>
+            <div class="row-fluid">
+               <div class="col-md-12">
+                  <a href="javascript:void(0);">
+                  <span class="icon-Fuente-Componentes-mi-mural--05"></span>&nbsp;&nbsp;&nbsp;<span class="normal-font">Reportes</span></a>       
+               </div>
+            </div>
+            <div class="row-fluid">
+               <div class="col-md-12">
+                  <a href="javascript:void(0);">
+                  <span class="icon-Fuente-Componentes-mi-mural--07"></span>&nbsp;&nbsp;&nbsp;<span class="normal-font">Favoritos</span></a>   
+               </div>
+            </div>
+            <div class="row-fluid">
+               <div class="col-md-12">
+                  <a href="javascript:void(0);">
+                  <span class="icon-Fuente-Componentes-mi-mural--08"></span>&nbsp;&nbsp;&nbsp;<span class="normal-font">Directorio</span></a>     
+               </div>
+            </div>
+            <div class="row-fluid">
+               <div class="col-md-12">
+                  <a href="javascript:void(0);">
+                  <span class="icon-Fuente-Componentes-mi-mural--10"></span>&nbsp;&nbsp;&nbsp;<span class="normal-font">Usuarios</span></a>
+               </div>
+            </div>
+            <div class="row-fluid">
+               <div class="col-md-12">
+                  <a href="javascript:void(0);">
+                  <span class="icon-Fuente-Componentes-mi-mural--06"></span>&nbsp;&nbsp;&nbsp;<span class="normal-font">Escuelas</span></a>
+               </div>
+            </div>
+         </div>
+         <div id="prioridadesLeftMenu">
+            <div class="row-fluid prioridad-left-menu">
+               <div class="col-md-6">            	
+                  <span class="icon-Fuente-Componentes-mi-mural--18 logo-mural "></span>
+               </div>
+               <div class="col-md-6">            	
+                  <span class="logo-mural-descripcion">Mejora de los aprendizajes</span>
+               </div>
+            </div>
+            <div class="row-fluid prioridad-left-menu">
+               <div class="col-md-6">            	
+                  <span class="icon-Fuente-Componentes-mi-mural--20 logo-mural"></span>
+               </div>
+               <div class="col-md-6">
+                  <span class=" logo-mural-descripcion">Convivencia escolar</span>
+               </div>
+            </div>
+            <div class="row-fluid prioridad-left-menu">
+               <div class="col-md-6">            	
+                  <span class="icon-Fuente-Componentes-mi-mural--19 logo-mural"></span>
+               </div>
+               <div class="col-md-6">            	
+                  <span class="logo-mural-descripcion">Funcionamiento de la escuela</span>
+               </div>
+            </div>
+            <div class="row-fluid prioridad-left-menu">
+               <div class="col-md-6">            	
+                  <span class="icon-Fuente-Componentes-mi-mural--21 logo-mural"></span>
+               </div>
+               <div class="col-md-6">
+                  <span class="logo-mural-descripcion">Rezago y abandono escolar</span>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-8 middle-content" >
+         <br /><br /><br />
+         <ul class="nav nav-tabs reportes-tabs">
+            <li><a data-toggle="tab" href="#general">General</a></li>
+            <li class="active" data-toggle="tab" href="#planea"><a href="#">PLANEA</a></li>
+            <li><a data-toggle="tab" href="#percepcion">Percepción de la comunidad</a></li>
+            <li><a data-toggle="tab" href="#acciones">Acciones</a></li>
+         </ul>
+         <div class="tab-content">
+            <div id="planea" class="tab-pane fade in active">
+               <br/>
+               <div class="well well-sm amarillo-header-ranking">
+                  <h4 >Escuela Miguel Hidalgo</h4>
+               </div>
+            </div>
+            <div class="col-md-12">
+               <div class="pull-right">
+                  <div class="btn-group ">
+                     <a alt="year-graficas" href="javascript:void(0);" class="dropdown-toggle btn btn-default amarillo-ranking-opacity" data-toggle="dropdown">
+                     <span><b>&nbsp;2016</b>&nbsp;<span class="caret "></span></span>
+                     </a>
+                     <ul class="dropdown-menu">
+                        <li>
+                           <a href="javascript:void(0);">2016</a>												
+                        </li>
+                        <li>
+                           <a href="javascript:void(0);">2015</a>												
+                        </li>
+                        <li>
+                           <a href="javascript:void(0);">2014</a>												
+                        </li>
+                     </ul>
+                  </div>
+                  <div class="btn-group ">
+                     <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-open"></i>&nbsp;Exportar</button>
+                     <button type="button" class="btn btn-default dropdown-toggle dropdown-export-caret"data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <span class="caret"></span>
+                     </button>
+                     <ul class="dropdown-menu" id="export-options">
+                        <li><a href="javascript:void(0);">Excel</a></li>
+                        <li><a href="javascript:void(0);">XML</a></li>
+                        <li><a href="javascript:void(0);">JSON</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <br /><br />
+            <div class="row-fluid">
+               <div class="col-md-6">
+                  <h4 class="donut-chart-title">Lenguaje y Comunicación</h4>
+               </div>
+               <div class="col-md-6">
+                  <h4 class="donut-chart-title">Matemáticas</h4>
+               </div>
+               <div class="col-md-6 well donut-chart-container">
+                  <div id="lenguajeComunicacionCanvas" class="donut-chart ct-chart ct-golden-section">
+                  </div>
+               </div>
+               <div class="col-md-6 well donut-chart-container">
+                  <div id="matematicasCanvas" class="donut-chart ct-chart ct-golden-section">
+                  </div>
+               </div>
+            </div>
+            <br />
+            <div class="col-md-12">
+               <div class="pull-right">
+                  <span>Ordenar por </span>
+                  <div class="btn-group ">
+                     <a alt="filtro tabla resultados"class="btn btn-default dropdown-toggle"data-toggle="dropdown">
+                     Matemáticas&nbsp;<span class="caret"></span>
+                     </a>
+                     <ul class="dropdown-menu" id="filter-options">
+                        <li><a href="javascript:void(0);">Matemáticas</a></li>
+                        <li><a href="javascript:void(0);">Lenguaje y comunicación</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-2 right-sidebar" >
+         <div class="row-fluid">
+            <br/>
+            <br />
+            <br />
+            <div class="col-md-12">
+               <h4 style="color:#fff">Notificaciones</h4>
+            </div>
+            <hr/>
+            <div >
+               <div class="row" id="notifications-feed" >
+                  <br />
+                  <div class="acciones-notificaciones">
+                     <div class="col-md-2">
+                        <span class="label label-danger label-as-badge pull-left notificaciones-expiracion-logo">!</span>
+                     </div>
+                     <div class="col-md-10">
+                        <div class="dropdown pull-right" >
+                           <a alt="acciones-vencer" href="javascript:void(0);" class="dropdown-toggle " data-toggle="dropdown">
+                           <span><b>&nbsp;Acciones por vencer</b>&nbsp;<span class="caret "></span></span>
+                           </a>
+                           <ul class="dropdown-menu">
+                              <li>
+                                 <a href="javascript:void(0);">Marcar como completadas</a>												
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+                  <br />
+                  <hr />
+                  <div class="row-fluid">
+                     <div class="col-md-4">									
+                        <img alt="" src="../../img/accion-en-peligro.png" class="noti-feed" />
+                     </div>
+                     <div class="col-md-8">
+                        <span class="titulo-accion-expirar">Mejora de las divisiones</span>
+                     </div>
+                     <div class="col-md-12 fecha-expiracion-accion">
+                        <small>Expira el 14 de noviembre del 2016</small>
+                     </div>
+                  </div>
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <div class="acciones-notificaciones">
+                     <div class="dropdown" >
+                        <div class="col-md-2">
+                           <a alt="acciones-vencer" href="javascript:void(0);">										
+                           <span class="icon-Fuente-Componentes-mi-mural--15 notificaciones-propuestas-logo"></span>
+                           </a>
+                        </div>
+                        <div class="col-md-10">
+                           <div class="dropdown pull-right">
+                              <a alt="acciones-vencer" href="javascript:void(0);" class="dropdown-toggle " data-toggle="dropdown">
+                              <span><b>&nbsp;Propuestas pendientes</b></span</b>&nbsp;<span class="caret "></span></span>
+                              </a>
+                              <ul class="dropdown-menu">
+                                 <li>
+                                    <a href="javascript:void(0);">Convertir en acciones</a>												
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  
+                  <br />
+                  <hr />
+                  <div class="row-fluid">
+                     <div class="col-md-4">									
+                        <img alt="propuesta pendiente de mejora aprendizaje" class="noti-feed" src="../../img/propuesta-mejoraprendizaje.png" />
+                     </div>
+                     <div class="col-md-8">
+                        <span class="titulo-propuesta">Juan Perez</span>
+                        <br />
+                        <small class="fecha-expiracion-accion">Publicado el 16 de octubre del 2016</small>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12" id="loshs-logo">
+                  <img  alt="loshs logo" src="../../img/logo-mini-blanco.png" />
+               </div>
+            </div>
+         </div>
+      </div>
+      <footer class="footer">
+         <script type="text/javascript">
+            var donutOptions = {
+            	donut: true,
+            	donutWidth: '20%'
+            };
+            
+            
+            this.animarEstrellas = function(e) {
+            
+            var estrella = $(e.target).is('img') ? $(e.target).parent() : $(e.target);
+            var estrellaNivel = $(estrella).attr('name').replace('estrella-', '');
+            
+            var vacioPngPath = 	$(estrella).siblings().children('img:first').attr('src');
+            vacioPngPath = vacioPngPath.replace('llena','vacia');
+            var estrellaLlenaPath = vacioPngPath.replace('vacia', 'llena');
+            $(estrella).siblings().children('img').attr('src', vacioPngPath);								
+            
+            for(var i = 1; i <= estrellaNivel; i++){
+            
+            		$(estrella).parent().children('[name="estrella-' + i + '"]:first').children('img').attr('src', estrellaLlenaPath);
+            	}
+            };
+            
+            $('.estrella').on('click', this.animarEstrellas);	
+            
+            				
+            new Chartist.Pie('#matematicasCanvas', {
+            series: [10, 2, 4, 3]
+            }, donutOptions);            	
+            
+            new Chartist.Pie('#lenguajeComunicacionCanvas', {
+            series: [1, 1, 1, 1]
+            }, donutOptions);            	
+         </script>
+      </footer>
+   </body>
+</html>

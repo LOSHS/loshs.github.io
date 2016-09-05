@@ -285,10 +285,8 @@ label:hover:before {
   font-weight: bold;
 }
 
-@media (min-width: 768px ) { 
-  
   .logo-mural-descripcion{
-  	font-size: 12px;
+  	font-size: .9vw;
   	text-align:center;
   }
   .middle-content{
@@ -309,6 +307,7 @@ label:hover:before {
   	background-image: url('../img/left-sidebar-background.png');  	
     color:#fff;
   	height: 780px;
+  	overflow-y: hidden;
   } 
   #loshs-logo{
   	position:absolute;
@@ -316,13 +315,15 @@ label:hover:before {
   }
   #notifications-feed{
   	background-color: #CDDEE7;
-  	height: 500px;
+  	position: absolute;
+  	height: 50%;
+  	overflow-y:scroll;
   	color: #000;
   	font-size: 15px;
   }
-}
-
-
+  img.noti-feed{
+  	width: 100%;
+  }
   .logo-mural{
   	font-size: 3.5vw;
   }
@@ -335,7 +336,7 @@ table.dataTable tr.odd { background-color: #CDDEE7; }
 
 .navbar{
 
-  background: red; /* For browsers that do not support gradients */
+  background: red; /* For brow-fluidsers that do not support gradients */
   background: -webkit-linear-gradient(left,rgba(112,178,224,1),rgba(77,123,155,1)); /*Safari 5.1-6*/
   background: -o-linear-gradient(right,rgba(112,178,224,1),rgba(77,123,155,1)); /*Opera 11.1-12*/
   background: -moz-linear-gradient(right,rgba(112,178,224,1),rgba(77,123,155,1)); /*Fx 3.6-15*/
@@ -355,11 +356,12 @@ table.dataTable tr.odd { background-color: #CDDEE7; }
 #main-menu{
 	font-size: 1.5vw;
 	text-align: center;
+	display:inline-block;
 }
-#main-menu > div.row {
+#main-menu > div.row-fluid {
 	padding-top: 10px;
 }
-#main-menu > div.row > div.col-md-12 > a{
+#main-menu > div.row-fluid > div.col-md-12 > a{
 	text-decoration: none;
 	color: #fff;
 }
@@ -401,7 +403,7 @@ table.dataTable tr.odd { background-color: #CDDEE7; }
 .propuesta-mural-descripcion{
 	word-wrap: break-word;	
 	overflow-y: hidden;
-	font-weight: 2em;
+	font-weight: 2vw;
 }
 .propuesta-estatus{
 	width: 100%;
@@ -430,7 +432,7 @@ table.dataTable tr.odd { background-color: #CDDEE7; }
 	background-color: #fff;
 }
 .promedio-estrella{
-	height: 2.5em;
+	height: 2.5vw;
 	display: inline-block;
 }
 .promedio-estrellas-container{
@@ -446,12 +448,8 @@ table.dataTable tr.odd { background-color: #CDDEE7; }
 	font-size: 1.5vw;
 }
 /*mouse hover on menu item*/
-#main-menu div.row div.col-md-12 a:hover{ 
-	font-size: 1.05vw;
-}
-/*testing start*/
-html, body, .main-container, .left-sidebar, .right-sidebar {
-    height: 100%
+#main-menu div.row-fluid div.col-md-12 a:hover{ 
+	font-size: 1.55vw;
 }
 .label-as-badge {
     border-radius: 1vw;
@@ -464,23 +462,25 @@ html, body, .main-container, .left-sidebar, .right-sidebar {
 	font-size: .9vw;
 }
 .titulo-accion-expirar{
-	font-size: 1.2em;
+	font-size: 1.2vw;
 	color: #3F5363;
 	font-weight: bold;
 }
 
 .titulo-propuesta{
-	font-size: 1.2em;		
+	font-size: 1.2vw;	
+	
+	font-weight: bold;	
 }
 .fecha-expiracion-accion{
 	color: #7F7F7F;
 }
 .notificaciones-propuestas-logo{
-	font-size: 1.4em;
+	font-size: 1.4vw;
 }
 
 .notificaciones-expiracion-logo{
-	font-size: 1.1em;
+	font-size: 1.1vw;
 }
 .publicacion-header{
 	
@@ -565,6 +565,26 @@ ul.reportes-tabs > li.active > a {
 	background-color: #74CDE1 !important;
 	color: #fff !important;
 }
-div.amarillo-header-ranking{
-	background-color: #5FBB17;
+.amarillo-header-ranking{
+	background-color: rgba(247,188,20,1);	
+}
+
+.amarillo-ranking-opacity{
+	background-color: rgba(247,188,20, .5);	
+}
+.donut-chart{
+	text-align: center;
+	width: 100%;
+}
+.donut-chart-title{
+	text-align: center;
+}
+.donut-chart-container{
+	border: 2px solid rgba(247,188,20,1);	
+}
+.prioridad-left-menu{
+	height:70px;
+}
+#prioridadesLeftMenu{
+	padding-top: 30px;
 }
