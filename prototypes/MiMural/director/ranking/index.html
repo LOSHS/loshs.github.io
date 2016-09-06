@@ -138,6 +138,8 @@
          
 			</div>
       <div class="col-md-8 middle-content" >
+      
+      
          <br /><br /><br />
          <ul class="nav nav-tabs reportes-tabs">
             <li><a data-toggle="tab" href="#general">General</a></li>
@@ -204,10 +206,10 @@
                   </div>
                </div>
             </div>
-            <div class="row-fluid amarillo-ranking-opacity">añsdfñasdkfklasdfjsakldf</div>
             </div>
             <br />
-            <div class="col-md-12">
+            <div class="well amarillo-ranking-opacity"></div>
+            <div  class="col-md-12">
                <div class="pull-right">
                   <span>Ordenar por </span>
                   <div class="btn-group ">
@@ -222,6 +224,8 @@
                </div>
             </div>
          </div>
+      
+      
       </div>
       <div class="col-md-2 right-sidebar" >
          <div class="row-fluid">
@@ -338,13 +342,41 @@
             
             				
             new Chartist.Pie('#matematicasCanvas', {
-            series: [10, 2, 4, 3]
+            series: [10, 2, 4, 3],
+            labels: ['45%', '10%', '20%', '15%'  ]
             }, donutOptions);            	
             
             new Chartist.Pie('#lenguajeComunicacionCanvas', {
-            series: [1, 1, 1, 1]
+            series: [1, 1, 1, 1],
+            
+            labels: ['25%', '25%', '25%', '25%'  ]
             }, donutOptions);            	
          </script>
       </footer>
+      <style>
+.ct-series-a .ct-slice-donut {
+  /* give the donut slice a custom colour */
+  stroke: blue;
+}
+
+.ct-series-b .ct-slice-donut {
+  /* give the donut slice a custom colour */
+  stroke: green;
+}
+
+.ct-series-c .ct-slice-donut {
+  /* give the donut slice a custom colour */
+  stroke: yellow;
+}
+
+.ct-series-d .ct-slice-donut {
+  /* give the donut slice a custom colour */
+  stroke: red;
+}
+.ct-label{
+	font-size: 1.6vw;
+	color: #000;
+}
+      </style>
    </body>
 </html>
