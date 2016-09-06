@@ -320,6 +320,7 @@ label:hover:before {
   	overflow-y:scroll;
   	color: #000;
   	font-size: 15px;
+  	margin-right: 0px;
   }
   img.noti-feed{
   	width: 100%;
@@ -389,6 +390,7 @@ table.dataTable tr.odd { background-color: #CDDEE7; }
 	color: #fff;
 	min-height: inherit;
 	max-height: inherit;
+	overflow-y: scroll;
 }
 .resultados-area, .mejora-div, .actividades-listado{
 	
