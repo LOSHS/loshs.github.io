@@ -590,3 +590,25 @@ ul.reportes-tabs > li.active > a {
 #prioridadesLeftMenu{
 	padding-top: 30px;
 }
+.explicacion-donut-chart{
+	border-radius: 1.1em;
+}
+.rojo{
+	background-color: red;
+}
+.amarillo{
+	background-color: yellow;
+}
+.verde{
+	background-color: green;
+
+}
+.naranja{
+	background-color: orange;
+
+}
+div.amarillo-ranking-opacity > div.col-md-3{
+	text-align: justify;
+	margin-top: .3em;
+	font-size: .8vw;
+}
