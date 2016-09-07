@@ -23,6 +23,7 @@ html,
 body {
   background: #efefef;
   padding: 10px;
+  font-size: 1vw;
 }
 /*=== 2. Anchor Link ===*/
 a {
@@ -607,6 +608,9 @@ ul.reportes-tabs > li.active > a {
 	background-color: orange;
 
 }
+.rojo, .amarillo, .verde, .naranja{
+	margin-top: 10%;
+}
 div.amarillo-ranking-opacity > div.col-md-3{
 	text-align: justify;
 	margin-top: .3em;
@@ -616,7 +620,7 @@ div.amarillo-ranking-opacity > div.col-md-3{
 
 .ct-series-a .ct-slice-donut {
   /* give the donut slice a custom colour */
-  stroke: blue;
+  stroke: orange;
 }
 
 .ct-series-b .ct-slice-donut {
@@ -636,5 +640,12 @@ div.amarillo-ranking-opacity > div.col-md-3{
 .ct-label{
 	font-size: 1.3vw;
 	color: #000;
+}
+html, body, .main-container, .left-sidebar, .right-sidebar{
+	height: 100%;
+}
+.descripcion-color-chart{
+	font-size: 1vw;
+	font-weight: bold;
 }
 /*terminan estilos de dona*/
