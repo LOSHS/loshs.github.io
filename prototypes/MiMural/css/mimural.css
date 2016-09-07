@@ -313,6 +313,7 @@ label:hover:before {
   #loshs-logo{
   	position:absolute;
     bottom: 1.5em;
+    left: 1em;
   }
   #notifications-feed{
   	background-color: #CDDEE7;
@@ -357,13 +358,11 @@ table.dataTable tr.odd { background-color: #CDDEE7; }
 }
 #main-menu{
 	font-size: 1.5vw;
-	text-align: center;
-	display:inline-block;
 }
-#main-menu > div.row-fluid {
-	padding-top: 10px;
+#main-menu div.row {
+	padding-top: .9em;
 }
-#main-menu > div.row-fluid > div.col-md-12 > a{
+a.menu-item{
 	text-decoration: none;
 	color: #fff;
 }
@@ -637,9 +636,11 @@ div.amarillo-ranking-opacity > div.col-md-3{
   /* give the donut slice a custom colour */
   stroke: red;
 }
+
 .ct-label{
 	font-size: 1.3vw;
-	color: #000;
+	fill: black;
+	font-weight: bold;
 }
 html, body, .main-container, .left-sidebar, .right-sidebar{
 	height: 100%;
@@ -649,3 +650,6 @@ html, body, .main-container, .left-sidebar, .right-sidebar{
 	font-weight: bold;
 }
 /*terminan estilos de dona*/
+
+#tableEscuelasRanking tbody tr.even { background-color: rgba(247,188,20, .5); }
+#tableEscuelasRanking tbody tr.odd { background-color: #fff; }

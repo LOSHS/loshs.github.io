@@ -10,7 +10,8 @@
       <link rel="stylesheet" type="text/css" href="../../css/mimural.css" />
       <script src="../../js/jquery.min.js"></script>	
       <script src="../../js/bootstrap.min.js"></script>
-      <script src="../../js/chartist.min.js"></script>
+      <script src="../../js/chartist.min.js"></script>      
+	  <script src="../../js/datatables.min.js"></script>
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       <meta http-equiv="content-type" content="text/html; charset=utf-8" />
       <meta name="viewport" content="initial-scale=1" />
@@ -52,51 +53,64 @@
 				      
          <br/> <br/> <br/>       
             <div id="main-menu">
-               <div class="row-fluid">
-                  <div class="col-md-12">
-                     <a href="javascript:void(0);">
-                     <span class="icon-Fuente-Componentes-mi-mural--03"></span>&nbsp;&nbsp;&nbsp;<span class="normal-font">Mural</span></a>  
+               
+                  <div class="row">
+                     <a href="javascript:void(0);" class="menu-item">
+                     	<div class="col-md-4">
+                     	<span class="icon-Fuente-Componentes-mi-mural--03 pull-right"></span></div>
+                     	<span class="col-md-8">Mural</span>
+                     </a>                       
+                  </div>   
+                                 
+                  <div class="row">
+                     <a href="javascript:void(0);" class="menu-item">
+                     	<div class="col-md-4">
+                     	<span class="icon-Fuente-Componentes-mi-mural--04 pull-right"></span></div>
+                     	<span class="col-md-8">Ranking</span>
+                     </a>  
+                  </div>
+                                       
+                  <hr />
+                  <div class="row">
+                     <a href="javascript:void(0);" class="menu-item">
+                     <div class="col-md-4">
+                     	<span class="icon-Fuente-Componentes-mi-mural--05 pull-right"></span></div>
+                     	<span class="col-md-8">Reportes</span>
+                     </a>      
+                  </div>
+                  <div class="row">
+                     <a href="javascript:void(0);" class="menu-item">
+                     <div class="col-md-4">
+                     	<span class="icon-Fuente-Componentes-mi-mural--07 pull-right"></span></div>
+                     	<span class="col-md-8">Favoritos</span>
+                     </a>  
+                  </div>
+                  
+                  <div class="row">
+                     <a href="javascript:void(0);" class="menu-item">
                      
+                     <div class="col-md-4">
+                     	<span class="icon-Fuente-Componentes-mi-mural--08 pull-right"></span></div>
+                     	<span class="col-md-8">Directorio</span>
+                     </a>  
                   </div>
-               </div>
-               <div class="row-fluid">
-                  <div class="col-md-12">
-                     <a href="javascript:void(0);">
-                     <span class="icon-Fuente-Componentes-mi-mural--04"></span>&nbsp;&nbsp;&nbsp;<span class="normal-font">Ranking</span></a>  
-                  	
-               		 <hr />
+                  <div class="row">
+                     <a href="javascript:void(0);" class="menu-item">
+                     
+                     <div class="col-md-4">
+                     	<span class="icon-Fuente-Componentes-mi-mural--10 pull-right"></span></div>
+                     	<span class="col-md-8">Usuarios</span>
+                     </a>                       
                   </div>
-               </div>
-               <div class="row-fluid">
-                  <div class="col-md-12">
-                     <a href="javascript:void(0);">
-                     <span class="icon-Fuente-Componentes-mi-mural--05"></span>&nbsp;&nbsp;&nbsp;<span class="normal-font">Reportes</span></a>       
+                  
+                  <div class="row">
+                     <a href="javascript:void(0);" class="menu-item">
+                     
+                     <div class="col-md-4">
+                     	<span class="icon-Fuente-Componentes-mi-mural--06 pull-right"></span></div>
+                     	<span class="col-md-8">Escuelas</span>
+                     </a>  
                   </div>
-               </div>
-               <div class="row-fluid">
-                  <div class="col-md-12">
-                     <a href="javascript:void(0);">
-                     <span class="icon-Fuente-Componentes-mi-mural--07"></span>&nbsp;&nbsp;&nbsp;<span class="normal-font">Favoritos</span></a>   
-                  </div>
-               </div>
-               <div class="row-fluid">
-                  <div class="col-md-12">
-                     <a href="javascript:void(0);">
-                     <span class="icon-Fuente-Componentes-mi-mural--08"></span>&nbsp;&nbsp;&nbsp;<span class="normal-font">Directorio</span></a>     
-                  </div>
-               </div>
-               <div class="row-fluid">
-                  <div class="col-md-12">
-                     <a href="javascript:void(0);">
-                     <span class="icon-Fuente-Componentes-mi-mural--10"></span>&nbsp;&nbsp;&nbsp;<span class="normal-font">Usuarios</span></a>
-                  </div>
-               </div>
-               <div class="row-fluid">
-                  <div class="col-md-12">
-                     <a href="javascript:void(0);">
-                     <span class="icon-Fuente-Componentes-mi-mural--06"></span>&nbsp;&nbsp;&nbsp;<span class="normal-font">Escuelas</span></a>
-                  </div>
-               </div>
             </div>
             <div id="prioridadesLeftMenu">
             <div class="row-fluid prioridad-left-menu">
@@ -185,7 +199,7 @@
                   </div>
                </div>
             </div>
-            <br /><br />
+            <br /><br /><br />
             <div class="container-fluid well">
             <div class="row-fluid">
                <div class="col-md-6">
@@ -226,6 +240,7 @@
             		<span class="col-md-12 descripcion-color-chart">Deficiencias en desarrollo de conocimientos y habilidades</span>
             	</div>
             </div>
+            <br/>
             <div  class="col-md-12">
                <div class="pull-right">
                   <span>Ordenar por </span>
@@ -240,6 +255,87 @@
                   </div>
                </div>
             </div>
+            <br /><br /><br />
+            
+                  <table id="tableEscuelasRanking">
+                     <thead>
+                        <tr >
+                           <th>Ranking</th>
+                           <th >Nombre de la Escuela</th>
+                           <th >Número de CT</th>
+                           <th >Ranking General</th>
+                        </tr>
+                     </thead>
+                     <tbody >
+                        <tr>
+                           <td>1</td>
+                           <td>Escuela #1</td>
+                           <td>1231</td>
+                           <td>10</td>
+                        </tr>
+                        
+                        <tr>
+                           <td>2</td>
+                           <td>Escuela #2</td>
+                           <td>1232</td>
+                           <td>10</td>
+                        </tr>
+                        
+                        <tr>
+                           <td>3</td>
+                           <td>Escuela #3</td>
+                           <td>1233</td>
+                           <td>9.9</td>
+                        </tr>
+                        
+                        <tr>
+                           <td>4</td>
+                           <td>Escuela #4</td>
+                           <td>1231</td>
+                           <td>9.6</td>
+                        </tr>
+                        
+                        <tr>
+                           <td>5</td>
+                           <td>Escuela #5</td>
+                           <td>1250</td>
+                           <td>9.6</td>
+                        </tr>
+                        
+                        <tr>
+                           <td>6</td>
+                           <td>Escuela #6</td>
+                           <td>1261</td>
+                           <td>9.6</td>
+                        </tr>
+                        
+                        <tr>
+                           <td>7</td>
+                           <td>Escuela #7</td>
+                           <td>1361</td>
+                           <td>9.2</td>
+                        </tr>
+                        <tr>
+                           <td>8</td>
+                           <td>Escuela #8</td>
+                           <td>1331</td>
+                           <td>9.2</td>
+                        </tr>
+                        <tr>
+                           <td>9</td>
+                           <td>Escuela #9</td>
+                           <td>1211</td>
+                           <td>9.2</td>
+                        </tr>
+                        <tr>
+                           <td>10</td>
+                           <td>Escuela #10</td>
+                           <td>9121</td>
+                           <td>9.2</td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <br /><br />
          </div>
       
       
@@ -325,7 +421,7 @@
                      </div>
                   </div>
                </div>
-               <div class="col-md-12" id="loshs-logo">
+               <div id="loshs-logo">
                   <img  alt="loshs logo" src="../../img/logo-mini-blanco.png" />
                </div>
             </div>
@@ -338,25 +434,6 @@
             	donutWidth: '20%'
             };
             
-            
-            this.animarEstrellas = function(e) {
-            
-            var estrella = $(e.target).is('img') ? $(e.target).parent() : $(e.target);
-            var estrellaNivel = $(estrella).attr('name').replace('estrella-', '');
-            
-            var vacioPngPath = 	$(estrella).siblings().children('img:first').attr('src');
-            vacioPngPath = vacioPngPath.replace('llena','vacia');
-            var estrellaLlenaPath = vacioPngPath.replace('vacia', 'llena');
-            $(estrella).siblings().children('img').attr('src', vacioPngPath);								
-            
-            for(var i = 1; i <= estrellaNivel; i++){
-            
-            		$(estrella).parent().children('[name="estrella-' + i + '"]:first').children('img').attr('src', estrellaLlenaPath);
-            	}
-            };
-            
-            $('.estrella').on('click', this.animarEstrellas);	
-            
             				
             new Chartist.Pie('#matematicasCanvas', {
             series: [10, 2, 4, 3],
@@ -367,7 +444,17 @@
             series: [1, 1, 1, 1],
             
             labels: ['25%', '25%', '25%', '25%'  ]
-            }, donutOptions);            	
+            }, donutOptions);  
+            
+              $(document).ready(function() {
+            	$('#tableEscuelasRanking').dataTable({
+            		'filter' : false,
+            		'paging' : false,
+            		'scrollInfinite' : true,
+            		'scrollCollapse' : true,
+                   	'scrollY': "250px"
+            	});            	
+            });          	
          </script>
       </footer>
    </body>
