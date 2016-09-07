@@ -287,7 +287,7 @@ label:hover:before {
 }
 
   .logo-mural-descripcion{
-  	font-size: .9vw;
+  	font-size: .7vw;
   	text-align:center;
   }
   .middle-content{
@@ -360,7 +360,7 @@ table.dataTable tr.odd { background-color: #CDDEE7; }
 	font-size: 1.5vw;
 }
 #main-menu div.row {
-	padding-top: .9em;
+	padding-top: .6em;
 }
 a.menu-item{
 	text-decoration: none;
