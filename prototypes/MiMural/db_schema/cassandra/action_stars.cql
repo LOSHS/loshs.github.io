@@ -63,3 +63,5 @@ UPDATE actions_stars SET total_stars = total_stars + 5, total_users = total_user
 WHERE school_id = 11 AND posted_date = '2016-08-25' AND posted_time = '11:00:00.000';
 
 
+SELECT * FROM actions_stars;
+SELECT * FROM actions_stars_users;
