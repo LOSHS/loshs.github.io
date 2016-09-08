@@ -295,9 +295,9 @@ label:hover:before {
   	
   }
   .right-sidebar{  	  	
-  	background-color: #3F5363;
-  	
-  	height: 780px;
+  	background-color: #3F5363;  	  	
+  	position: fixed;
+  	right: 0;
   } 
   thead{
   	
@@ -307,8 +307,9 @@ label:hover:before {
   .left-sidebar{  	  	
   	background-image: url('../img/left-sidebar-background.png');  	
     color:#fff;
-  	height: 780px;
   	overflow-y: hidden;
+  	position: fixed;
+  	left: 0;
   } 
   #loshs-logo{
   	position:absolute;
@@ -519,10 +520,6 @@ a.menu-item{
 	background-color: #fff;
 	border-color: #ccc;
 }
-.publicacion-post-user-profile-pic{
-    height: 100%;
-    width: 40px
-}
 .texto-post-container{
 	padding-top: 1.05em;
 }
@@ -535,9 +532,13 @@ a.menu-item{
 .normal-font{
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
-.funcionamiento-escuela-post-icon{
-	font-size: 2vw;
+.funcionamiento-escuela-post-icon{	
+	text-align:center;
 	color: #9EC54B;
+}
+.funcionamiento-escuela-post-icon{
+
+	font-size: 4.5vw;
 }
 .post-footer-comentario{
 
@@ -546,15 +547,7 @@ a.menu-item{
 	border-right: 1px solid;
 	border-color: #ccc;
 	background-color: #fff;
-}
-#postUserProfilePic{
-	padding-top: 0px;
-	height: 100%;
-	width: 40px;
-}
-.post-footer-comentario{
-	padding-top: 8px;
-	padding-bottom: 8px;
+		
 	text-decoration: none;
 }
 .post{
@@ -607,6 +600,10 @@ ul.reportes-tabs > li.active > a {
 	background-color: orange;
 
 }
+.blanco{
+	
+	background-color: white;
+}
 .rojo, .amarillo, .verde, .naranja{
 	margin-top: 10%;
 }
@@ -653,3 +650,12 @@ html, body, .main-container, .left-sidebar, .right-sidebar{
 
 #tableEscuelasRanking tbody tr.even { background-color: rgba(247,188,20, .5); }
 #tableEscuelasRanking tbody tr.odd { background-color: #fff; }
+.borde-arriba{
+	
+	border-top: 1px solid;
+	border-color: #ccc;
+	margin-top: 5px;
+}
+.margen-comentario{
+	margin-top: 5px;
+}
