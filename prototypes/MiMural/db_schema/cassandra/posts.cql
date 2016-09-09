@@ -13,12 +13,14 @@ CREATE TABLE IF NOT EXISTS posts (
   posted_time time,
  
   poster_id bigint,
+  poster_name text,
   content text,
   photo blob,
  
   comment_date date,
   comment_time time,
   commenter_id bigint,
+  commenter_name text,
   comment_content text,
  
   PRIMARY KEY (school_id, posted_date, posted_time, comment_date, comment_time)
