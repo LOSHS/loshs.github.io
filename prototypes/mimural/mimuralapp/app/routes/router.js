@@ -7,6 +7,11 @@ var mural = require('./mural.js');
 var external = require('./conexionExterna');
 var publicaciones = require('./publicaciones');
 
+router.get('/', function(req, res) {
+  res.redirect('/login');
+});
+
+
 router.post('/loginUser', authenticator.loginUser);
 
 router.post('/logoutUser', authenticator.logoutUser);
