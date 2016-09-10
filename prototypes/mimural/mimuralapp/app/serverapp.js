@@ -21,7 +21,7 @@ app.use(function(req, res) {
 });
 
 
-app.set('port', process.env.PORT || 8081);
+app.set('port', process.env.PORT || 80);
 var server = app.listen(app.get('port'), function() {
   console.log('Loshs Mi Mural server corriendo en ' + server.address().address + ':' + server.address().port);
 });
