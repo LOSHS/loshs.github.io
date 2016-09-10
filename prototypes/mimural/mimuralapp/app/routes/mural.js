@@ -1,6 +1,4 @@
-var mySql = require('../conf/mysqldb');
 var cassandra = require('../conf/cassandradb');
-
 
 var queryActions = 'SELECT * FROM actions WHERE school_id = ? AND posted_date >= ?';
 var queryActionsStars = 'SELECT * FROM actions_stars WHERE school_id = ? AND posted_date >= ?';
@@ -10,7 +8,7 @@ var queryPostsStars = 'SELECT * FROM posts_stars WHERE school_id = ? AND posted_
 var queryPostsStarsUsers = 'SELECT * FROM posts_stars_users WHERE user_id = ? AND school_id = ? AND posted_date >= ?';
 var escuela = 11;
 var fecha = '2016-08-01';
-var user_id;
+var user;
 
 var actions = [],
         actionsStars = [],
@@ -34,11 +32,17 @@ var mural = {
     } else {
 
       user_id = (request.cookies && request.cookies.userLoginToken &&
-              request.cookies.userLoginToken.user && request.cookies.userLoginToken.user.id);
-      
+              request.cookies.userLoginToken.user);
+
       // For test
-      if (!user_id) {
-        user_id = 1001;
+      if (!user) {
+        user = {
+          id: 1001, //1
+          name: 'LAAH000000XXX',
+          role: 'Directivo',
+          nombre: 'Hugo',
+          apellido: 'Labra'
+        };
         //response.sendStatus(500);
       }
 
@@ -172,7 +176,7 @@ var mural = {
   },
   getActionsStarsUsers: function (response) {
     // Calificaciones totales para el promedio a las publicaciones
-    cassandra.client.execute(queryActionsStarsUsers, [user_id, escuela, fecha], {prepare: true}, function (err, result) {
+    cassandra.client.execute(queryActionsStarsUsers, [user.id, escuela, fecha], {prepare: true}, function (err, result) {
       if (err) {
         if (!response.headersSent) {
           response.sendStatus(500);
@@ -231,6 +235,7 @@ var mural = {
               timenanos: result.rows[idx].posted_time
             };
             posts[post_idx].poster_id = result.rows[idx].poster_id;
+            posts[post_idx].poster_name = result.rows[idx].poster_name;
             posts[post_idx].content = result.rows[idx].content;
             if (result.rows[idx].photo) {
               posts[post_idx].photo = result.rows[idx].photo;
@@ -249,6 +254,7 @@ var mural = {
             };
             posts[post_idx].comments[comment_idx].commenter_id = result.rows[idx].commenter_id;
             posts[post_idx].comments[comment_idx].comment_content = result.rows[idx].comment_content;
+            posts[post_idx].comments[comment_idx].commenter_name = result.rows[idx].commenter_name;
             comment_idx++;
           }
         }
@@ -290,7 +296,7 @@ var mural = {
   },
   getPostsStarsUsers: function (response) {
     // Calificaciones a las publicaciones del usuario en particular
-    cassandra.client.execute(queryPostsStarsUsers, [user_id, escuela, fecha], {prepare: true}, function (err, result) {
+    cassandra.client.execute(queryPostsStarsUsers, [user.id, escuela, fecha], {prepare: true}, function (err, result) {
       if (err) {
         if (!response.headersSent) {
           response.sendStatus(500);

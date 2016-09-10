@@ -6,3 +6,4 @@ var client = new cassandra.Client({
 });
 
 exports.client = client;
+exports.driver = cassandra;
