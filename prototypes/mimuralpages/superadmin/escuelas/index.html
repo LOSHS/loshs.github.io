@@ -1,0 +1,473 @@
+<!DOCTYPE HTML>
+<html lang="es">
+   <head>
+      <!-- All the files that are required -->
+      <title>Mi Mural</title>
+      <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/datatables.min.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/mimural.fuentes.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/mimural.css" />
+      <script src="../../js/jquery.min.js"></script>	
+      <script src="../../js/bootstrap.min.js"></script>	
+      <script src="../../js/datatables.min.js"></script>	
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	  <meta name="viewport" content="initial-scale=1" />
+   </head>
+   <body>
+      <nav class="navbar navbar-default navbar-fixed-top ">
+         <div class="container-fluid">            
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse">
+               <img alt="Brand" class="navbar-brand" id="sep-logo" src="../../img/mi-mural-logo.png" />
+               <ul class="nav navbar-nav navbar-right pull-right">
+               	  <li>
+               	  	<img alt="user profile picture" id="user-profile-pic"  src="../../img/user-icon.png"/>
+               	  </li>
+                  <li class="dropdown">
+                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                     Bienvenido a Mi Mural
+                     <b class="caret"></b>
+                     <small id="rol-tag" style="display:block">
+                     Super administrador</small>
+                     </a>
+                     <ul class="dropdown-menu">
+                        <li><a href="javascript:void(0);">Mi Perfil</a></li>
+                        <li><a href="javascript:void(0);">Cerrar Sesión</a></li>
+                     </ul>
+                  </li>
+               </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+         </div>
+         <!-- /.container-fluid -->
+      </nav>
+      <!-- LOGIN FORM -->
+      <div class="row container-fluid main-container">
+      
+         <div class="col-md-2 left-sidebar" >
+            <br/> <br/> <br/>       
+            <div id="main-menu">
+               <div class="row">
+                  <a href="javascript:void(0);" class="menu-item">
+                     <div class="col-md-4">
+                        <span class="icon-Fuente-Componentes-mi-mural--03 pull-right"></span>
+                     </div>
+                     <span class="col-md-8">Mural</span>
+                  </a>
+               </div>
+               <div class="row">
+                  <a href="javascript:void(0);" class="menu-item">
+                     <div class="col-md-4">
+                        <span class="icon-Fuente-Componentes-mi-mural--04 pull-right"></span>
+                     </div>
+                     <span class="col-md-8">Ranking</span>
+                  </a>
+               </div>
+               <div class="row">
+                  <a href="javascript:void(0);" class="menu-item">
+                     <div class="col-md-4">
+                        <span class="icon-Fuente-Componentes-mi-mural--05 pull-right"></span>
+                     </div>
+                     <span class="col-md-8">Reportes</span>
+                  </a>
+               </div>
+               <div class="row">
+                  <a href="javascript:void(0);" class="menu-item">
+                     <div class="col-md-4">
+                        <span class="icon-Fuente-Componentes-mi-mural--07 pull-right"></span>
+                     </div>
+                     <span class="col-md-8">Favoritos</span>
+                  </a>
+               </div>
+               <div class="row">
+                  <a href="javascript:void(0);" class="menu-item">
+                     <div class="col-md-4">
+                        <span class="icon-Fuente-Componentes-mi-mural--08 pull-right"></span>
+                     </div>
+                     <span class="col-md-8">Directorio</span>
+                  </a>
+               </div>
+               <div class="row">
+                  <a href="javascript:void(0);" class="menu-item">
+                     <div class="col-md-4">
+                        <span class="icon-Fuente-Componentes-mi-mural--10 pull-right"></span>
+                     </div>
+                     <span class="col-md-8">Usuarios</span>
+                  </a>
+               </div>
+               <div class="row">
+                  <a href="javascript:void(0);" class="menu-item">
+                     <div class="col-md-4">
+                        <span class="icon-Fuente-Componentes-mi-mural--06 pull-right"></span>
+                     </div>
+                     <span class="col-md-8">Escuelas</span>
+                  </a>
+               </div>
+               
+               <hr/>
+            </div>
+            <div id="prioridadesLeftMenu">
+               <div class="row-fluid prioridad-left-menu">
+                  <div class="col-md-6">            	
+                     <span class="icon-Fuente-Componentes-mi-mural--18 logo-mural "></span>
+                  </div>
+                  <div class="col-md-6">            	
+                     <span class="logo-mural-descripcion">Mejora de los aprendizajes</span>
+                  </div>
+               </div>
+               <div class="row-fluid prioridad-left-menu">
+                  <div class="col-md-6">            	
+                     <span class="icon-Fuente-Componentes-mi-mural--20 logo-mural"></span>
+                  </div>
+                  <div class="col-md-6">
+                     <span class=" logo-mural-descripcion">Convivencia escolar</span>
+                  </div>
+               </div>
+               <div class="row-fluid prioridad-left-menu">
+                  <div class="col-md-6">            	
+                     <span class="icon-Fuente-Componentes-mi-mural--19 logo-mural"></span>
+                  </div>
+                  <div class="col-md-6">            	
+                     <span class="logo-mural-descripcion">Funcionamiento de la escuela</span>
+                  </div>
+               </div>
+               <div class="row-fluid prioridad-left-menu">
+                  <div class="col-md-6">            	
+                     <span class="icon-Fuente-Componentes-mi-mural--21 logo-mural"></span>
+                  </div>
+                  <div class="col-md-6">
+                     <span class="logo-mural-descripcion">Rezago y abandono escolar</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-8 col-md-offset-2 middle-content" >
+            <br /><br /><br />
+            <h3>Escuelas</h3>
+            <!-- end:Main Form -->
+            <br />
+            <div id="tableColumnsViews">
+               <div class="row">
+                  <div class="col-md-12">
+                     <button class="btn btn-primary"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;Nombre de la Escuela</button>			
+                     <button class="btn btn-primary"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;# CT</button>			
+                     <button class="btn btn-primary"><i class="glyphicon glyphicon-eye-close"></i>&nbsp;Puntuación</button>		
+                     <button class="btn btn-primary"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;Estatus</button>			
+                     
+                     <button class="btn btn-primary"><i class="glyphicon glyphicon-eye-close"></i>&nbsp;# de Estudiantes</button>	
+                     
+                     <button class="btn btn-primary"><i class="glyphicon glyphicon-eye-close"></i>&nbsp;Nombre del directivo</button>		
+                  </div>
+               </div>
+               <br />
+               <div class="row">
+                  <div class="col-md-12 ">
+                     <button class="btn btn-primary"><i class="glyphicon glyphicon-eye-close"></i>&nbsp;Número de Acciones</button>			
+                     <button class="btn btn-primary"><i class="glyphicon glyphicon-eye-close"></i>&nbsp;Foto</button>			
+                     <button class="btn btn-primary"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;Municipio</button>			
+                     <button class="btn btn-primary"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;Zona</button>			
+                     <button class="btn btn-primary"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;Turno</button>							
+                  </div>
+               </div>
+               <br />
+            </div>
+            <div class="row">
+               <div class="col-md-8">
+                  <div class="input-group pull-left"> 
+                     <input class="form-control" id="tblUsuariosSearchText"  placeholder="Busca..."/>
+                     <span class="input-group-btn">
+                     <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                     </span>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="btn-group ">
+                     <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-open"></i>&nbsp;Exportar</button>
+                     <button type="button" class="btn btn-default dropdown-toggle dropdown-export-caret"data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <span class="caret"></span>
+                     </button>
+                     <ul class="dropdown-menu" id="export-options">
+                        <li><a href="javascript:void(0);">Excel</a></li>
+                        <li><a href="javascript:void(0);">XML</a></li>
+                        <li><a href="javascript:void(0);">JSON</a></li>
+                     </ul>
+                  </div>
+                  <a class="btn btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i>&nbsp;Añadir</a>
+               </div>
+            </div>
+            <br />
+            <div class="row">
+               <div class="col-md-12">
+                  <table id="tableEscuelas">
+                     <thead>
+                        <tr >
+                           <th >Nombre de la Escuela</th>
+                           <th >Zona</th>
+                           <th >Municipio</th>
+                           <th >CT</th>
+                           <th >Estatus</th>
+                           <th >Turno</th>
+                        </tr>
+                     </thead>
+                     <tbody >
+                        <tr>
+                           <td>Escuela #1</td>
+                           <td>Norte</td>
+                           <td>Zapopan</td>
+                           <td>1231</td>
+                           <td>Activa</td>
+                           <td><span class="icon-Fuente-Componentes-mi-mural--17"></span></td>
+                        </tr>
+                        <tr>
+                           <td>Escuela #2</td>
+                           <td>Norte</td>
+                           <td>Vallarta</td>
+                           <td>1231</td>
+                           <td>Inactiva</td>
+                           <td><span class="icon-Fuente-Componentes-mi-mural--16"></span></td>
+                        </tr>
+                        <tr>
+                           <td>Escuela #3</td>
+                           <td>Norte</td>
+                           <td>Ocotlán</td>
+                           <td>1231</td>
+                           <td>Activa</td>
+                           <td><span class="icon-Fuente-Componentes-mi-mural--17"></span></td>
+                        </tr>
+                        <tr>
+                           <td>Escuela #4</td>
+                           <td>Norte</td>
+                           <td>Tlaquepaque</td>
+                           <td>1231</td>
+                           <td>Activa</td>
+                           <td><span class="icon-Fuente-Componentes-mi-mural--16"></span></td>
+                        </tr>
+                        <tr>
+                           <td>Escuela #5</td>
+                           <td>Oeste</td>
+                           <td>Guadalajara</td>
+                           <td>1231</td>
+                           <td>Activa</td>
+                           <td><span class="icon-Fuente-Componentes-mi-mural--17"></span></td>
+                        </tr>
+                        <tr>
+                           <td>Escuela #6</td>
+                           <td>Norte</td>
+                           <td>Tepatitlán</td>
+                           <td>1231</td>
+                           <td>Activa</td>
+                           <td><span class="icon-Fuente-Componentes-mi-mural--16"></span></td>
+                        </tr><tr>
+                           <td>Escuela #7</td>
+                           <td>Norte</td>
+                           <td>Nochistlán</td>
+                           <td>532315</td>
+                           <td>Activa</td>
+                           <td><span class="icon-Fuente-Componentes-mi-mural--17"></span></td>
+                        </tr>
+                        <tr>
+                           <td>Escuela #8</td>
+                           <td>Norte</td>
+                           <td>Zapopan</td>
+                           <td>1231231</td>
+                           <td>Activa</td>
+                           <td><span class="icon-Fuente-Componentes-mi-mural--16"></span></td>
+                        </tr>
+                        <tr>
+                           <td>Escuela #9</td>
+                           <td>Sur
+                           </td>
+                           <td>Mexticacán</td>
+                           <td>1231</td>
+                           <td>Inactiva</td>
+                           <td><span class="icon-Fuente-Componentes-mi-mural--17"></span></td>
+                        </tr>
+                        <tr>
+                           <td>Escuela #10</td>
+                           <td>Norte</td>
+                           <td>Guadalajara</td>
+                           <td>524212</td>
+                           <td>Activa</td>
+                           <td><span class="icon-Fuente-Componentes-mi-mural--16"></span></td>
+                        </tr>
+                        <tr>
+                           <td>Escuela #11</td>
+                           <td>Norte</td>
+                           <td>Zapopan</td>
+                           <td>999991</td>
+                           <td>Activa</td>
+                           <td><span class="icon-Fuente-Componentes-mi-mural--17"></span></td>
+                        </tr>
+                        <tr>
+                           <td>Escuela #12</td>
+                           <td>Norte</td>
+                           <td>Guadalajara</td>
+                           <td>888238</td>
+                           <td>Inactiva</td>
+                           <td><span class="icon-Fuente-Componentes-mi-mural--16"></span></td>
+                        </tr><tr>
+                           <td>Escuela #13</td>
+                           <td>Sur</td>
+                           <td>Ocotlán</td>
+                           <td>1111212</td>
+                           <td>Activa</td>
+                           <td><span class="icon-Fuente-Componentes-mi-mural--17"></span></td>
+                        </tr>
+                        <tr>
+                           <td>Escuela #14</td>
+                           <td>Este</td>
+                           <td>Tonalá</td>
+                           <td>1231</td>
+                           <td>Activa</td>
+                           <td><span class="icon-Fuente-Componentes-mi-mural--16"></span></td>
+                        </tr>
+                        <tr>
+                           <td>Escuela #15</td>
+                           <td>Norte</td>
+                           <td>Zapopan</td>
+                           <td>1234991</td>
+                           <td>Activa</td>
+                           <td><span class="icon-Fuente-Componentes-mi-mural--17"></span></td>
+                        </tr>
+                        <tr>
+                           <td>Escuela #16</td>
+                           <td>Norte</td>
+                           <td>Zapopan</td>
+                           <td>2834234</td>
+                           <td>Activa</td>
+                           <td><span class="icon-Fuente-Componentes-mi-mural--16"></span></td>
+                        </tr>
+                        <tr>
+                           <td>Escuela #17</td>
+                           <td>Norte</td>
+                           <td>Zapopan</td>
+                           <td>01011221</td>
+                           <td>Activa</td>
+                           <td><span class="icon-Fuente-Componentes-mi-mural--17"></span></td>
+                        </tr>
+                        <tr>
+                           <td>Escuela #18</td>
+                           <td>Norte</td>
+                           <td>Ocotlán</td>
+                           <td>1231123</td>
+                           <td>Activa</td>
+                           <td><span class="icon-Fuente-Componentes-mi-mural--16"></span></td>
+                        </tr><tr>
+                           <td>Escuela #19</td>
+                           <td>Este</td>
+                           <td>Tepatitlán</td>
+                           <td>1231292</td>
+                           <td>Activa</td>
+                           <td><span class="icon-Fuente-Componentes-mi-mural--17"></span></td>
+                        </tr>
+                        <tr>
+                           <td>Escuela #20</td>
+                           <td>Norte</td>
+                           <td>Zapopan</td>
+                           <td>123121312</td>
+                           <td>Activa</td>
+                           <td><span class="icon-Fuente-Componentes-mi-mural--16"></span></td>
+                        </tr>
+                        <tr>
+                           <td>Escuela #21</td>
+                           <td>Norte</td>
+                           <td>Guadalajara</td>
+                           <td>1231991</td>
+                           <td>Inactiva</td>
+                           <td><span class="icon-Fuente-Componentes-mi-mural--17"></span></td>
+                        </tr>
+                        <tr>
+                           <td>Escuela #22</td>
+                           <td>Norte</td>
+                           <td>Zapopan</td>
+                           <td>1231</td>
+                           <td>Activa</td>
+                           <td><span class="icon-Fuente-Componentes-mi-mural--16"></span></td>
+                        </tr>
+                        <tr>
+                           <td>Escuela #23</td>
+                           <td>Norte</td>
+                           <td>Tonalá</td>
+                           <td>1231999</td>
+                           <td>Activa</td>
+                           <td><span class="icon-Fuente-Componentes-mi-mural--17"></span></td>
+                        </tr>
+                        <tr>
+                           <td>Escuela #24</td>
+                           <td>Norte</td>
+                           <td>Cd. Guzmán</td>
+                           <td>12312222</td>
+                           <td>Activa</td>
+                           <td><span class="icon-Fuente-Componentes-mi-mural--16"></span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-2 right-sidebar">
+            <div class="row">
+               <br/><br />
+               <br />
+               <div class="col-md-12">
+                  <h4 style="color:#fff">Notificaciones</h4>
+               </div>
+               <hr/>
+               <div >
+                  <div class="col-md-12" id="notifications-feed" >
+                     <br />
+                     <p><span class="icon-Fuente-Componentes-mi-mural--10"></span>&nbsp;Hay 123 usuarios nuevos.</p>
+                     <hr />
+                  </div>
+               </div>
+               <div class="col-md-12" id="loshs-logo">
+                  <img  alt="loshs logo" src="../../img/logo-mini-blanco.png" />
+               </div>
+            </div>
+         </div>
+      </div>
+      <footer class="footer">
+         <script>
+            var diccionarioMeses = {
+            	01 : 'Enero',
+            	02 : 'Febrero',
+            	03 : 'Marzo',
+            	04 : 'Abril',		
+            	05 : 'Mayo',
+            	06 : 'Junio',
+            	07 : 'Julio',
+            	08 : 'Agosto',		
+            	09 : 'Septiembre',
+            	10 : 'Octubre',
+            	11 : 'Noviembre',
+            	12 : 'Diciembre'						
+            };
+            
+            $(document).ready(function() {
+            	$('#tableEscuelas').dataTable({
+            		'filter' : false,
+            		'paging' : false,
+            		'scrollInfinite' : true,
+            		'scrollCollapse' : true,
+                   	'scrollY': "250px"
+            	});
+            	
+            	var fechaEnString = '';
+            	var hoy = new Date();
+            	var dd = hoy.getDate();
+            	var mm = hoy.getMonth()+1; //January is 0!
+            	var yyyy = hoy.getFullYear();
+            	
+            	if(dd < 10) {
+            		   dd = '0'+dd;
+            	}
+            	
+            	fechaEnString = dd + ' / ' + diccionarioMeses[mm] + ' / '+ yyyy;
+            	$('#fecha-actual').text(fechaEnString);
+            });
+            
+         </script>
+      </footer>
+   </body>
+</html>

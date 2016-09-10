@@ -1,0 +1,87 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?hjp2zv');
+  src:  url('../fonts/icomoon.eot?hjp2zv#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?hjp2zv') format('truetype'),
+    url('../fonts/icomoon.woff?hjp2zv') format('woff'),
+    url('../fonts/icomoon.svg?hjp2zv#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-Fuente-Componentes-mi-mural--03:before {
+  content: "\e900";
+}
+.icon-Fuente-Componentes-mi-mural--04:before {
+  content: "\e901";
+}
+.icon-Fuente-Componentes-mi-mural--05:before {
+  content: "\e902";
+}
+.icon-Fuente-Componentes-mi-mural--06:before {
+  content: "\e903";
+}
+.icon-Fuente-Componentes-mi-mural--07:before {
+  content: "\e904";
+}
+.icon-Fuente-Componentes-mi-mural--08:before {
+  content: "\e905";
+}
+.icon-Fuente-Componentes-mi-mural--09:before {
+  content: "\e906";
+}
+.icon-Fuente-Componentes-mi-mural--10:before {
+  content: "\e907";
+}
+.icon-Fuente-Componentes-mi-mural--11:before {
+  content: "\e908";
+}
+.icon-Fuente-Componentes-mi-mural--12:before {
+  content: "\e909";
+}
+.icon-Fuente-Componentes-mi-mural--13:before {
+  content: "\e90a";
+}
+.icon-Fuente-Componentes-mi-mural--14:before {
+  content: "\e90b";
+}
+.icon-Fuente-Componentes-mi-mural--15:before {
+  content: "\e90c";
+}
+.icon-Fuente-Componentes-mi-mural--16:before {
+  content: "\e90d";
+}
+.icon-Fuente-Componentes-mi-mural--17:before {
+  content: "\e90e";
+}
+.icon-Fuente-Componentes-mi-mural--18:before {
+  content: "\e90f";
+}
+.icon-Fuente-Componentes-mi-mural--19:before {
+  content: "\e910";
+}
+.icon-Fuente-Componentes-mi-mural--20:before {
+  content: "\e911";
+}
+.icon-Fuente-Componentes-mi-mural--21:before {
+  content: "\e912";
+}
+.icon-Fuente-Componentes-mi-mural--22:before {
+  content: "\e913";
+}
+

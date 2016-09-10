@@ -1,0 +1,587 @@
+/*------------------------------------------------------------------
+[Master Stylesheet]
+
+Project    	: Aether
+Version		: 1.0
+Last change	: 2015/03/27
+-------------------------------------------------------------------*/
+/*------------------------------------------------------------------
+[Table of contents]
+
+1. General Structure
+2. Anchor Link
+3. Text Outside the Box
+4. Main Form
+5. Login Button
+6. Form Invalid
+7. Form - Main Message
+8. Custom Checkbox & Radio
+9. Misc
+-------------------------------------------------------------------*/
+/*=== 1. General Structure ===*/
+html,
+body {
+  background: #efefef;
+  padding: 10px;
+}
+/*=== 2. Anchor Link ===*/
+a {
+  color: #aaaaaa;
+  transition: all ease-in-out 200ms;
+}
+a:hover {
+  color: #333333;
+  text-decoration: none;
+}
+/*=== 3. Text Outside the Box ===*/
+.etc-login-form {
+  color: #919191;
+  padding: 10px 20px;
+}
+.etc-login-form p {
+  margin-bottom: 5px;
+}
+/*=== 4. Main Form ===*/
+.login-form-1 {
+  max-width: 300px;
+  border-radius: 5px;
+  display: inline-block;
+}
+.main-login-form {
+  position: relative;
+}
+.login-form-1 .form-control {
+  border: 0;
+  box-shadow: 0 0 0;
+  border-radius: 0;
+  background: transparent;
+  color: #555555;
+  padding: 7px 0;
+  font-weight: bold;
+  height:auto;
+}
+.login-form-1 .form-control::-webkit-input-placeholder {
+  color: #999999;
+}
+.login-form-1 .form-control:-moz-placeholder,
+.login-form-1 .form-control::-moz-placeholder,
+.login-form-1 .form-control:-ms-input-placeholder {
+  color: #999999;
+}
+.login-form-1 .form-group {
+  margin-bottom: 0;
+  border-bottom: 2px solid #efefef;
+  padding-right: 20px;
+  position: relative;
+}
+.login-form-1 .form-group:last-child {
+  border-bottom: 0;
+}
+.login-group {
+  background: #ffffff;
+  color: #999999;
+  border-radius: 8px;
+  padding: 10px 20px;
+}
+.login-group-checkbox {
+  padding: 5px 0;
+}
+/*=== 5. Login Button ===*/
+.login-form-1 .login-button {
+  position: absolute;
+  right: -25px;
+  top: 50%;
+  background: #ffffff;
+  color: #999999;
+  padding: 11px 0;
+  width: 50px;
+  height: 50px;
+  margin-top: -25px;
+  border: 5px solid #efefef;
+  border-radius: 50%;
+  transition: all ease-in-out 500ms;
+}
+.login-form-1 .login-button:hover {
+  color: #555555;
+  transform: rotate(450deg);
+}
+.login-form-1 .login-button.clicked {
+  color: #555555;
+}
+.login-form-1 .login-button.clicked:hover {
+  transform: none;
+}
+.login-form-1 .login-button.clicked.success {
+  color: #2ecc71;
+}
+.login-form-1 .login-button.clicked.error {
+  color: #e74c3c;
+}
+/*=== 6. Form Invalid ===*/
+label.form-invalid {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5;
+  display: block;
+  margin-top: -25px;
+  padding: 7px 9px;
+  background: #777777;
+  color: #ffffff;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 11px;
+}
+label.form-invalid:after {
+  top: 100%;
+  right: 10px;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: transparent;
+  border-top-color: #777777;
+  border-width: 6px;
+}
+/*=== 7. Form - Main Message ===*/
+.login-form-main-message {
+  background: #ffffff;
+  color: #999999;
+  border-left: 3px solid transparent;
+  border-radius: 3px;
+  margin-bottom: 8px;
+  font-weight: bold;
+  height: 0;
+  padding: 0 20px 0 17px;
+  opacity: 0;
+  transition: all ease-in-out 200ms;
+}
+.login-form-main-message.show {
+  height: auto;
+  opacity: 1;
+  padding: 10px 20px 10px 17px;
+}
+.login-form-main-message.success {
+  border-left-color: #2ecc71;
+}
+.login-form-main-message.error {
+  border-left-color: #e74c3c;
+}
+/*=== 8. Custom Checkbox & Radio ===*/
+/* Base for label styling */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked,
+[type="radio"]:not(:checked),
+[type="radio"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label,
+[type="radio"]:not(:checked) + label,
+[type="radio"]:checked + label {
+  position: relative;
+  padding-left: 25px;
+  padding-top: 1px;
+  cursor: pointer;
+}
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before,
+[type="radio"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 17px;
+  height: 17px;
+  border: 0px solid #aaa;
+  background: #f0f0f0;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after,
+[type="radio"]:checked + label:after {
+  position: absolute;
+  color: #555555;
+  transition: all .2s;
+}
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after,
+[type="radio"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+[type="checkbox"]:checked + label:after,
+[type="radio"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before,
+[type="radio"]:disabled:not(:checked) + label:before,
+[type="radio"]:disabled:checked + label:before {
+  box-shadow: none;
+  border-color: #8c8c8c;
+  background-color: #878787;
+}
+[type="checkbox"]:disabled:checked + label:after,
+[type="radio"]:disabled:checked + label:after {
+  color: #555555;
+}
+[type="checkbox"]:disabled + label,
+[type="radio"]:disabled + label {
+  color: #8c8c8c;
+}
+/* accessibility */
+[type="checkbox"]:checked:focus + label:before,
+[type="checkbox"]:not(:checked):focus + label:before,
+[type="checkbox"]:checked:focus + label:before,
+[type="checkbox"]:not(:checked):focus + label:before {
+  border: 1px dotted #f6f6f6;
+}
+/* hover style just for information */
+label:hover:before {
+  border: 1px solid #f6f6f6 !important;
+}
+/*=== Customization ===*/
+/* radio aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  border-radius: 3px;
+}
+[type="radio"]:not(:checked) + label:before,
+[type="radio"]:checked + label:before {
+  border-radius: 35px;
+}
+/* selected mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: '✔';
+  top: 0;
+  left: 2px;
+  font-size: 14px;
+}
+[type="radio"]:not(:checked) + label:after,
+[type="radio"]:checked + label:after {
+  content: '\2022';
+  top: 0;
+  left: 3px;
+  font-size: 30px;
+  line-height: 25px;
+}
+/*=== 9. Misc ===*/
+.logo {
+  padding: 15px 0;
+  font-size: 25px;
+  color: #aaaaaa;
+  font-weight: bold;
+}
+
+@media (min-width: 768px ) { 
+  
+  .logo-mural-descripcion{
+  	font-size: .85vw;
+  	text-align:center;
+  }
+  .middle-content{
+  	background-color: #EFF0F0;
+  	
+  }
+  .right-sidebar{  	  	
+  	background-color: #3F5363;
+  	
+  	height: 780px;
+  } 
+  thead{
+  	
+  	background-color: #3F5363;
+  	color: #fff;
+  }
+  .left-sidebar{  	  	
+  	background-image: url('../img/left-sidebar-background.png');  	
+    color:#fff;
+  	height: 780px;
+  } 
+  #loshs-logo{
+  	position:absolute;
+    bottom: 1.5em;
+  }
+  #notifications-feed{
+  	background-color: #CDDEE7;
+  	height: 500px;
+  	color: #000;
+  	font-size: 15px;
+  }
+}
+
+
+  .logo-mural{
+  	font-size: 3.5vw;
+  }
+
+table.dataTable tr.odd { background-color: #CDDEE7; }
+#tableColumnsViews button { background-color: #74CDE1;}
+
+#tableColumnsViews button i.glyphicon-eye-close { color: #000; }
+#tableColumnsViews button i.glyphicon-eye-open { color: rgba(64, 99,185,1); }
+
+.navbar{
+
+  background: red; /* For brow-fluidsers that do not support gradients */
+  background: -webkit-linear-gradient(left,rgba(112,178,224,1),rgba(77,123,155,1)); /*Safari 5.1-6*/
+  background: -o-linear-gradient(right,rgba(112,178,224,1),rgba(77,123,155,1)); /*Opera 11.1-12*/
+  background: -moz-linear-gradient(right,rgba(112,178,224,1),rgba(77,123,155,1)); /*Fx 3.6-15*/
+  background: linear-gradient(to right, rgba(112,178,224,1), rgba(77,123, 155, 1)); /*Standard*/
+}
+.navbar-default .navbar-nav > li > a {
+	color:#fff;
+}
+.navbar-brand{	
+	padding-top: 5px;	
+	padding-bottom: 5px;	
+	height: 65px;
+}
+.navbar-brand > img{ 
+	width: 120px;
+}
+#main-menu{
+	font-size: 1.5vw;
+	text-align: center;
+}
+#main-menu > div.row-fluid {
+	padding-top: 10px;
+}
+#main-menu > div.row-fluid > div.col-md-12 > a{
+	text-decoration: none;
+	color: #fff;
+}
+#user-profile-pic{
+	height: 100%;
+	width: 40px;
+	padding-top: 14px;
+}
+.dropdown-export-caret{
+	background-color: #74CDE1;
+	color: #fff;
+}
+#export-options > li > a:hover{
+	background-color: #8EC6EC;
+}
+.morado-aprendizajes{
+	background-color: #945D95;
+}
+
+.mejora-div{
+		
+	border-top-left-radius: 5vw;
+	border-bottom-left-radius: 5vw;
+	max-height: inherit;
+	color: #fff;
+	min-height: inherit;
+	max-height: inherit;
+}
+.resultados-area, .mejora-div, .actividades-listado{
+	
+	min-height: 300px;
+	max-height: 300px;
+	text-align: justify;
+}
+.propuesta-mural-titulo{
+	
+	text-align: center;
+}
+.propuesta-mural-descripcion{
+	word-wrap: break-word;	
+	overflow-y: hidden;
+	font-weight: 2em;
+}
+.propuesta-estatus{
+	width: 100%;
+	
+}
+.actividades-listado{
+	
+	overflow-y:scroll;
+}
+.resultados-header{
+	
+	background-color: #3F5363;
+	word-wrap: wrap;
+	color: #fff;
+	text-align: center;
+}
+.estrellas-container{
+	
+	height: 20px;
+}
+.estrellas-container img{
+	max-height: 100%;
+}
+.post-footer{
+	margin-top: 1em;
+	background-color: #fff;
+}
+.promedio-estrella{
+	height: 2.5em;
+	display: inline-block;
+}
+.promedio-estrellas-container{
+	float: right;	
+}
+.publicacion-more-options-container{
+	border-left: 1px solid #C6C5C5;
+}
+.publicacion-more-options{
+	float:right;	
+}
+.publicacion-more-options a.icon{
+	font-size: 1.5vw;
+}
+/*mouse hover on menu item*/
+#main-menu div.row-fluid div.col-md-12 a:hover{ 
+	font-size: 1.55vw;
+}
+/*testing start*/
+html, body, .main-container, .left-sidebar, .right-sidebar {
+    height: 100%
+}
+.label-as-badge {
+    border-radius: 1vw;
+}
+.caret-notifications{
+	float: right;
+}
+.acciones-notificaciones div a{
+	color: #000;
+	font-size: .9vw;
+}
+.titulo-accion-expirar{
+	font-size: 1.2em;
+	color: #3F5363;
+	font-weight: bold;
+}
+
+.titulo-propuesta{
+	font-size: 1.2em;		
+}
+.fecha-expiracion-accion{
+	color: #7F7F7F;
+}
+.notificaciones-propuestas-logo{
+	font-size: 1.4em;
+}
+
+.notificaciones-expiracion-logo{
+	font-size: 1.1em;
+}
+.publicacion-header{
+	
+	border: 1px solid;
+	padding-top: 1.1vw;
+	padding-bottom: 1.1vw;	
+	border-color: #ccc;
+}
+.bottom-publicacion {
+	
+	border-bottom: 1px solid;
+	border-left: 1px solid;
+	border-right: 1px solid;
+	border-color: #ccc;
+}
+.round-top-corners {
+	border-top-right-radius: 1.1em;
+	border-top-left-radius: 1.1em;
+}
+.round-bottom-corners {
+
+	border-bottom-right-radius: 1.1em;
+	border-bottom-left-radius: 1.1em;
+}
+.publicacion-accion {	
+	overflow: hidden;
+	
+}
+.lista-resultados li{
+	background-color: #3F5363;
+	color: #fff;
+}
+.publicacion-post{	
+	background-color: #fff;
+	border-color: #ccc;
+}
+.publicacion-post-user-profile-pic{
+    height: 100%;
+    width: 40px
+}
+.texto-post-container{
+	padding-top: 1.05em;
+}
+.texto-post{
+	text-align:justify;
+}
+.no-top-border{
+	border-top: none;
+}
+.normal-font{
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.funcionamiento-escuela-post-icon{
+	font-size: 2vw;
+	color: #9EC54B;
+}
+.post-footer-comentario{
+
+	border-bottom: 1px solid;
+	border-left: 1px solid;
+	border-right: 1px solid;
+	border-color: #ccc;
+	background-color: #fff;
+}
+#postUserProfilePic{
+	padding-top: 0px;
+	height: 100%;
+	width: 40px;
+}
+.post-footer-comentario{
+	padding-top: 8px;
+	padding-bottom: 8px;
+	text-decoration: none;
+}
+.post{
+	margin-top: 1.1vw;
+}
+.verde-convivencia{
+	background-color: #28A8AA;
+}
+ul.reportes-tabs > li.active > a {
+	background-color: #74CDE1 !important;
+	color: #fff !important;
+}
+.amarillo-header-ranking{
+	background-color: rgba(247,188,20,1);	
+}
+
+.amarillo-ranking-opacity{
+	background-color: rgba(247,188,20, .5);	
+}
+.donut-chart{
+	text-align: center;
+	width: 100%;
+}
+.donut-chart-title{
+	text-align: center;
+}
+.donut-chart-container{
+	border: 2px solid rgba(247,188,20,1);	
+}
+.prioridad-left-menu{
+	height:70px;
+}
