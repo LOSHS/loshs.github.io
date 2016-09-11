@@ -34,7 +34,8 @@ var publicaciones = {
           name: 'LAAH000000XXX',
           role: 'Directivo',
           nombre: 'Hugo',
-          apellido: 'Labra'
+          apellido: 'Labra', //'Labra'
+          cct: 1
         };
         //response.sendStatus(500);
       }
@@ -222,14 +223,15 @@ var publicaciones = {
           name: 'LAAH000000XXX',
           role: 'Directivo',
           nombre: 'Hugo',
-          apellido: 'Labra'
+          apellido: 'Labra', //'Labra'
+          cct: 1
         };
         //response.sendStatus(500);
       }
 
       // For Test
       console.log('request.body: ' + JSON.stringify(request.body));
-      var content = (request.body && request.body.Contenido) || 
+      var content = (request.body && request.body.Contenido) ||
               (request.body && request.body.content) || (request.query && request.query.content);
       if (!content) {
         content = '';

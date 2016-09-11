@@ -3,19 +3,6 @@ var validateUser = require('../security/authenticator').validateUser;
 
 module.exports = function (req, res, next) {
 
-  /*
-   if (req.url && (
-   req.url === '/loginUser' || req.url === '/loginUser/' ||
-   req.url === '/login' || req.url === '/login/' || req.url.indexOf('/login/index') === 0 ||
-   req.url.indexOf('/css') === 0 ||
-   req.url.indexOf('/fonts') === 0 ||
-   req.url.indexOf('/img') === 0 ||
-   req.url.indexOf('/js') === 0 )) {
-   next();
-   return;
-   }
-   */
-
   var token = (req.cookies && req.cookies.userLoginToken && req.cookies.userLoginToken.token);
   // || (req.body && req.body.access_token) || (req.query && req.query.access_token) || req.headers['x-access-token'];
   var key = (req.cookies && req.cookies.userLoginToken && req.cookies.userLoginToken.user && req.cookies.userLoginToken.user.id);

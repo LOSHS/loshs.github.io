@@ -9,6 +9,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+// Test
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
 // Proteger estas URLs
 app.all('/rest*', [require('./security/requestValidator')]);
 app.all('/director*', [require('./security/requestValidator')]);
@@ -19,7 +27,8 @@ app.use(express.static('../../mimuralpages'));
 app.use('/', require('./routes/router'));
 
 app.use(function(req, res) {
-  res.sendStatus(404);
+  res.redirect('/login');
+  //res.sendStatus(404);
 });
 
 
