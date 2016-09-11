@@ -1,38 +1,21 @@
 var mySql = require('../conf/mysqldb');
 var queries = require('../conf/mysql_queries');
-
-
-var cassandra = require('../conf/cassandradb');
-var queryActions = 'SELECT * FROM actions WHERE school_id = ? AND posted_date >= ?';
-var queryActionsStars = 'SELECT * FROM actions_stars WHERE school_id = ? AND posted_date >= ?';
-var queryActionsStarsUsers = 'SELECT * FROM actions_stars_users WHERE user_id = ? AND school_id = ? AND posted_date >= ?';
-var queryPosts = 'SELECT * FROM posts   WHERE school_id = ? AND posted_date >= ?';
-var queryPostsStars = 'SELECT * FROM posts_stars WHERE school_id = ? AND posted_date >= ?';
-var queryPostsStarsUsers = 'SELECT * FROM posts_stars_users WHERE user_id = ? AND school_id = ? AND posted_date >= ?';
-var escuela = 11;
-var fecha = '2016-08-01';
 var user;
-
-var actions = [],
-        actionsStars = [],
-        actionsStarsUser = [],
-        posts = [];
-
-
-var actionsFinished = false,
-        actionsStarsFinished = false,
-        actionsStarsFinishedUser = false,
-        postsFinished = false;
+var actions = [], posts = [];
+var actionsFinished = false, postsFinished = false;
 
 var mural = {
   all: function (request, response) {
-    if (!cassandra || !cassandra.client) {
-      response.sendStatus(500);
+    if (!mySql || !mySql.pool) {
+      console.log('mySql: ' + mySql);
+      console.log('mySql.pool: ' + mySql.pool);
+      if (!response.headersSent) {
+        response.sendStatus(500);
+        return;
+      }
     } else {
-
-      user_id = (request.cookies && request.cookies.userLoginToken &&
+      user = (request.cookies && request.cookies.userLoginToken &&
               request.cookies.userLoginToken.user);
-
       // For test
       if (!user) {
         user = {
@@ -47,69 +30,114 @@ var mural = {
 
       // Clear
       actions = [];
-      actionsStars = [];
-      actionsStarsUser = [];
-
       posts = [];
-      postsStars = [];
-      postsStarsUser = [];
-
       actionsFinished = false;
-      actionsStarsFinished = false;
-      actionsStarsFinishedUser = false;
       postsFinished = false;
-      postsStarsFinished = false;
-      postsStarsFinishedUser = false;
 
       //var keys = Object.keys(muralResponse);
       //lastItemIdx = keys.length; // 0
 
       // Acciones de la ruta de mejora con sus tareas especificas
-      mural.getActions(response);
-      // Calificaciones de los usuarios a las acciones o actividades de la ruta de mejora
-      mural.getActionsStars(response);
-      // Calificaciones a las actividades del usuario en particular
-      mural.getActionsStarsUsers(response);
+      mural.getActionsMySQL(request, response);
       // Publicaciones de los usuarios para compartir, registrar y consultar informacion diversa
-      mural.getPosts(response);
-      // Calificaciones totales para el promedio a las publicaciones
-      mural.getPostsStars(response);
-      // Calificaciones a las publicaciones del usuario en particular
-      mural.getPostsStarsUsers(response);
-
+      mural.getPostsMySQL(request, response);
     }
   },
-  getPostsMySQL: function (request, response) {
-    postsFinished = false;
-    posts = [];
-    // For test
-    if (!user) {
-      user = {
-        id: 1, //1
-        name: 'LAAH000000XXX',
-        role: 'Directivo',
-        nombre: 'Hugo',
-        apellido: 'Labra'
-      };
-      //response.sendStatus(500);
-    }
-    if (!mySql || !mySql.pool) {
-      console.log('mySql: ' + mySql);
-      console.log('mySql.pool: ' + mySql.pool);
-      response.sendStatus(500);
-      //throw err;
-    }
+  getActionsMySQL: function (request, response) {
     mySql.pool.getConnection(function (err, connection) {
       if (err || !connection) {
         console.log('err: ' + err);
         console.log('connection: ' + connection);
-        response.sendStatus(500);
+        if (!response.headersSent) {
+          response.sendStatus(500);
+          return;
+        }
+        //throw err;
+      } else {
+        connection.query(queries.mysqlQueryActions, function (err, rows) {
+          if (err) {
+            console.log('err: ' + err);
+            if (!response.headersSent) {
+              response.sendStatus(500);
+              return;
+            }
+            //throw err;
+          } else {
+            totalActions = rows.length;
+            var actionId = 0;
+            var taskId = 0;
+            var lastactionid = 0;
+            for (var idx = 0; idx < totalActions; idx++) {
+              //actionId = rows[idx].action_id;
+              if (rows[idx].action_id !== lastactionid && idx !== 0) {
+                actionId++;
+              }
+              if (!actions[actionId]) {
+                actions[actionId] = {};
+                actions[actionId].tasks = [];
+                actions[actionId].action_id = rows[idx].action_id;
+                actions[actionId].school_id = rows[idx].school_id;
+                actions[actionId].action_timestamp = new Date(rows[idx].action_timestamp);
+                actions[actionId].poster_id = rows[idx].poster_id;
+                actions[actionId].poster_name = rows[idx].poster_name;
+                actions[actionId].title = rows[idx].title;
+                actions[actionId].description = rows[idx].description;
+                actions[actionId].problem = rows[idx].problem;
+                actions[actionId].goal = rows[idx].goal;
+                actions[actionId].start_date = rows[idx].start_date;
+                actions[actionId].due_date = rows[idx].due_date;
+                actions[actionId].status = rows[idx].status;
+                actions[actionId].results = rows[idx].results;
+                actions[actionId].category = rows[idx].category;
+                actions[actionId].stars_avg = rows[idx].stars_avg;
+                actions[actionId].stars_given = rows[idx].stars_given;
+                taskId = 0;
+                lastactionid = rows[idx].action_id;
+              }
+              if (!rows[idx].task_id) {
+                continue;
+              }
+              //taskId = rows[idx].task_id;
+              if (!actions[actionId].tasks[taskId]) {
+                actions[actionId].tasks[taskId] = {};
+                actions[actionId].tasks[taskId].task_id = rows[idx].task_id;
+                actions[actionId].tasks[taskId].task_timestamp = rows[idx].task_timestamp;
+                actions[actionId].tasks[taskId].ownerid = rows[idx].ownerid;
+                actions[actionId].tasks[taskId].task_ownername = rows[idx].task_ownername;
+                actions[actionId].tasks[taskId].task_description = rows[idx].task_description;
+                actions[actionId].tasks[taskId].task_startdate = rows[idx].task_startdate;
+                actions[actionId].tasks[taskId].task_duedate = rows[idx].task_duedate;
+                actions[actionId].tasks[taskId].task_status = rows[idx].task_status;
+                taskId++;
+              }
+            }
+            actionsFinished = true;
+            //response.json(actions);
+            mural.returnAllMural(response);
+          }
+          connection.release();
+        });
+      }
+    });
+  },
+  getPostsMySQL: function (request, response) {
+    mySql.pool.getConnection(function (err, connection) {
+      if (err || !connection) {
+        console.log('err: ' + err);
+        console.log('connection: ' + connection);
+        if (!response.headersSent) {
+          response.sendStatus(500);
+          return;
+        }
         //throw err;
       } else {
         connection.query(queries.mysqlQueryPosts, function (err, rows) {
           if (err) {
             console.log('err: ' + err);
-            response.sendStatus(500);
+            if (!response.headersSent) {
+              response.sendStatus(500);
+              return;
+            }
             //throw err;
           } else {
             totalPosts = rows.length;
@@ -118,7 +146,7 @@ var mural = {
             var lastpostid = 0;
             for (var idx = 0; idx < totalPosts; idx++) {
               //postId = rows[idx].post_id;
-              if(rows[idx].post_id !== lastpostid && idx !== 0) {
+              if (rows[idx].post_id !== lastpostid && idx !== 0) {
                 postId++;
               }
               if (!posts[postId]) {
@@ -126,7 +154,7 @@ var mural = {
                 posts[postId].comments = [];
                 posts[postId].post_id = rows[idx].post_id;
                 posts[postId].school_id = rows[idx].school_id;
-                posts[postId].post_timestamp = rows[idx].post_timestamp;
+                posts[postId].post_timestamp = new Date(rows[idx].post_timestamp);
                 posts[postId].poster_id = rows[idx].poster_id;
                 posts[postId].poster_name = rows[idx].poster_name;
                 posts[postId].content = rows[idx].content;
@@ -137,7 +165,7 @@ var mural = {
                 commentId = 0;
                 lastpostid = rows[idx].post_id;
               }
-              if(!rows[idx].comment_id) {
+              if (!rows[idx].comment_id) {
                 continue;
               }
               //commentId = rows[idx].comment_id;
@@ -152,9 +180,8 @@ var mural = {
               }
             }
             postsFinished = true;
-            //response.sendStatus(200);
-            response.json(posts);
-            //mural.returnAllMural(response);
+            //response.json(posts);
+            mural.returnAllMural(response);
           }
           connection.release();
         });
@@ -165,78 +192,13 @@ var mural = {
     if (!actionsFinished || !postsFinished) {
       return;
     }
-
-    // Estrellas de todos los usuarios para la accion
+    // Mezclar todo por su timestamp
     var i = 0,
             j = 0,
             k = 0;
-    // Merge in linear time to get stars average
-    // j no puede ser mayor a i nunca
-    // j puede ser solamente menor o igual i 
-    while (j < actionsStars.length) {
-      // Los arreglos de estrellas solo tendran elementos que ya esten en el arreglo de acciones
-      // No hay elementos en los arreglos de estrellas que no esten en el de acciones
-      // Por lo tanto recorremos en base al arreglo de acciones y comparamos para ver si tienen alguna calificacion
-      if (actions[i].timestamp.date.equals(actionsStars[j].timestamp.date) &&
-              actions[i].timestamp.timenanos.equals(actionsStars[j].timestamp.timenanos)) {
-        // Coincidencia, la accion con este timestamp id tiene calificaciones (estrellas)
-        actions[i].average = actionsStars[j].total_stars / actionsStars[j].total_users;
-
-        // Estrellas del usuario para la accion
-        if (k < actionsStarsUser.length && actions[i].timestamp.date.equals(actionsStarsUser[k].timestamp.date) &&
-                actions[i].timestamp.timenanos.equals(actionsStarsUser[k].timestamp.timenanos)) {
-          actions[i].userStars = actionsStarsUser[k].action_stars_user;
-          k++;
-        } else {
-          actions[i].userStars = 0;
-        }
-        i++;
-        j++; // Incrementar los dos para pasar la siguiente accion
-      } else {
-        // No coinciden, como en el arreglo de estrellas solo hay elementos que ya estan en el de posts,
-        // incrementar el indice de acciones solamente para seguir buscando aquellas con estrellas
-        actions[i].average = 0;
-        actions[i].userStars = 0;
-        i++;
-      }
-    }
-
-
-    // Estrellas de todos los usuarios para la publicacion y comentarios
-    i = 0;
-    j = 0;
-    k = 0;
-    while (j < postsStars.length) {
-      if (posts[i].timestamp.date.equals(postsStars[j].timestamp.date) &&
-              posts[i].timestamp.timenanos.equals(postsStars[j].timestamp.timenanos)) {
-        posts[i].average = postsStars[j].total_stars / postsStars[j].total_users;
-
-        if (k < postsStarsUser.length && posts[i].timestamp.date.equals(postsStarsUser[k].timestamp.date) &&
-                posts[i].timestamp.timenanos.equals(postsStarsUser[k].timestamp.timenanos)) {
-          posts[i].userStars = postsStarsUser[k].post_stars_user;
-          k++;
-        } else {
-          posts[i].userStars = 0;
-        }
-        i++;
-        j++;
-      } else {
-        posts[i].average = 0;
-        posts[i].userStars = 0;
-        i++;
-      }
-    }
-
-
-    // Mezclar todo por su timestamp
-    i = 0;
-    j = 0;
-    k = 0;
     var feed = [];
-    var comparation = 0;
     while (i < actions.length && j < posts.length) {
-      comparation = actions[i].timestamp.date.compare(posts[j].timestamp.date);
-      if (comparation > 0) {
+      if (actions[i].action_timestamp.getTime() > posts[j].post_timestamp.getTime()) {
         feed[k] = {'action': actions[i]};
         i++;
       } else {
@@ -255,7 +217,7 @@ var mural = {
       j++;
       k++;
     }
-
+    //response.sendStatus(200);
     response.json(feed);
   },
   new : function (req, res) {

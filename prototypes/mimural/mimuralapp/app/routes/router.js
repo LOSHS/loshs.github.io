@@ -19,7 +19,9 @@ router.get('/logoutUser', authenticator.logoutUser);
 
 // Test
 router.get('/usuarios', usuarios.all);
-router.get('/mural', mural.getPostsMySQL);
+router.get('/mural', mural.all);
+//router.get('/mural/posts', mural.getPostsMySQL);
+//router.get('/mural/actions', mural.getActionsMySQL);
 router.get('/datospublicos', external.publicDataPlanea);
 router.get('/publicaciones', publicaciones.all);
 router.get('/publicaciones/nueva', publicaciones.new);
