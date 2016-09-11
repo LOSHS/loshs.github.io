@@ -49,21 +49,28 @@ var auth = {
      lg_username=LAAH000000XXX&lg_password=Loshs123hugo
      */
     if (!mySql || !mySql.pool) {
+      console.log('mySql: ' + mySql);
+      console.log('mySql.pool: ' + mySql.pool);
       response.sendStatus(500);
       //throw err;
     }
     mySql.pool.getConnection(function (err, connection) {
       if (err || !connection) {
+        console.log('err: ' + err);
+        console.log('connection: ' + connection);
         response.sendStatus(500);
         //throw err;
       } else {
+        console.log('getConnection: OK');
         connection.query('SELECT user_id, password_hash, rol, first_name, ' +
                 'father_lastname FROM users WHERE user_code = '
                 + mySql.pool.escape(username), function (err, rows) {
           if (err) {
+             console.log('err: ' + err);
             response.sendStatus(500);
             //throw err;
           } else {
+             console.log('connection.query: OK');
             if (rows && rows.length !== 1) {
               response.status(401);
               response.json({
