@@ -5,8 +5,6 @@ export class Common {
 	
 	static makeAPICall = (data: any, moduleUrl: string, method: string, successCallback: any, successParams: any, errorCallback: any, errorParams: any) => {
 	
-	
-	debugger;
 		$.ajax({
       		url: Common.apiUrl + '/' + moduleUrl,      		
       		type: method,
@@ -15,11 +13,9 @@ export class Common {
       		jsonpCallback : 'callbackFunction',
 	        dataType: 'json',
       		error: (data) => {
-      			debugger;
       			errorCallback(data, errorParams);
       		},
 	        success: (data) => {
-	        	debugger;
         		successCallback(data, successParams);
         	}
 	   });
