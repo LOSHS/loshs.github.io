@@ -12,7 +12,6 @@ router.get('/', function(req, res) {
   res.redirect('/login');
 });
 
-
 router.post('/loginUser', authenticator.loginUser);
 
 router.post('/logoutUser', authenticator.logoutUser);
@@ -32,9 +31,10 @@ router.get('/rest/superadmin/usuarios', usuarios.all);
 //router.post('/rest/superadmin/usuario/:id', usuarios.new);
 //router.delete('/rest/superadmin/usuario/:id', usuarios.delete);
 router.get('/rest/superadmin/rest/publicaciones/:escuelacct', publicaciones.all);
+router.get('/rest/superadmin/rest/acciones/:escuelacct', acciones.all);
 
 router.post('/rest/publicaciones/nueva', publicaciones.new);
-router.get('/rest/mural/:escuelacct', mural.getPostsMySQL);
+router.get('/rest/mural/:escuelacct', mural.all);
 
 router.get('/rest/datospublicos', external.publicDataPlanea);
 

@@ -43,8 +43,8 @@ var queries = {
           "WHERE action_timestamp >= ? " +
           "AND act.school_id = ? " +
           "ORDER BY action_timestamp DESC, task_timestamp DESC",
-  mysqlQueryNewPost: "INSERT INTO posts (school_id, posted_date, posted_time, poster_id, poster_name, content, comment_date, comment_time) " +
-          "VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+  mysqlQueryNewPost: "INSERT INTO posts (school_id, poster_id, content, category) VALUES " +
+          "(?, ?, ?, ?)"
 };
 module.exports = queries;
 

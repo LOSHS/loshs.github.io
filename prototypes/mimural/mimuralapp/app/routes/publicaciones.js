@@ -87,42 +87,58 @@ var publicaciones = {
     });
   },
   new : function (request, response) {
-    response.sendStatus(500);
-    /*if (!cassandra || !cassandra.client) {
-     response.sendStatus(500);
-     } else {
-     user = (request.cookies && request.cookies.userLoginToken &&
-     request.cookies.userLoginToken.user);
-     // For test
-     if (!user) {
-     user = queries.userForTest;
-     //response.sendStatus(500);
-     }
-     
-     // For Test
-     console.log('request.body: ' + JSON.stringify(request.body));
-     var content = (request.body && request.body.Contenido) ||
-     (request.body && request.body.content) || (request.query && request.query.content);
-     if (!content) {
-     content = '';
-     }
-     //var queryNewPost = "INSERT INTO posts (school_id, posted_date, posted_time, poster_id, poster_name, content, comment_date, comment_time) " +
-     // "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-     
-     var post_date = cassandra.driver.types.LocalDate.now();
-     var post_time = cassandra.driver.types.LocalTime.now();
-     console.log('New post content: ' + content + ' ' + post_date + ' ' + post_time);
-     cassandra.client.execute(queryNewPost, [escuela, post_date, post_time, user.id, user.nombre + ' ' + user.apellido,
-     content, post_date, post_time], {prepare: true}, function (err, result) {
-     if (err) {
-     if (!response.headersSent) {
-     response.sendStatus(500);
-     }
-     } else {
-     response.sendStatus(200);
-     }
-     });
-     */
+    //response.sendStatus(500);
+    if (!mySql || !mySql.pool) {
+      console.log('mySql: ' + mySql);
+      console.log('mySql.pool: ' + mySql.pool);
+      if (!response.headersSent) {
+        response.sendStatus(500);
+        return;
+      }
+    }
+    user = (request.cookies && request.cookies.userLoginToken &&
+            request.cookies.userLoginToken.user);
+    // For test
+    if (!user) {
+      user = queries.userForTest;
+      //response.sendStatus(500);
+    }
+
+    console.log('request.body: ' + JSON.stringify(request.body));
+    var content = (request.body && request.body.Contenido) ||
+            (request.query && request.query.Contenido);
+    if (!content) {
+      content = '';
+    }
+    var category = (request.body && request.body.Categoria) ||
+            (request.query && request.query.Categoria);
+    if (!category) {
+      category = 0;
+    }
+
+    mySql.pool.getConnection(function (err, connection) {
+      if (err || !connection) {
+        console.log('err: ' + err);
+        console.log('connection: ' + connection);
+        if (!response.headersSent) {
+          response.sendStatus(500);
+          return;
+        }
+      } else {
+        connection.query(queries.mysqlQueryNewPost, [user.cct, user.id, content, category], function (err, rows) {
+          if (err) {
+            console.log('err: ' + err);
+            if (!response.headersSent) {
+              response.sendStatus(500);
+              return;
+            }
+          } else {
+            response.sendStatus(200);
+          }
+          connection.release();
+        });
+      }
+    });
   }
 };
 module.exports = publicaciones;
