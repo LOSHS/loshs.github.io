@@ -1,20 +1,26 @@
-import $ = require("jquery");
+/// <reference path="jquery.d.ts" />
 
-export default class Common {
-	private apiUrl : string = '';
+export class Common {
+	static apiUrl: string = 'http://192.168.15.8';
 	
-	public makeAPICall = (data: string, moduleUrl: string, method: string, successCallback: any, successParams: any, errorCallback: any, errorParams: any) => {
+	static makeAPICall = (data: any, moduleUrl: string, method: string, successCallback: any, successParams: any, errorCallback: any, errorParams: any) => {
+	
+	
+	debugger;
 		$.ajax({
-      		url: this.apiUrl + '/' + moduleUrl,      		
+      		url: Common.apiUrl + '/' + moduleUrl,      		
       		type: method,
-      		data: data,      		
-	        dataType: 'jsonp',
-      		error: function(data) {
-      		
+      		data: data,     
+      		jsonp: false,
+      		jsonpCallback : 'callbackFunction',
+	        dataType: 'json',
+      		error: (data) => {
+      			debugger;
       			errorCallback(data, errorParams);
       		},
-	        success: function(data) {
-        		successCallback(data, successParams)
+	        success: (data) => {
+	        	debugger;
+        		successCallback(data, successParams);
         	}
 	   });
 	};

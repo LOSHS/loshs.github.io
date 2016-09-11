@@ -9,6 +9,12 @@
   "author": "Hugo Labra, Hector perez",
   "license": "ISC",
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.0",
+    "gulp": "^3.9.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "tsify": "^1.0.6",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
   }
 }

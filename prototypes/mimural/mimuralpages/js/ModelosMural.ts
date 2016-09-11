@@ -1,4 +1,3 @@
-
-	export class Publicacion {
-		Contenido: string;
-	}	
+export class Publicacion {
+	Contenido: string;
+}	
