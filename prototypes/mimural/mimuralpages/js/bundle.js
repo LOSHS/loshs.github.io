@@ -29,7 +29,7 @@ exports.Common = Common;
 "use strict";
 /// <reference path="jquery.d.ts" />
 /// <reference path="alertify.d.ts" />
-/// <reference path="alertify.d.ts" />
+/// <reference path="knockout.d.ts" />
 var Common_1 = require('./Common');
 var MuralBusiness = (function () {
     function MuralBusiness() {
@@ -45,6 +45,8 @@ var MuralBusiness = (function () {
             Common_1.Common.makeAPICall(null, 'publicaciones/get', 'GET', null, null, null, null);
         };
         this.PopulatePostsTable = function (recentPosts) {
+            $.each(recentPosts, function (recentPostIndex, recentPost) {
+            });
         };
         this.SubmitPostSuccess = function (data) {
             alertify.success('Tu publicacion fue generada');
@@ -53,6 +55,7 @@ var MuralBusiness = (function () {
             alertify.success('Tu publicacion fue generada');
             //alertify.error('Hubo un error al publicar tu cosa');
         };
+        this.feedPosts = ko.observableArray([]);
     }
     return MuralBusiness;
 }());

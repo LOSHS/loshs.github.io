@@ -1,8 +1,9 @@
 /// <reference path="jquery.d.ts" />
 
 export class Common {
-	static apiUrl: string = 'http://192.168.15.8';
-	
+
+	static apiUrl: string = 'http://192.168.15.8';	
+
 	static makeAPICall = (data: any, moduleUrl: string, method: string, successCallback: any, successParams: any, errorCallback: any, errorParams: any) => {
 	
 		$.ajax({

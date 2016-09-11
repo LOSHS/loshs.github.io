@@ -1,19 +1,21 @@
 /// <reference path="jquery.d.ts" />
 /// <reference path="alertify.d.ts" />
-/// <reference path="alertify.d.ts" />
+/// <reference path="knockout.d.ts" />
 import { Common } from './Common';
 import { Publicacion } from './ModelosMural';
 
 export class MuralBusiness {
 	
-	private feedPosts: Array<Publicacion>;
+	private feedPosts: KnockoutObservableArray<Publicacion>;
 	
 	constructor () {		
+		this.feedPosts = ko.observableArray([]);
 	}
 	    
 	public SubmitPost = (comentario: string) => {		
 		var post : Publicacion = {
-			Contenido: comentario
+			Contenido: comentario,
+			Indice: -1
 		};
 		
 		Common.makeAPICall(post, 'publicaciones/nueva', 'POST', this.SubmitPostSuccess, null, this.SubmitPostError, null);	
@@ -24,8 +26,17 @@ export class MuralBusiness {
 		Common.makeAPICall(null, 'publicaciones/get', 'GET', null, null, null, null);	
 	}
 	
-	private PopulatePostsTable = (recentPosts) => {
-		
+	private PopulatePostsTable = (recentPosts: Array<Publicacion>) => {
+	
+		$.each(recentPosts, (recentPostIndex: number, recentPost: any) => {
+			var existingPost = 
+				$.grep(this.feedPosts: any, 
+					  function (feedPostIndex: any, feedPost: any) { return recentPost.Indice == feedPost.Indice; });
+			
+			if(!existingPost || existingPost.length == 0) {
+				
+			}
+		});
 	}
 	
 	private SubmitPostSuccess = (data) => {		
