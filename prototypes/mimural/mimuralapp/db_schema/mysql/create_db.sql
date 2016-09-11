@@ -101,15 +101,11 @@ CREATE TABLE `comments` (
   `comment_timestamp` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
   `commenter_id` bigint(20) unsigned NOT NULL,
   `content` varchar(2000) NOT NULL,
-  `stars_total` int(10) unsigned NOT NULL,
-  `stars_users` int(10) unsigned NOT NULL,
   PRIMARY KEY (`comment_id`),
   UNIQUE KEY `comment_id_UNIQUE` (`comment_id`),
   KEY `parentpost_idx` (`parentpost_id`),
   KEY `comment_timestamp_idx` (`comment_timestamp`),
   KEY `commenterid_idx` (`commenter_id`),
-  KEY `comment_starstotal_idx` (`stars_total`),
-  KEY `comment_starsusers_idx` (`stars_users`),
   FULLTEXT KEY `commentcontent_idx` (`content`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -271,4 +267,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-10 21:33:54
+-- Dump completed on 2016-09-10 21:50:31
