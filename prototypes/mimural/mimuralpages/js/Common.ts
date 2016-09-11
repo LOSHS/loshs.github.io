@@ -2,12 +2,12 @@
 
 export class Common {
 
-	static apiUrl: string = 'http://192.168.15.8';	
+	static serverUrl: string = 'http://52.42.83.5';	
 
 	static makeAPICall = (data: any, moduleUrl: string, method: string, successCallback: any, successParams: any, errorCallback: any, errorParams: any) => {
 	
 		$.ajax({
-      		url: Common.apiUrl + '/' + moduleUrl,      		
+      		url: Common.serverUrl + '/' + moduleUrl,      		
       		type: method,
       		data: data,     
       		jsonp: false,

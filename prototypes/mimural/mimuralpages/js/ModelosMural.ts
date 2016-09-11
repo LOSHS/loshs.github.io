@@ -4,4 +4,6 @@ export class Publicacion {
 	//with decorators, we could make data validation even simpler
 	Contenido: string;
 	Indice: number;
+	Publicador: string;
+	Rol: string;
 }	

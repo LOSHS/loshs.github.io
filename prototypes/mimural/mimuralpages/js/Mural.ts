@@ -6,7 +6,7 @@ import { Publicacion } from './ModelosMural';
 
 export class MuralBusiness {
 	
-	private feedPosts: KnockoutObservableArray<Publicacion>;
+	public feedPosts: KnockoutObservableArray<Publicacion>;
 	
 	constructor () {		
 		this.feedPosts = ko.observableArray([]);
@@ -15,7 +15,9 @@ export class MuralBusiness {
 	public SubmitPost = (comentario: string) => {		
 		var post : Publicacion = {
 			Contenido: comentario,
-			Indice: -1
+			Indice: -1,
+			Publicador: null,
+			Rol: null
 		};
 		
 		Common.makeAPICall(post, 'publicaciones/nueva', 'POST', this.SubmitPostSuccess, null, this.SubmitPostError, null);	
@@ -23,40 +25,67 @@ export class MuralBusiness {
 	
 	//TODO: Implement datetime filter, to prevent retrieving posts older than the latest visible post
 	public GetLatestPosts = () => {
-		Common.makeAPICall(null, 'publicaciones/get', 'GET', null, null, null, null);	
+	
+		Common.makeAPICall(null, 'mural', 'GET', this.PopulatePostsTable, null, this.GetFeedError, null);	
 	}
 	
-	private PopulatePostsTable = (recentPosts: Array<Publicacion>) => {
-	
+	//prototype is still experimental
+	private PopulatePostsTable = (recentPosts: Array<any>) => {
+		
 		$.each(recentPosts, (recentPostIndex: number, recentPost: any) => {
-			var existingPost = 
-				$.grep(this.feedPosts: any, 
-					  function (feedPostIndex: any, feedPost: any) { return recentPost.Indice == feedPost.Indice; });
+
+			var publicacionFound: boolean = false;
 			
-			if(!existingPost || existingPost.length == 0) {
-				
-			}
+			this.feedPosts().forEach((feedPost) => {
+			
+				if(!!recentPost.post && recentPost.post.post_id == feedPost.Indice) {
+					publicacionFound = true;
+					return;
+				}
+			});
+			
+			if(!publicacionFound && !!recentPost.post) {
+			
+				var newPublicacion : Publicacion = 
+									{
+								 		Contenido: recentPost.post.content, 
+								 		Indice: recentPost.post.post_id,
+								 		Publicador: recentPost.post.poster_name,
+										Rol: ''
+								 	};
+								 	
+				this.feedPosts.push(newPublicacion);
+			}						
 		});
 	}
 	
 	private SubmitPostSuccess = (data) => {		
 		alertify.success('Tu publicacion fue generada');
-	}
-	
+	}	
 	
 	private SubmitPostError = (data) => {		
 		
-		alertify.success('Tu publicacion fue generada');	
-		//alertify.error('Hubo un error al publicar tu cosa');
+		alertify.error('Hubo un error al publicar tu cosa');
+	}
+	
+	private GetFeedError = (data) => {		
+		
+		alertify.error('Hubo un error al intentar leer tu mural');
 	}
 	
 }
+
 $(document).ready(function() {
+	
 	var mural = new MuralBusiness();	
+	debugger;
+	mural.GetLatestPosts();
 	$('#btnProponer').click(function() {    	 	    	
      		var txtPropuesta = $('#txtPropuesta').val();                  		
          	
     		mural.SubmitPost(txtPropuesta);
     		$('#txtPropuesta').val('');
     });
+    
+    ko.applyBindings(mural);
 });

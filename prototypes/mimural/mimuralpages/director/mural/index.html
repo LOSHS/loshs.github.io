@@ -4,18 +4,15 @@
       <!-- All the files that are required -->
       <title>Mi Mural</title>
       <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
-      <link rel="stylesheet" type="text/css" href="../../css/datatables.min.css" />
-      
       <link rel="stylesheet" type="text/css" href="../../css/mimural.fuentes.css" />
       <link rel="stylesheet" type="text/css" href="../../css/mimural.css" />
       <link rel="stylesheet" type="text/css" href="../../css/alertify.min.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/alertify.default.min.css" />
       <script src="../../js/jquery.min.js"></script>	
       <script src="../../js/bootstrap.min.js"></script>
-      <script src="../../js/datatables.min.js"></script>  
-      
-      <script src="../../js/alertify.min.js"></script>                  	     
       <script src="../../js/bundle.js"></script>	  
-      
+      <script src="../../js/knockout.min.js"></script>	
+      <script src="../../js/alertify.min.js"></script>       
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       <meta http-equiv="content-type" content="text/html; charset=utf-8" />
       <meta name="viewport" content="initial-scale=1" />
@@ -172,7 +169,52 @@
                   <textarea id="txtPropuesta" class="form-control" rows="2" placeholder="Comparte tu propuesta..."></textarea>
                </div>
             </div>
-            
+            <div data-bind="foreach: feedPosts">
+               <div class="publicacion-accion post blanco border-post" >
+                  <div class="col-md-12 publicacion-header-post  ">
+                     <div class="col-md-1">
+                        <img alt="user profile picture" class="publicacion-post-user-profile-pic"  src="../../img/usuario-icono-mujer.png"/>
+                     </div>
+                     <div class="col-md-11">
+                        <span><b data-bind="text: Publicador"></b> / Padre de Familia</span>
+                        <br/>
+                        <small class="fecha-expiracion-accion">16 de Octubre del 2016 </small>                     
+                     </div>
+                     <div class="col-md-1">
+                        <span class="icon-Fuente-Componentes-mi-mural--19 logo-mural funcionamiento-escuela-post-icon"></span>
+                     </div>
+                     <div class="col-md-11">
+                        <p class="texto-post" data-bind="text: Contenido"></p>
+                     </div>
+                  </div>
+                  <div class="col-md-12 margen-comentario">
+                     <div class="col-md-8">
+                        <input type="text" class="form-control" placeholder="Escribe un comentario..."  />		
+                     </div>
+                     <div class="publicacion-more-options dropdown col-md-4">
+                        <div class="pull-right">
+                           <a alt="favorito" class="icon" href="javascript:void(0);">
+                           <span class="icon-Fuente-Componentes-mi-mural--13" data-toggle="tooltip" title="Subir foto">&nbsp;</span>											
+                           </a>
+                           <a alt="favorito" class="icon" href="javascript:void(0);">
+                           <span class="glyphicon glyphicon-heart" data-toggle="tooltip" title="Marcar como favorito">&nbsp;</span>											
+                           </a>
+                           <a alt="compartir publicacion" class="icon" href="javascript:void(0);" data-toggle="tooltip" title="Compartir en facebook">
+                           <span class="glyphicon glyphicon-share-alt">&nbsp;</span>
+                           </a>
+                           <a alt="compartir publicacion" class="dropdown-toggle icon" data-toggle="dropdown" href="javascript:void(0);" title="Mas opciones">					
+                           <span class="icon-Fuente-Componentes-mi-mural--22 "></span>
+                           </a>
+                           <ul class="dropdown-menu">
+                              <li>
+                                 <a href="javascript:void(0);">Calificar</a>												
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
             <div class="publicacion-accion post">
                <div class="col-md-12 publicacion-header ">
                   <div class="col-md-4 morado-aprendizajes mejora-div">
@@ -248,53 +290,6 @@
                   </div>
                </div>
             </div>
-                                                                    
-            
-            <div class="publicacion-accion post blanco border-post">
-               <div class="col-md-12 publicacion-header-post  ">
-               		<div class="col-md-1">
-                    	<img alt="user profile picture" class="publicacion-post-user-profile-pic"  src="../../img/usuario-icono-mujer.png"/>
-                    </div>
-               		<div class="col-md-11">
-                    	<span><b> Juan Perez</b> / Padre de Familia</span>
-                    	<br/>
-                    	<small class="fecha-expiracion-accion">16 de Octubre del 2016 </small>                     </div>
-                    	
-                    <div class="col-md-1">
-                        <span class="icon-Fuente-Componentes-mi-mural--19 logo-mural funcionamiento-escuela-post-icon"></span>
-                     </div>
-                    <div class="col-md-11">
-                        <p class="texto-post">Compañeros, cómo ven? Estaba pensando que podríamos realizar un convivio en mi casa para que nuestros hijos se conozcan más y evitemos cualquier comportamiento de bullying que pueda existir, yo puedo poner un terreno, nos podemos cooperar para rentar unos inflables y ponerlos y una carnita asada.</p>
-                     </div>
-                    
-	            </div>
-                    <div class="col-md-12 margen-comentario">
-	<div class="col-md-8">
-		<input type="text" class="form-control" placeholder="Escribe un comentario..."  />		
-	</div>							
-	<div class="publicacion-more-options dropdown col-md-4"><div class="pull-right">
-		<a alt="favorito" class="icon" href="javascript:void(0);">
-			<span class="icon-Fuente-Componentes-mi-mural--13" data-toggle="tooltip" title="Subir foto">&nbsp;</span>											
-		</a>
-		<a alt="favorito" class="icon" href="javascript:void(0);">
-			<span class="glyphicon glyphicon-heart" data-toggle="tooltip" title="Marcar como favorito">&nbsp;</span>											
-		</a>
-		<a alt="compartir publicacion" class="icon" href="javascript:void(0);" data-toggle="tooltip" title="Compartir en facebook">
-			<span class="glyphicon glyphicon-share-alt">&nbsp;</span>
-		</a>
-		<a alt="compartir publicacion" class="dropdown-toggle icon" data-toggle="dropdown" href="javascript:void(0);" title="Mas opciones">					
-	        <span class="icon-Fuente-Componentes-mi-mural--22 "></span>
-		</a>
-		<ul class="dropdown-menu">
-			<li>
-				<a href="javascript:void(0);">Calificar</a>												
-			</li>
-		</ul>
-	</div></div>
-
-    </div>
-               
-            </div>   
             <div class="publicacion-accion post">
                <div class="col-md-12 publicacion-header ">
                   <div class="col-md-4 verde-convivencia mejora-div">
@@ -461,7 +456,6 @@
       </div>
       <footer class="footer">
          <script type="text/javascript">
-                 
             this.animarEstrellas = function(e) {
             
             var estrella = $(e.target).is('img') ? $(e.target).parent() : $(e.target);
