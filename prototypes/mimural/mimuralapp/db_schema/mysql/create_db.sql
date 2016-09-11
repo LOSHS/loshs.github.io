@@ -52,7 +52,7 @@ CREATE TABLE `actions` (
   KEY `starsusers_idx` (`stars_users`),
   FULLTEXT KEY `title_idx` (`title`),
   FULLTEXT KEY `description_idx` (`description`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,6 +61,7 @@ CREATE TABLE `actions` (
 
 LOCK TABLES `actions` WRITE;
 /*!40000 ALTER TABLE `actions` DISABLE KEYS */;
+INSERT INTO `actions` VALUES (1,1,'2016-08-05 15:16:40.120705',1,'Paseos mensuales','Esta actividad servirá para unir al grupo de 3B del turno matutino, permitirá crear lazos entre los alumnos y conocerse más a fondo, esto con el fin...',NULL,NULL,NULL,NULL,1,'5 papás reportan que sus hijos han pedido permiso para invitar compañeros de su grupo',1,5,2),(2,1,'2016-09-11 05:47:14.089526',1,'Mejora de divisiones','Esta actividad tiene como proposito desarrollar en el alumno habilidades para dividir y mejorar sus calificaciones en la prueba que realizamos ante la sep para...',NULL,NULL,NULL,NULL,1,'71 % de los alumnos son capaces de realizar divisiones de dos cifras',2,10,4);
 /*!40000 ALTER TABLE `actions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -107,7 +108,7 @@ CREATE TABLE `comments` (
   KEY `comment_timestamp_idx` (`comment_timestamp`),
   KEY `commenterid_idx` (`commenter_id`),
   FULLTEXT KEY `commentcontent_idx` (`content`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -116,6 +117,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+INSERT INTO `comments` VALUES (1,1,'2016-09-11 03:05:42.568075',2,'Claro que sí amigo, yo te apoyo!'),(2,1,'2016-09-11 03:05:42.570352',4,'¡De acuerdo!'),(3,1,'2016-09-11 03:05:42.570953',3,'OK'),(4,1,'2016-09-11 04:48:14.704108',1,'Perfecto!'),(5,2,'2016-09-11 04:51:13.500585',1,'Solo falta decidir la fecha amigo');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,7 +147,7 @@ CREATE TABLE `posts` (
   KEY `stars_users_idx` (`stars_users`),
   KEY `category_idx` (`category`),
   FULLTEXT KEY `content_idx` (`content`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -154,6 +156,7 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
+INSERT INTO `posts` VALUES (1,1,'2016-09-11 03:30:39.342368',1,'Compañeros, cómo ven? Estaba pensando que podríamos realizar un convivio en mi casa para que nuestros hijos se conozcan más y evitemos cualquier comportamiento de bullying que pueda existir, yo puedo poner un terreno, nos podemos cooperar para rentar unos inflables y ponerlos y una carnita asada.',NULL,9,2,1),(2,1,'2016-09-11 04:09:28.256168',2,'¿Oigan entonces cuando quedó lo de la carne asada?',NULL,0,0,1),(3,1,'2016-09-11 05:04:58.535696',4,'Ya quiero que sea la carne asada!',NULL,0,0,1);
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -178,6 +181,7 @@ CREATE TABLE `postsstars_peruser` (
 
 LOCK TABLES `postsstars_peruser` WRITE;
 /*!40000 ALTER TABLE `postsstars_peruser` DISABLE KEYS */;
+INSERT INTO `postsstars_peruser` VALUES (1,1,5),(1,2,4);
 /*!40000 ALTER TABLE `postsstars_peruser` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -206,7 +210,7 @@ CREATE TABLE `tasks` (
   KEY `duedate_idx` (`duedate`),
   KEY `status_idx` (`status`),
   FULLTEXT KEY `description_idx` (`description`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -215,6 +219,7 @@ CREATE TABLE `tasks` (
 
 LOCK TABLES `tasks` WRITE;
 /*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
+INSERT INTO `tasks` VALUES (1,1,'2016-09-11 19:21:42.000045',1,'Salida al boliche',NULL,NULL,1),(2,1,'2016-09-11 19:21:42.002159',1,'Salida a otro estado',NULL,NULL,1),(3,1,'2016-09-11 19:21:42.002576',1,'Presentación de trabajos artísticos',NULL,NULL,1),(4,2,'2016-09-12 05:23:04.938135',1,'Realizar divisiones de 1 cifra',NULL,NULL,1),(5,2,'2016-09-12 05:24:57.688419',1,'Realizar ejemplos usando objetos cotidianos',NULL,NULL,1),(6,2,'2016-09-12 05:24:57.689981',1,'Realizar divisiones de 2 cifras',NULL,NULL,1),(7,2,'2016-09-12 05:24:57.690714',1,'Realizar problemas razonados de divisiones',NULL,NULL,1),(8,2,'2016-09-12 05:24:57.691057',1,'Realizar divisiones de 3 cifras',NULL,NULL,1),(9,2,'2016-09-12 05:24:57.691409',1,'Explicar la similitud con la operacion de multiplicacion',NULL,NULL,1);
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -267,4 +272,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-10 21:50:31
+-- Dump completed on 2016-09-11  2:09:15
