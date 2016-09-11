@@ -4,12 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/hugo/Downloads/node-v4.5.0-linux-x64/proyects/mimural/mimuralapp/app/conf/cassandradb.js</file>
-            <file>file:/home/hugo/Downloads/node-v4.5.0-linux-x64/proyects/mimural/mimuralapp/app/serverapp.js</file>
-            <file>file:/home/hugo/Downloads/node-v4.5.0-linux-x64/proyects/mimural/mimuralapp/app/routes/mural.js</file>
+            <file>file:/home/hugo/Downloads/node-v4.5.0-linux-x64/proyects/mimural/mimuralapp/app/routes/muralCassandra.js</file>
+            <file>file:/home/hugo/Downloads/node-v4.5.0-linux-x64/proyects/mimural/mimuralapp/app/routes/publicacionesCassandra.js</file>
             <file>file:/home/hugo/Downloads/node-v4.5.0-linux-x64/proyects/mimural/mimuralapp/app/routes/router.js</file>
-            <file>file:/home/hugo/Downloads/node-v4.5.0-linux-x64/proyects/mimural/mimuralapp/app/conf/mysqldb.js</file>
+            <file>file:/home/hugo/Downloads/node-v4.5.0-linux-x64/proyects/mimural/mimuralapp/app/routes/mural.js</file>
             <file>file:/home/hugo/Downloads/node-v4.5.0-linux-x64/proyects/mimural/mimuralapp/app/security/authenticator.js</file>
-            <file>file:/home/hugo/Downloads/node-v4.5.0-linux-x64/proyects/mimural/mimuralapp/app/routes/publicaciones.js</file>
+            <file>file:/home/hugo/Downloads/node-v4.5.0-linux-x64/proyects/mimural/mimuralapp/app/conf/mysql_queries.js</file>
         </group>
     </open-files>
 </project-private>

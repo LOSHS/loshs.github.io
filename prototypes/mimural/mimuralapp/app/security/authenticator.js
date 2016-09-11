@@ -62,10 +62,10 @@ var auth = {
         //throw err;
       } else {
         connection.query('SELECT user_id, password_hash, rol, first_name, ' +
-                'father_lastname FROM users WHERE user_code = '
+                'father_lastname, user_cct FROM users WHERE user_code = '
                 + mySql.pool.escape(username), function (err, rows) {
           if (err) {
-             console.log('err: ' + err);
+            console.log('err: ' + err);
             response.sendStatus(500);
             //throw err;
           } else {
@@ -94,7 +94,8 @@ var auth = {
                           name: username, //'LAAH000000XXX'
                           role: rows[0].rol, //'Directivo'
                           nombre: rows[0].first_name, //'Hugo'
-                          apellido: rows[0].father_lastname //'Labra'
+                          apellido: rows[0].father_lastname, //'Labra'
+                          cct: rows[0].user_cct
                         };
                         var CSRFToken = secureRandomBase64(25);
                         response.cookie('antiCSRFToken', CSRFToken, {path: '/'});
@@ -136,7 +137,7 @@ var auth = {
         response.sendStatus(500);
         //throw err;
       } else {
-        connection.query('SELECT user_code, rol, first_name, father_lastname FROM users WHERE user_id = '
+        connection.query('SELECT user_code, rol, first_name, father_lastname, user_cct FROM users WHERE user_id = '
                 + mySql.pool.escape(key) + ' AND status = 2', function (err, rows) {
           if (err) {
             response.sendStatus(500);
@@ -147,7 +148,8 @@ var auth = {
                 name: rows[0].user_code,
                 role: rows[0].rol,
                 nombre: rows[0].first_name,
-                apellido: rows[0].father_lastname
+                apellido: rows[0].father_lastname,
+                cct: rows[0].user_cct
               };
               if ((req.url.indexOf('superadmin') >= 0 && dbUserObj.role === 'Superadmin') ||
                       (req.url.indexOf('admin') < 0 && req.url.indexOf('/') >= 0)) {

@@ -22,9 +22,9 @@ var queries = {
           "LEFT JOIN comments c ON p.post_id = c.parentpost_id " +
           "JOIN users up ON p.poster_id = up.user_id " +
           "LEFT JOIN users uc ON c.commenter_id = uc.user_id " +
-          "LEFT JOIN postsstars_peruser stars ON p.post_id = stars.postid AND stars.userid = 2 " +
-          "WHERE post_timestamp >= '2016-08-01' " +
-          "AND p.school_id = 1 " +
+          "LEFT JOIN postsstars_peruser stars ON p.post_id = stars.postid AND stars.userid = ? " +
+          "WHERE post_timestamp >= ? " +
+          "AND p.school_id = ? " +
           "ORDER BY post_timestamp DESC, comment_timestamp DESC",
   mysqlQueryActions: "SELECT action_id, school_id, action_timestamp, poster_id, " +
           "CONCAT(ua.first_name,' ', ua.father_lastname) AS poster_name, " +
@@ -41,9 +41,9 @@ var queries = {
           "LEFT JOIN tasks tas ON act.action_id = tas.parentaction_id " +
           "JOIN users ua ON act.poster_id = ua.user_id " +
           "LEFT JOIN users ut ON tas.ownerid = ut.user_id " +
-          "LEFT JOIN actionsstars_peruser stars ON act.action_id = stars.actionid AND stars.userid = 2 " +
-          "WHERE action_timestamp >= '2016-08-01' " +
-          "AND act.school_id = 1 " +
+          "LEFT JOIN actionsstars_peruser stars ON act.action_id = stars.actionid AND stars.userid = ? " +
+          "WHERE action_timestamp >= ? " +
+          "AND act.school_id = ? " +
           "ORDER BY action_timestamp DESC, task_timestamp DESC"
 };
 module.exports = queries;

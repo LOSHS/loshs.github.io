@@ -1,11 +1,13 @@
 var mySql = require('../conf/mysqldb');
 var queries = require('../conf/mysql_queries');
 var user;
+var fecha = '2016-08-01';
 var actions = [], posts = [];
 var actionsFinished = false, postsFinished = false;
 
 var mural = {
   all: function (request, response) {
+    console.log('Request to Mural ALL');
     if (!mySql || !mySql.pool) {
       console.log('mySql: ' + mySql);
       console.log('mySql.pool: ' + mySql.pool);
@@ -23,7 +25,8 @@ var mural = {
           name: 'LAAH000000XXX',
           role: 'Directivo',
           nombre: 'Hugo',
-          apellido: 'Labra'
+          apellido: 'Labra', //'Labra'
+          cct: 1
         };
         //response.sendStatus(500);
       }
@@ -54,7 +57,7 @@ var mural = {
         }
         //throw err;
       } else {
-        connection.query(queries.mysqlQueryActions, function (err, rows) {
+        connection.query(queries.mysqlQueryActions, [user.id, fecha, user.cct], function (err, rows) {
           if (err) {
             console.log('err: ' + err);
             if (!response.headersSent) {
@@ -131,7 +134,7 @@ var mural = {
         }
         //throw err;
       } else {
-        connection.query(queries.mysqlQueryPosts, function (err, rows) {
+        connection.query(queries.mysqlQueryPosts, [user.id, fecha, user.cct], function (err, rows) {
           if (err) {
             console.log('err: ' + err);
             if (!response.headersSent) {
@@ -219,12 +222,6 @@ var mural = {
     }
     //response.sendStatus(200);
     response.json(feed);
-  },
-  new : function (req, res) {
-
-  },
-  delete: function (req, res) {
-
   }
 };
 

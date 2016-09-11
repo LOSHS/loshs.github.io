@@ -41,7 +41,8 @@ var mural = {
           name: 'LAAH000000XXX',
           role: 'Directivo',
           nombre: 'Hugo',
-          apellido: 'Labra'
+          apellido: 'Labra', //'Labra'
+          cct: 1
         };
         //response.sendStatus(500);
       }

@@ -86,6 +86,7 @@ CREATE TABLE `actionsstars_peruser` (
 
 LOCK TABLES `actionsstars_peruser` WRITE;
 /*!40000 ALTER TABLE `actionsstars_peruser` DISABLE KEYS */;
+INSERT INTO `actionsstars_peruser` VALUES (1,1,4),(1,3,1),(2,1,3),(2,2,1),(2,3,1),(2,4,5);
 /*!40000 ALTER TABLE `actionsstars_peruser` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -259,7 +260,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Labra','Aguilar','Hugo','Daniel','LAAH000000XXX','$2a$10$8WJvJSaPEkLIN46f2nOgaeH3u/QfqCFpgg0wGuHGKkfENQqpg.0PK',NULL,'11','Director','Directivo',1,'2016-08-30','2020-01-01','hugo@loshs.com','5'),(2,'Herrera','Perez','Hector',NULL,'HEPH000000XXX','$2a$10$byrbl/IC/btdQzox49UPZOkN2UkhAyBg0NKYNvG8NyHGyr7zFv892',NULL,'11','Superadmin','Superadmin',1,'2016-08-30','2020-01-01','hector@loshs.com','5'),(3,'Perez','Ramirez','Hector','Giovanni','PERH000000XXX','$2a$10$ldUg6OCrrcd3wlI80w6YJ.sg7PLFdu.zOA4QLmmEefnFmWoI05FS2',NULL,'12','Director','Directivo',1,'2016-08-30','2020-01-01','gio@loshs.com','5'),(4,'Kurata','Hernandez','Mari','Kimi','KUHM000000XXX','$2a$10$Bixa/fJFZ5vzRPuhHcoqAuq6E/DKL.numA.cVbBiQ40uB9cY2JVjy',NULL,'12','Subirector','Directivo',1,'2016-08-30','2020-01-01','kimi@loshs.com','5');
+INSERT INTO `users` VALUES (1,'Labra','Aguilar','Hugo','Daniel','LAAH000000XXX','$2a$10$8WJvJSaPEkLIN46f2nOgaeH3u/QfqCFpgg0wGuHGKkfENQqpg.0PK',NULL,'1','Director','Directivo',1,'2016-08-30','2020-01-01','hugo@loshs.com','5'),(2,'Herrera','Perez','Hector',NULL,'HEPH000000XXX','$2a$10$byrbl/IC/btdQzox49UPZOkN2UkhAyBg0NKYNvG8NyHGyr7zFv892',NULL,'1','Superadmin','Superadmin',1,'2016-08-30','2020-01-01','hector@loshs.com','5'),(3,'Perez','Ramirez','Hector','Giovanni','PERH000000XXX','$2a$10$ldUg6OCrrcd3wlI80w6YJ.sg7PLFdu.zOA4QLmmEefnFmWoI05FS2',NULL,'1','Subdirector','Directivo',1,'2016-08-30','2020-01-01','gio@loshs.com','5'),(4,'Kurata','Hernandez','Mari','Kimi','KUHM000000XXX','$2a$10$Bixa/fJFZ5vzRPuhHcoqAuq6E/DKL.numA.cVbBiQ40uB9cY2JVjy',NULL,'1','Coordinador','Directivo',1,'2016-08-30','2020-01-01','kimi@loshs.com','5');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -272,4 +273,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-11  2:09:15
+-- Dump completed on 2016-09-11 13:33:14
