@@ -37,7 +37,7 @@ var mural = {
       // For test
       if (!user) {
         user = {
-          id: 1001, //1
+          id: 1, //1
           name: 'LAAH000000XXX',
           role: 'Directivo',
           nombre: 'Hugo',

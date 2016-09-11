@@ -1,18 +1,16 @@
-
-var queryActions = 'SELECT * FROM actions WHERE school_id = ? AND posted_date >= ?';
-var queryActionsStars = 'SELECT * FROM actions_stars WHERE school_id = ? AND posted_date >= ?';
-var queryActionsStarsUsers = 'SELECT * FROM actions_stars_users WHERE user_id = ? AND school_id = ? AND posted_date >= ?';
-var queryPosts = 'SELECT * FROM posts   WHERE school_id = ? AND posted_date >= ?';
-var queryPostsStars = 'SELECT * FROM posts_stars WHERE school_id = ? AND posted_date >= ?';
-var queryPostsStarsUsers = 'SELECT * FROM posts_stars_users WHERE user_id = ? AND school_id = ? AND posted_date >= ?';
-var escuela = 11;
-var fecha = '2016-08-01';
-var user;
-
 var queries = {
+  userForTest: {
+    id: 1, //1
+    name: 'LAAH000000XXX',
+    role: 'Directivo',
+    nombre: 'Hugo',
+    apellido: 'Labra', //'Labra'
+    cct: 1
+  },
+  fecha: '2016-08-01',
   mysqlQueryPosts: "SELECT post_id, school_id, post_timestamp, poster_id, " +
           "CONCAT(up.first_name,' ', up.father_lastname) AS poster_name, " +
-          " p.content, photo, " +
+          " up.rol AS poster_role, p.content, photo, " +
           "IFNULL((stars_total / stars_users), 0) AS stars_avg, " +
           " IFNULL(stars_given, 0) AS stars_given, category, comment_id, " +
           "comment_timestamp, commenter_id, " +
@@ -27,7 +25,7 @@ var queries = {
           "AND p.school_id = ? " +
           "ORDER BY post_timestamp DESC, comment_timestamp DESC",
   mysqlQueryActions: "SELECT action_id, school_id, action_timestamp, poster_id, " +
-          "CONCAT(ua.first_name,' ', ua.father_lastname) AS poster_name, " +
+          "CONCAT(ua.first_name,' ', ua.father_lastname) AS poster_name, ua.rol AS poster_role," +
           "title, act.description, problem, goal, act.start_date, act.due_date, " +
           " act.status, results, category, " +
           "IFNULL((stars_total / stars_users), 0) AS stars_avg,  " +
@@ -44,7 +42,9 @@ var queries = {
           "LEFT JOIN actionsstars_peruser stars ON act.action_id = stars.actionid AND stars.userid = ? " +
           "WHERE action_timestamp >= ? " +
           "AND act.school_id = ? " +
-          "ORDER BY action_timestamp DESC, task_timestamp DESC"
+          "ORDER BY action_timestamp DESC, task_timestamp DESC",
+  mysqlQueryNewPost: "INSERT INTO posts (school_id, posted_date, posted_time, poster_id, poster_name, content, comment_date, comment_time) " +
+          "VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
 };
 module.exports = queries;
 

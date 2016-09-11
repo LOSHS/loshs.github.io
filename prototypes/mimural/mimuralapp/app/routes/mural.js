@@ -1,7 +1,6 @@
 var mySql = require('../conf/mysqldb');
 var queries = require('../conf/mysql_queries');
 var user;
-var fecha = '2016-08-01';
 var actions = [], posts = [];
 var actionsFinished = false, postsFinished = false;
 
@@ -20,14 +19,7 @@ var mural = {
               request.cookies.userLoginToken.user);
       // For test
       if (!user) {
-        user = {
-          id: 1001, //1
-          name: 'LAAH000000XXX',
-          role: 'Directivo',
-          nombre: 'Hugo',
-          apellido: 'Labra', //'Labra'
-          cct: 1
-        };
+        user = queries.userForTest;
         //response.sendStatus(500);
       }
 
@@ -57,7 +49,7 @@ var mural = {
         }
         //throw err;
       } else {
-        connection.query(queries.mysqlQueryActions, [user.id, fecha, user.cct], function (err, rows) {
+        connection.query(queries.mysqlQueryActions, [user.id, queries.fecha, user.cct], function (err, rows) {
           if (err) {
             console.log('err: ' + err);
             if (!response.headersSent) {
@@ -83,6 +75,7 @@ var mural = {
                 actions[actionId].action_timestamp = new Date(rows[idx].action_timestamp);
                 actions[actionId].poster_id = rows[idx].poster_id;
                 actions[actionId].poster_name = rows[idx].poster_name;
+                actions[actionId].poster_role = rows[idx].poster_role;
                 actions[actionId].title = rows[idx].title;
                 actions[actionId].description = rows[idx].description;
                 actions[actionId].problem = rows[idx].problem;
@@ -134,7 +127,7 @@ var mural = {
         }
         //throw err;
       } else {
-        connection.query(queries.mysqlQueryPosts, [user.id, fecha, user.cct], function (err, rows) {
+        connection.query(queries.mysqlQueryPosts, [user.id, queries.fecha, user.cct], function (err, rows) {
           if (err) {
             console.log('err: ' + err);
             if (!response.headersSent) {
@@ -160,6 +153,7 @@ var mural = {
                 posts[postId].post_timestamp = new Date(rows[idx].post_timestamp);
                 posts[postId].poster_id = rows[idx].poster_id;
                 posts[postId].poster_name = rows[idx].poster_name;
+                posts[postId].poster_role = rows[idx].poster_role;
                 posts[postId].content = rows[idx].content;
                 posts[postId].photo = rows[idx].photo;
                 posts[postId].stars_avg = rows[idx].stars_avg;

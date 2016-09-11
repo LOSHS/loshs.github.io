@@ -104,7 +104,7 @@ var auth = {
                         //response.sendStatus(200);
                         if (dbUserObj.role === 'Superadmin') {
                           response.redirect('/superadmin/usuarios');
-                        } else {
+                        } else {  // diferentes roles
                           response.redirect('/director/mural');
                         }
                       }

@@ -61,7 +61,7 @@ CREATE TABLE `actions` (
 
 LOCK TABLES `actions` WRITE;
 /*!40000 ALTER TABLE `actions` DISABLE KEYS */;
-INSERT INTO `actions` VALUES (1,1,'2016-08-05 15:16:40.120705',1,'Paseos mensuales','Esta actividad servirá para unir al grupo de 3B del turno matutino, permitirá crear lazos entre los alumnos y conocerse más a fondo, esto con el fin...',NULL,NULL,NULL,NULL,1,'5 papás reportan que sus hijos han pedido permiso para invitar compañeros de su grupo',1,5,2),(2,1,'2016-09-11 05:47:14.089526',1,'Mejora de divisiones','Esta actividad tiene como proposito desarrollar en el alumno habilidades para dividir y mejorar sus calificaciones en la prueba que realizamos ante la sep para...',NULL,NULL,NULL,NULL,1,'71 % de los alumnos son capaces de realizar divisiones de dos cifras',2,10,4);
+INSERT INTO `actions` VALUES (1,1,'2016-08-05 15:16:40.120705',1,'Paseos mensuales','Esta actividad servirá para unir al grupo de 3B del turno matutino, permitirá crear lazos entre los alumnos y conocerse más a fondo, esto con el fin...',NULL,NULL,NULL,NULL,1,'5 papás reportan que sus hijos han pedido permiso para invitar compañeros de su grupo',1,5,2),(2,1,'2016-09-11 19:27:28.977513',4,'Mejora de divisiones','Esta actividad tiene como proposito desarrollar en el alumno habilidades para dividir y mejorar sus calificaciones en la prueba que realizamos ante la sep para...',NULL,NULL,NULL,NULL,1,'71 % de los alumnos son capaces de realizar divisiones de dos cifras',2,10,4);
 /*!40000 ALTER TABLE `actions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -220,7 +220,7 @@ CREATE TABLE `tasks` (
 
 LOCK TABLES `tasks` WRITE;
 /*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
-INSERT INTO `tasks` VALUES (1,1,'2016-09-11 19:21:42.000045',1,'Salida al boliche',NULL,NULL,1),(2,1,'2016-09-11 19:21:42.002159',1,'Salida a otro estado',NULL,NULL,1),(3,1,'2016-09-11 19:21:42.002576',1,'Presentación de trabajos artísticos',NULL,NULL,1),(4,2,'2016-09-12 05:23:04.938135',1,'Realizar divisiones de 1 cifra',NULL,NULL,1),(5,2,'2016-09-12 05:24:57.688419',1,'Realizar ejemplos usando objetos cotidianos',NULL,NULL,1),(6,2,'2016-09-12 05:24:57.689981',1,'Realizar divisiones de 2 cifras',NULL,NULL,1),(7,2,'2016-09-12 05:24:57.690714',1,'Realizar problemas razonados de divisiones',NULL,NULL,1),(8,2,'2016-09-12 05:24:57.691057',1,'Realizar divisiones de 3 cifras',NULL,NULL,1),(9,2,'2016-09-12 05:24:57.691409',1,'Explicar la similitud con la operacion de multiplicacion',NULL,NULL,1);
+INSERT INTO `tasks` VALUES (1,1,'2016-09-11 19:21:42.000045',1,'Salida al boliche',NULL,NULL,1),(2,1,'2016-09-11 19:21:42.002159',1,'Salida a otro estado',NULL,NULL,1),(3,1,'2016-09-11 19:21:42.002576',1,'Presentación de trabajos artísticos',NULL,NULL,1),(4,2,'2016-09-11 19:28:32.376422',4,'Realizar divisiones de 1 cifra',NULL,NULL,1),(5,2,'2016-09-11 19:28:32.376422',4,'Realizar ejemplos usando objetos cotidianos',NULL,NULL,1),(6,2,'2016-09-11 19:28:32.376422',4,'Realizar divisiones de 2 cifras',NULL,NULL,1),(7,2,'2016-09-11 19:28:32.376422',4,'Realizar problemas razonados de divisiones',NULL,NULL,1),(8,2,'2016-09-11 19:28:32.376422',4,'Realizar divisiones de 3 cifras',NULL,NULL,1),(9,2,'2016-09-11 19:28:32.376422',4,'Explicar la similitud con la operacion de multiplicacion',NULL,NULL,1);
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -241,7 +241,6 @@ CREATE TABLE `users` (
   `password_hash` varchar(70) NOT NULL,
   `user_photo` blob,
   `user_cct` varchar(45) DEFAULT NULL,
-  `position` varchar(45) DEFAULT NULL,
   `rol` varchar(45) NOT NULL,
   `status` int(11) NOT NULL,
   `register_date` date DEFAULT NULL,
@@ -260,7 +259,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Labra','Aguilar','Hugo','Daniel','LAAH000000XXX','$2a$10$8WJvJSaPEkLIN46f2nOgaeH3u/QfqCFpgg0wGuHGKkfENQqpg.0PK',NULL,'1','Director','Directivo',1,'2016-08-30','2020-01-01','hugo@loshs.com','5'),(2,'Herrera','Perez','Hector',NULL,'HEPH000000XXX','$2a$10$byrbl/IC/btdQzox49UPZOkN2UkhAyBg0NKYNvG8NyHGyr7zFv892',NULL,'1','Superadmin','Superadmin',1,'2016-08-30','2020-01-01','hector@loshs.com','5'),(3,'Perez','Ramirez','Hector','Giovanni','PERH000000XXX','$2a$10$ldUg6OCrrcd3wlI80w6YJ.sg7PLFdu.zOA4QLmmEefnFmWoI05FS2',NULL,'1','Subdirector','Directivo',1,'2016-08-30','2020-01-01','gio@loshs.com','5'),(4,'Kurata','Hernandez','Mari','Kimi','KUHM000000XXX','$2a$10$Bixa/fJFZ5vzRPuhHcoqAuq6E/DKL.numA.cVbBiQ40uB9cY2JVjy',NULL,'1','Coordinador','Directivo',1,'2016-08-30','2020-01-01','kimi@loshs.com','5');
+INSERT INTO `users` VALUES (1,'Labra','Aguilar','Hugo','Daniel','LAAH000000XXX','$2a$10$8WJvJSaPEkLIN46f2nOgaeH3u/QfqCFpgg0wGuHGKkfENQqpg.0PK',NULL,'1','Directivo',1,'2016-08-30','2020-01-01','hugo@loshs.com','5'),(2,'Herrera','Perez','Hector',NULL,'HEPH000000XXX','$2a$10$byrbl/IC/btdQzox49UPZOkN2UkhAyBg0NKYNvG8NyHGyr7zFv892',NULL,'1','Superadmin',1,'2016-08-30','2020-01-01','hector@loshs.com','5'),(3,'Perez','Ramirez','Hector','Giovanni','PERH000000XXX','$2a$10$ldUg6OCrrcd3wlI80w6YJ.sg7PLFdu.zOA4QLmmEefnFmWoI05FS2',NULL,'1','Padre de familia',1,'2016-08-30','2020-01-01','gio@loshs.com','5'),(4,'Kurata','Hernandez','Mari','Kimi','KUHM000000XXX','$2a$10$Bixa/fJFZ5vzRPuhHcoqAuq6E/DKL.numA.cVbBiQ40uB9cY2JVjy',NULL,'1','Docente',1,'2016-08-30','2020-01-01','kimi@loshs.com','5');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -273,4 +272,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-11 13:33:14
+-- Dump completed on 2016-09-11 14:37:27
