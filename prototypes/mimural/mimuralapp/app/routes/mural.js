@@ -1,5 +1,8 @@
-var cassandra = require('../conf/cassandradb');
+var mySql = require('../conf/mysqldb');
+var queries = require('../conf/mysql_queries');
 
+
+var cassandra = require('../conf/cassandradb');
 var queryActions = 'SELECT * FROM actions WHERE school_id = ? AND posted_date >= ?';
 var queryActionsStars = 'SELECT * FROM actions_stars WHERE school_id = ? AND posted_date >= ?';
 var queryActionsStarsUsers = 'SELECT * FROM actions_stars_users WHERE user_id = ? AND school_id = ? AND posted_date >= ?';
@@ -13,17 +16,13 @@ var user;
 var actions = [],
         actionsStars = [],
         actionsStarsUser = [],
-        posts = [],
-        postsStars = [],
-        postsStarsUser = [];
+        posts = [];
 
 
 var actionsFinished = false,
         actionsStarsFinished = false,
         actionsStarsFinishedUser = false,
-        postsFinished = false,
-        postsStarsFinished = false,
-        postsStarsFinishedUser = false;
+        postsFinished = false;
 
 var mural = {
   all: function (request, response) {
@@ -80,254 +79,90 @@ var mural = {
 
     }
   },
-  getActions: function (response) {
-    // Acciones de la ruta de mejora con sus tareas especificas
-    cassandra.client.execute(queryActions, [escuela, fecha], {prepare: true}, function (err, result) {
-      if (err) {
-        if (!response.headersSent) {
-          response.sendStatus(500);
-        }
+  getPostsMySQL: function (request, response) {
+    postsFinished = false;
+    posts = [];
+    // For test
+    if (!user) {
+      user = {
+        id: 1, //1
+        name: 'LAAH000000XXX',
+        role: 'Directivo',
+        nombre: 'Hugo',
+        apellido: 'Labra'
+      };
+      //response.sendStatus(500);
+    }
+    if (!mySql || !mySql.pool) {
+      console.log('mySql: ' + mySql);
+      console.log('mySql.pool: ' + mySql.pool);
+      response.sendStatus(500);
+      //throw err;
+    }
+    mySql.pool.getConnection(function (err, connection) {
+      if (err || !connection) {
+        console.log('err: ' + err);
+        console.log('connection: ' + connection);
+        response.sendStatus(500);
+        //throw err;
       } else {
-        totalActions = result.rowLength;
-        var action_idx = 0;
-        var task_idx = 0;
-        for (var idx = 0; idx < totalActions; idx++) {
-          if (!actions[action_idx]) {
-            actions[action_idx] = {};
-            actions[action_idx].tasks = [];
-            task_idx = 0;
-          }
-
-          // Action
-          // Comparar primero tiempo para mayor eficiencia pues mas frecuentemente
-          // este sera el primero en diferir
-          if (result.rows[idx].posted_time.equals(result.rows[idx].task_time) &&
-                  result.rows[idx].posted_date.equals(result.rows[idx].task_date)) {
-            //actions[action_idx].school_id = result.rows[idx].school_id;
-            actions[action_idx].timeid = result.rows[idx].posted_date + ' ' + result.rows[idx].posted_time;
-            actions[action_idx].timestamp = {
-              date: result.rows[idx].posted_date,
-              timenanos: result.rows[idx].posted_time
-            };
-            //actions[action_idx].poster_id = result.rows[idx].poster_id;
-            actions[action_idx].category = result.rows[idx].category;
-            actions[action_idx].title = result.rows[idx].title;
-            actions[action_idx].description = result.rows[idx].description;
-            //actions[action_idx].problem = result.rows[idx].problem;
-            //actions[action_idx].goal = result.rows[idx].goal;
-            //actions[action_idx].start_date = result.rows[idx].start_date;
-            actions[action_idx].due_date = result.rows[idx].due_date;
-            actions[action_idx].status = result.rows[idx].status;
-            actions[action_idx].results = result.rows[idx].results;
-            action_idx++;
-          }
-          // Tarea especifica de la accion
-          else {
-            //actions[action_idx].tasks = {};
-            actions[action_idx].tasks[task_idx] = {};
-            actions[action_idx].tasks[task_idx].tasktimeid = result.rows[idx].task_date + ' ' + result.rows[idx].task_time;
-            actions[action_idx].tasks[task_idx].tasktimestamp = {
-              date: result.rows[idx].task_date,
-              timenanos: result.rows[idx].task_time
-            };
-            actions[action_idx].tasks[task_idx].task_description = result.rows[idx].task_description;
-            //actions[action_idx].tasks[task_idx].task_involved_ids = result.rows[idx].task_involved_ids;
-            //actions[action_idx].tasks[task_idx].task_start_date = result.rows[idx].task_start_date;
-            //actions[action_idx].tasks[task_idx].task_due_date = result.rows[idx].task_due_date;
-            //actions[action_idx].tasks[task_idx].task_status = result.rows[idx].task_status;
-            task_idx++;
-          }
-        }
-        actionsFinished = true;
-        mural.returnAllMural(response);
-      }
-    });
-  },
-  getActionsStars: function (response) {
-    // Calificaciones totales para el promedio a las publicaciones
-    cassandra.client.execute(queryActionsStars, [escuela, fecha], {prepare: true}, function (err, result) {
-      if (err) {
-        if (!response.headersSent) {
-          response.sendStatus(500);
-        }
-      } else {
-        totalActions = result.rowLength;
-        var action_idx = 0;
-        for (var idx = 0; idx < totalActions; idx++) {
-          if (!actionsStars[action_idx]) {
-            actionsStars[action_idx] = {};
-          }
-
-          // Accion o actividad con estrellas
-          actionsStars[action_idx].school_id = result.rows[idx].school_id;
-          actionsStars[action_idx].timeid = result.rows[idx].posted_date + ' ' + result.rows[idx].posted_time;
-          actionsStars[action_idx].timestamp = {
-            date: result.rows[idx].posted_date,
-            timenanos: result.rows[idx].posted_time
-          };
-          actionsStars[action_idx].total_stars = result.rows[idx].total_stars;
-          actionsStars[action_idx].total_users = result.rows[idx].total_users;
-          action_idx++;
-        }
-        actionsStarsFinished = true;
-        mural.returnAllMural(response);
-      }
-    });
-  },
-  getActionsStarsUsers: function (response) {
-    // Calificaciones totales para el promedio a las publicaciones
-    cassandra.client.execute(queryActionsStarsUsers, [user.id, escuela, fecha], {prepare: true}, function (err, result) {
-      if (err) {
-        if (!response.headersSent) {
-          response.sendStatus(500);
-        }
-      } else {
-        totalActions = result.rowLength;
-        var action_idx = 0;
-        for (var idx = 0; idx < totalActions; idx++) {
-          if (!actionsStarsUser[action_idx]) {
-            actionsStarsUser[action_idx] = {};
-          }
-
-          // Accion o actividad con estrellas
-          actionsStarsUser[action_idx].school_id = result.rows[idx].school_id;
-          actionsStarsUser[action_idx].timeid = result.rows[idx].posted_date + ' ' + result.rows[idx].posted_time;
-          actionsStarsUser[action_idx].timestamp = {
-            date: result.rows[idx].posted_date,
-            timenanos: result.rows[idx].posted_time
-          };
-          actionsStarsUser[action_idx].user_id = result.rows[idx].user_id;
-          actionsStarsUser[action_idx].action_stars_user = result.rows[idx].action_stars_user;
-          action_idx++;
-        }
-        actionsStarsFinishedUser = true,
-                mural.returnAllMural(response);
-      }
-    });
-  },
-  getPosts: function (response) {
-    // Publicaciones de los usuarios para compartir, registrar y consultar informacion diversa
-    cassandra.client.execute(queryPosts, [escuela, fecha], {prepare: true}, function (err, result) {
-      if (err) {
-        if (!response.headersSent) {
-          response.sendStatus(500);
-        }
-      } else {
-        totalPosts = result.rowLength;
-        var post_idx = 0;
-        var comment_idx = 0;
-        for (var idx = 0; idx < totalPosts; idx++) {
-          if (!posts[post_idx]) {
-            posts[post_idx] = {};
-            posts[post_idx].comments = [];
-            comment_idx = 0;
-          }
-
-          // Publicacion
-          // Comparar primero tiempo para mayor eficiencia pues mas frecuentemente
-          // este sera el primero en diferir
-          if (result.rows[idx].posted_time.equals(result.rows[idx].comment_time) &&
-                  result.rows[idx].posted_date.equals(result.rows[idx].comment_date)) {
-            posts[post_idx].school_id = result.rows[idx].school_id;
-            posts[post_idx].timeid = result.rows[idx].posted_date + ' ' + result.rows[idx].posted_time;
-            posts[post_idx].timestamp = {
-              date: result.rows[idx].posted_date,
-              timenanos: result.rows[idx].posted_time
-            };
-            posts[post_idx].poster_id = result.rows[idx].poster_id;
-            posts[post_idx].poster_name = result.rows[idx].poster_name;
-            posts[post_idx].content = result.rows[idx].content;
-            if (result.rows[idx].photo) {
-              posts[post_idx].photo = result.rows[idx].photo;
+        connection.query(queries.mysqlQueryPosts, function (err, rows) {
+          if (err) {
+            console.log('err: ' + err);
+            response.sendStatus(500);
+            //throw err;
+          } else {
+            totalPosts = rows.length;
+            var postId = 0;
+            var commentId = 0;
+            var lastpostid = 0;
+            for (var idx = 0; idx < totalPosts; idx++) {
+              //postId = rows[idx].post_id;
+              if(rows[idx].post_id !== lastpostid && idx !== 0) {
+                postId++;
+              }
+              if (!posts[postId]) {
+                posts[postId] = {};
+                posts[postId].comments = [];
+                posts[postId].post_id = rows[idx].post_id;
+                posts[postId].school_id = rows[idx].school_id;
+                posts[postId].post_timestamp = rows[idx].post_timestamp;
+                posts[postId].poster_id = rows[idx].poster_id;
+                posts[postId].poster_name = rows[idx].poster_name;
+                posts[postId].content = rows[idx].content;
+                posts[postId].photo = rows[idx].photo;
+                posts[postId].stars_avg = rows[idx].stars_avg;
+                posts[postId].stars_given = rows[idx].stars_given;
+                posts[postId].category = rows[idx].category;
+                commentId = 0;
+                lastpostid = rows[idx].post_id;
+              }
+              if(!rows[idx].comment_id) {
+                continue;
+              }
+              //commentId = rows[idx].comment_id;
+              if (!posts[postId].comments[commentId]) {
+                posts[postId].comments[commentId] = {};
+                posts[postId].comments[commentId].comment_id = rows[idx].comment_id;
+                posts[postId].comments[commentId].comment_timestamp = rows[idx].comment_timestamp;
+                posts[postId].comments[commentId].commenter_id = rows[idx].commenter_id;
+                posts[postId].comments[commentId].commenter_name = rows[idx].commenter_name;
+                posts[postId].comments[commentId].comment_content = rows[idx].comment_content;
+                commentId++;
+              }
             }
-            post_idx++;
+            postsFinished = true;
+            //response.sendStatus(200);
+            response.json(posts);
+            //mural.returnAllMural(response);
           }
-          // Comentario en la publicacion
-          else {
-            //posts[post_idx].comments = {};
-            posts[post_idx].comments[comment_idx] = {};
-            posts[post_idx].comments[comment_idx].commenttimeid = result.rows[idx].comment_date
-                    + ' ' + result.rows[idx].comment_time;
-            posts[post_idx].comments[comment_idx].commenttimestamp = {
-              date: result.rows[idx].comment_date,
-              timenanos: result.rows[idx].comment_time
-            };
-            posts[post_idx].comments[comment_idx].commenter_id = result.rows[idx].commenter_id;
-            posts[post_idx].comments[comment_idx].comment_content = result.rows[idx].comment_content;
-            posts[post_idx].comments[comment_idx].commenter_name = result.rows[idx].commenter_name;
-            comment_idx++;
-          }
-        }
-        postsFinished = true;
-        mural.returnAllMural(response);
-      }
-    });
-  },
-  getPostsStars: function (response) {
-    // Calificaciones totales para el promedio a las publicaciones
-    cassandra.client.execute(queryPostsStars, [escuela, fecha], {prepare: true}, function (err, result) {
-      if (err) {
-        if (!response.headersSent) {
-          response.sendStatus(500);
-        }
-      } else {
-        totalPosts = result.rowLength;
-        var post_idx = 0;
-        for (var idx = 0; idx < totalPosts; idx++) {
-          if (!postsStars[post_idx]) {
-            postsStars[post_idx] = {};
-          }
-          // Publicacion
-          postsStars[post_idx].school_id = result.rows[idx].school_id;
-          postsStars[post_idx].timeid = result.rows[idx].posted_date + ' ' + result.rows[idx].posted_time;
-          postsStars[post_idx].timestamp = {
-            date: result.rows[idx].posted_date,
-            timenanos: result.rows[idx].posted_time
-          };
-          postsStars[post_idx].total_stars = result.rows[idx].total_stars;
-          postsStars[post_idx].total_users = result.rows[idx].total_users;
-          post_idx++;
-
-        }
-        postsStarsFinished = true;
-        mural.returnAllMural(response);
-      }
-    });
-  },
-  getPostsStarsUsers: function (response) {
-    // Calificaciones a las publicaciones del usuario en particular
-    cassandra.client.execute(queryPostsStarsUsers, [user.id, escuela, fecha], {prepare: true}, function (err, result) {
-      if (err) {
-        if (!response.headersSent) {
-          response.sendStatus(500);
-        }
-      } else {
-        totalPosts = result.rowLength;
-        var post_idx = 0;
-        for (var idx = 0; idx < totalPosts; idx++) {
-          if (!postsStarsUser[post_idx]) {
-            postsStarsUser[post_idx] = {};
-          }
-          // Publicacion
-          postsStarsUser[post_idx].school_id = result.rows[idx].school_id;
-          postsStarsUser[post_idx].timeid = result.rows[idx].posted_date + ' ' + result.rows[idx].posted_time;
-          postsStarsUser[post_idx].timestamp = {
-            date: result.rows[idx].posted_date,
-            timenanos: result.rows[idx].posted_time
-          };
-          postsStarsUser[post_idx].user_id = result.rows[idx].user_id;
-          postsStarsUser[post_idx].post_stars_user = result.rows[idx].post_stars_user;
-          post_idx++;
-
-        }
-        postsStarsFinishedUser = true;
-        mural.returnAllMural(response);
+          connection.release();
+        });
       }
     });
   },
   returnAllMural: function (response) {
-    if (!actionsFinished || !actionsStarsFinished || !actionsStarsFinishedUser ||
-            !postsFinished || !postsStarsFinished || !postsStarsFinishedUser) {
+    if (!actionsFinished || !postsFinished) {
       return;
     }
 

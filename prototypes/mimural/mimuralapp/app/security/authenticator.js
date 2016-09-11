@@ -61,7 +61,6 @@ var auth = {
         response.sendStatus(500);
         //throw err;
       } else {
-        console.log('getConnection: OK');
         connection.query('SELECT user_id, password_hash, rol, first_name, ' +
                 'father_lastname FROM users WHERE user_code = '
                 + mySql.pool.escape(username), function (err, rows) {
@@ -70,7 +69,6 @@ var auth = {
             response.sendStatus(500);
             //throw err;
           } else {
-             console.log('connection.query: OK');
             if (rows && rows.length !== 1) {
               response.status(401);
               response.json({

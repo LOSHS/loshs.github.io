@@ -11,7 +11,7 @@ app.use(cookieParser());
 
 // Proteger estas URLs
 app.all('/rest*', [require('./security/requestValidator')]);
-app.all('/director', [require('./security/requestValidator')]);
+app.all('/director*', [require('./security/requestValidator')]);
 app.all('/superadmin*', [require('./security/requestValidator')]);
 // Ya cambio la ruta
 //app.all('/superadmin*', [require('./security/requestValidator')]);

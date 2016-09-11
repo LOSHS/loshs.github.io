@@ -5,7 +5,7 @@ var authenticator = require('../security/authenticator');
 var usuarios = require('./usuarios.js');
 var mural = require('./mural.js');
 var external = require('./conexionExterna');
-var publicaciones = require('./publicaciones');
+var publicaciones = require('./publicacionesCassandra');
 
 router.get('/', function(req, res) {
   res.redirect('/login');
@@ -19,7 +19,7 @@ router.get('/logoutUser', authenticator.logoutUser);
 
 // Test
 router.get('/usuarios', usuarios.all);
-router.get('/mural', mural.all);
+router.get('/mural', mural.getPostsMySQL);
 router.get('/datospublicos', external.publicDataPlanea);
 router.get('/publicaciones', publicaciones.all);
 router.get('/publicaciones/nueva', publicaciones.new);
@@ -32,7 +32,7 @@ router.get('/rest/superadmin/usuarios', usuarios.all);
 router.get('/rest/superadmin/rest/publicaciones/:escuelacct', publicaciones.all);
 
 router.post('/rest/publicaciones/nueva', publicaciones.new);
-router.get('/rest/mural/:escuelacct', mural.all);
+router.get('/rest/mural/:escuelacct', mural.getPostsMySQL);
 
 router.get('/rest/datospublicos', external.publicDataPlanea);
 
