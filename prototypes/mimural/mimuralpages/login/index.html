@@ -47,7 +47,10 @@
 	</div>
 	<br />
 	<br />
-	<h2 style="color:#a93226;" id='loginmessage'>Mensaje Oculto</h2>	
+	<div class="alert alert-danger" role="alert" id='loginmessage' style="display: none">
+    <span>Usuario o contraseña incorrecto</span>
+  </div>
+	<!--<h2 style="color:#a93226;" id='loginmessage'>Mensaje Oculto</h2>	-->
 	<h2 style="color:#919191;">Ingreso</h2>	
 	<div class="login-form-1">
             <form id="login-form" class="text-left" action="/loginUser" method="POST">
@@ -82,7 +85,7 @@
 msgLogin = readCookie('loginMessage');
 if (msgLogin) {
   msgLogin = msgLogin.replace(/%20/g, " ")
-  $("#loginmessage").text(msgLogin);
+  $("#loginmessage span").text(msgLogin);
   $("#loginmessage").show();
   
 } else {
