@@ -23,6 +23,7 @@ html,
 body {
   background: #efefef;
   font-size: 1vw;
+  text-decoration: none;
 }
 /*=== 2. Anchor Link ===*/
 a {
@@ -291,7 +292,6 @@ label:hover:before {
   }
   .middle-content{
   	background-color: #EFF0F0;
-  	
   }
   .right-sidebar{  	  	
   	background-color: #3F5363;  	  	
@@ -339,7 +339,7 @@ table.dataTable tr.odd { background-color: #CDDEE7; }
 
 .navbar{
 
-  background: red; /* For brow-fluidsers that do not support gradients */
+  background: rgba(112,178,224,1);  For brow-fluidsers that do not support gradients 
   background: -webkit-linear-gradient(left,rgba(112,178,224,1),rgba(77,123,155,1)); /*Safari 5.1-6*/
   background: -o-linear-gradient(right,rgba(112,178,224,1),rgba(77,123,155,1)); /*Opera 11.1-12*/
   background: -moz-linear-gradient(right,rgba(112,178,224,1),rgba(77,123,155,1)); /*Fx 3.6-15*/
@@ -351,10 +351,9 @@ table.dataTable tr.odd { background-color: #CDDEE7; }
 .navbar-brand{	
 	padding-top: 5px;	
 	padding-bottom: 5px;	
-	height: 65px;
 }
-.navbar-brand > img{ 
-	width: 120px;
+.navbar-brand > img{
+	height: 50px;
 }
 #main-menu{
 	font-size: 1.5vw;
@@ -653,7 +652,8 @@ html, body, .main-container, .left-sidebar, .right-sidebar{
 	height: 95%;
 }
 .main-container{
-	margin-top: 50px;
+	  	
+	margin-top: 30px;
 }
 .descripcion-color-chart{
 	font-size: 1vw;
@@ -676,6 +676,9 @@ html, body, .main-container, .left-sidebar, .right-sidebar{
 }
 .navbar{
 	margin-bottom: 0px;
+}
+.user-area{
+	margin-right: 5px;
 }
 @media screen 
   and (min-device-width: 1200px) 
