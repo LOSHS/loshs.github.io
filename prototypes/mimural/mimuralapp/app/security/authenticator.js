@@ -8,11 +8,8 @@ var auth = {
 
     if (!req.body || !req.body.lg_username || !req.body.lg_password
             || req.body.lg_username === '' || req.body.lg_password === '') {
-      res.status(401);
-      res.json({
-        "status": 401,
-        "message": "Credenciales incorrectas"
-      });
+      res.cookie('loginMessage', 'Introduzca su usuario y contrasena', {path: '/login'});
+      res.redirect('/login');
       return;
     }
 
@@ -36,10 +33,9 @@ var auth = {
         });
       }
     });
+    response.clearCookie('loginMessage', {path: '/login'});
     response.clearCookie('antiCSRFToken', {path: '/'});
-    //response.cookie('antiCSRFToken', '', {path: '/'});
     response.clearCookie('userLoginToken', {path: '/', httpOnly: true});
-    //response.cookie('userLoginToken', '', {path: '/', httpOnly: true});
     response.redirect('/login');
   },
   validateUserPassword: function (username, password, response) {
@@ -70,11 +66,8 @@ var auth = {
             //throw err;
           } else {
             if (rows && rows.length !== 1) {
-              response.status(401);
-              response.json({
-                "status": 401,
-                "message": "Credenciales incorrectas"
-              });
+              response.cookie('loginMessage', 'Credenciales incorrectas', {path: '/login'});
+              response.redirect('/login');
               return;
             } else {
               bcrypt.compare(password, rows[0].password_hash, function (err, result) {
@@ -98,23 +91,24 @@ var auth = {
                           cct: rows[0].user_cct
                         };
                         var CSRFToken = secureRandomBase64(25);
+                        response.clearCookie('loginMessage', {path: '/login'});
                         response.cookie('antiCSRFToken', CSRFToken, {path: '/'});
                         response.cookie('userLoginToken', generateLoginToken(dbUserObj), {path: '/', httpOnly: true});
                         //response.json(generateLoginToken(dbUserObj));
                         //response.sendStatus(200);
                         if (dbUserObj.role === 'Superadmin') {
                           response.redirect('/superadmin/usuarios');
-                        } else {  // diferentes roles
+                        } else if (dbUserObj.role === 'Directivo') {  // diferentes roles
+                          response.redirect('/director/mural');
+                        } else {  // Los perfiles de padres de familia deben ser redirigidos a su propia pagina
+                          //response.redirect('/padres/mural');
                           response.redirect('/director/mural');
                         }
                       }
                     });
                   } else {
-                    response.status(401);
-                    response.json({
-                      "status": 401,
-                      "message": "Credenciales incorrectas"
-                    });
+                    response.cookie('loginMessage', 'Credenciales incorrectas', {path: '/login'});
+                    response.redirect('/login');
                     return;
                   }
                 }
@@ -155,18 +149,22 @@ var auth = {
                       (req.url.indexOf('admin') < 0 && req.url.indexOf('/') >= 0)) {
                 next();
               } else {
-                response.status(403);
-                response.json({
-                  "status": 403,
-                  "message": "Not Authorized"
-                });
+                /*response.status(403);
+                 response.json({
+                 "status": 403,
+                 "message": "Not Authorized"
+                 });*/
+                response.cookie('loginMessage', 'Usuario no autorizado', {path: '/login'});
+                response.redirect('/login');
               }
             } else {
-              response.status(401);
-              response.json({
-                "status": 401,
-                "message": "Usuario inválido"
-              });
+              /*response.status(401);
+               response.json({
+               "status": 401,
+               "message": "Usuario inválido"
+               });*/
+              response.cookie('loginMessage', 'Introduzca sus credenciales', {path: '/login'});
+              response.redirect('/login');
               return;
             }
           }
@@ -179,7 +177,7 @@ var auth = {
 
 
 function generateLoginToken(user) {
-  var expires = expiresIn(5); // 5 days
+  var expires = expiresIn(10); // expirar token en 10 dias
   var token = jwt.encode({
     exp: expires
   }, require('../conf/tokensSecret')());

@@ -8,6 +8,9 @@ var queries = {
     cct: 1
   },
   fecha: '2016-08-01',
+  mysqlQueryUsers: "SELECT user_id, CONCAT(first_name, ' ', father_lastname) user_name, " +
+          "user_code, user_cct, IF(status > 0, 'Activo', 'Inactivo') AS 'status', " +
+          "rol AS user_role, register_date AS registro FROM mi_mural.users",
   mysqlQueryPosts: "SELECT post_id, school_id, post_timestamp, poster_id, " +
           "CONCAT(up.first_name,' ', up.father_lastname) AS poster_name, " +
           " up.rol AS poster_role, p.content, photo, " +

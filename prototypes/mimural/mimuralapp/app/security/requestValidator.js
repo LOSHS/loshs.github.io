@@ -13,11 +13,13 @@ module.exports = function (req, res, next) {
       var decoded = jwt.decode(token, require('../conf/tokensSecret')());
 
       if (decoded.exp <= Date.now()) {
-        res.status(400);
-        res.json({
-          "status": 400,
-          "message": "Token expirado"
-        });
+        /*res.status(400);
+         res.json({
+         "status": 400,
+         "message": "Token expirado"
+         });*/
+        res.cookie('loginMessage', 'Su token ha expirado', {path: '/login'});
+        res.redirect('/login');
         return;
       }
 
@@ -33,11 +35,13 @@ module.exports = function (req, res, next) {
       });
     }
   } else {
-    res.status(401);
-    res.json({
-      "status": 401,
-      "message": "Token o usuario inválido"
-    });
+    /*res.status(401);
+     res.json({
+     "status": 401,
+     "message": "Token o usuario inválido"
+     });*/
+    res.cookie('loginMessage', 'Introduzca sus credenciales', {path: '/login'});
+    res.redirect('/login');
     return;
   }
 };

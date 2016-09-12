@@ -129,11 +129,18 @@ var publicaciones = {
           if (err) {
             console.log('err: ' + err);
             if (!response.headersSent) {
-              response.sendStatus(500);
-              return;
+              response.status(500);
+              response.json({
+                "status": 500,
+                "message": "Internal Server Error"
+              });
             }
           } else {
-            response.sendStatus(200);
+            response.status(200);
+            response.json({
+              "status": 200,
+              "message": "OK"
+            });
           }
           connection.release();
         });

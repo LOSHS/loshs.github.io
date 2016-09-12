@@ -1,4 +1,5 @@
 var mySql = require('../conf/mysqldb');
+var queries = require('../conf/mysql_queries');
 
 var usuarios = {
   all: function (request, response) {
@@ -11,11 +12,7 @@ var usuarios = {
         response.sendStatus(500);
         //throw err;
       } else {
-        connection.query("SELECT user_id AS id, CONCAT(first_name, " +
-                "IFNULL(CONCAT(' ', middle_names), ''), ' ', father_lastname, " +
-                "IFNULL(CONCAT(' ', mother_lastname), '')) AS nombre, user_code AS rfc, " +
-                "user_cct AS ct, IF(status > 0, 'Activo', 'Inactivo') AS 'status', " +
-                "register_date AS registro, rol FROM mi_mural.users;", function (err, rows) {
+        connection.query(queries.mysqlQueryUsers, function (err, rows) {
                   if (err) {
                     response.sendStatus(500);
                   } else {

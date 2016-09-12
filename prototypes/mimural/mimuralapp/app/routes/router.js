@@ -8,9 +8,10 @@ var external = require('./conexionExterna');
 var publicaciones = require('./publicaciones');
 var acciones = require('./acciones');
 
-router.get('/', function(req, res) {
+/*router.get('/', function(req, res) {
   res.redirect('/login');
 });
+*/
 
 router.post('/loginUser', authenticator.loginUser);
 
