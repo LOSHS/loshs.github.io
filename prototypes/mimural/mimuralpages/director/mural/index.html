@@ -229,7 +229,11 @@
                      <h4 class="propuesta-mural-titulo" data-bind="text: Titulo">Mejora de Divisiones</h4>
                      <hr />
                      <div class="col-md-3">		
-                        <span class="icon-Fuente-Componentes-mi-mural--18 logo-mural"></span>
+                        <span data-bind="css: {
+                        																			'logo-mural': true,
+                        																			'icon-Fuente-Componentes-mi-mural--18': Prioridad != 1,
+                        																			'icon-Fuente-Componentes-mi-mural--20': Prioridad == 1
+                        																		}"></span>
                         <br />
                      </div>
                      <div class="col-md-9">

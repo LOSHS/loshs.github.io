@@ -72,7 +72,7 @@ var MuralBusiness = (function () {
                         EsPost: esPost,
                         Actividades: esPost ? null : recentPost.action.tasks,
                         Resultados: esPost ? null : recentPost.action.results,
-                        Prioridad: esPost ? null : recentPost.action.category
+                        Prioridad: esPost ? recentPost.post.category : recentPost.action.category
                     };
                     if (!!initialLoad) {
                         _this.feedPosts.push(newPublicacion);
