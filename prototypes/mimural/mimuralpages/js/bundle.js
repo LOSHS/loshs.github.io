@@ -55,8 +55,8 @@ var MuralBusiness = (function () {
             $.each(recentPosts, function (recentPostIndex, recentPost) {
                 var publicacionFound = false;
                 _this.feedPosts().forEach(function (feedPost) {
-                    if (!!recentPost.post && recentPost.post.post_id == feedPost.Indice
-                        || !!recentPost.action && recentPost.action.action_id == feedPost.Indice) {
+                    if ((!!recentPost.post && recentPost.post.post_id == feedPost.Indice && feedPost.EsPost)
+                        || (!!recentPost.action && recentPost.action.action_id == feedPost.Indice && !feedPost.EsPost)) {
                         publicacionFound = true;
                         return;
                     }
@@ -72,7 +72,7 @@ var MuralBusiness = (function () {
                         EsPost: esPost,
                         Actividades: esPost ? null : recentPost.action.tasks,
                         Resultados: esPost ? null : recentPost.action.results,
-                        Prioridad: esPost ? recentPost.post.category : null
+                        Prioridad: esPost ? null : recentPost.action.category
                     };
                     if (!!initialLoad) {
                         _this.feedPosts.push(newPublicacion);

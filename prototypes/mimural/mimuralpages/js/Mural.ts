@@ -43,8 +43,8 @@ export class MuralBusiness {
 			var publicacionFound: boolean = false;
 			this.feedPosts().forEach((feedPost) => {
 			
-				if(!!recentPost.post && recentPost.post.post_id == feedPost.Indice
-					|| !!recentPost.action && recentPost.action.action_id == feedPost.Indice
+				if((!!recentPost.post && recentPost.post.post_id == feedPost.Indice && feedPost.EsPost)
+					|| (!!recentPost.action && recentPost.action.action_id == feedPost.Indice && !feedPost.EsPost)
 					) {
 					publicacionFound = true;
 					return;
@@ -63,7 +63,7 @@ export class MuralBusiness {
 										EsPost: esPost,
 										Actividades: esPost? null : recentPost.action.tasks,
 										Resultados: esPost ? null : recentPost.action.results,
-										Prioridad: esPost ? recentPost.post.category : null
+										Prioridad: esPost ? null : recentPost.action.category
 								 	};
 								 		
 				if(!!initialLoad) {

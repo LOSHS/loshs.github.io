@@ -221,7 +221,11 @@
             </div>
             	<div class="publicacion-accion post" data-bind="visible: !EsPost">
                <div class="col-md-12 publicacion-header ">
-                  <div class="col-md-4 morado-aprendizajes mejora-div">
+                  <div data-bind="css: { 
+                  												'mejora-div': true,
+                  												'col-md-4': true,
+                  												'verde-convivencia': (Prioridad == 1),
+                  												'morado-aprendizajes': (Prioridad != 1)}">
                      <h4 class="propuesta-mural-titulo" data-bind="text: Titulo">Mejora de Divisiones</h4>
                      <hr />
                      <div class="col-md-3">		
@@ -299,82 +303,6 @@
             </div>
             </div>
             
-            
-            <div class="publicacion-accion post">
-               <div class="col-md-12 publicacion-header ">
-                  <div class="col-md-4 verde-convivencia mejora-div">
-                     <h4 class="propuesta-mural-titulo">Paseos mensuales</h4>
-                     <hr />
-                     <div class="col-md-3">		
-                        <span class="icon-Fuente-Componentes-mi-mural--18 logo-mural"></span>
-                        <br />
-                     </div>
-                     <div class="col-md-9">
-                        <p class="propuesta-mural-descripcion"> Esta actividad servirá para unir al grupo de 3B del turno matutino, permitirá crear lazos entre los alumnos y conocerse más a fondo, esto con el fin <a href="javascript:void(0);">Ver mas...</a></p>
-                     </div>
-                  </div>
-                  <div class="col-md-2 resultados-area">
-                     <a class="btn btn-default disabled propuesta-estatus" href="javascript:void(0);">Terminada</a>
-                     <br />
-                     <ul class="list-group lista-resultados">
-                        <li class="list-group-item">5 papás reportan que sus hijos han pedido permiso para invitar compañeros de su grupo</li>
-                     </ul>
-                  </div>
-                  <div class="col-md-6 actividades-listado">
-                     <ul class="list-group">
-                        <li class="list-group-item list-group-item-info">
-                           <b>Actividades</b>
-                        </li>
-                        <li class="list-group-item">Salida al boliche</li>
-                        <li class="list-group-item">Salida a otro estado</li>
-                        <li class="list-group-item">Presentación de trabajos artísticos</li>
-                     </ul>
-                  </div>
-                  <div class="row">
-                     <div class="col-md-12"><span>&nbsp;</span></div>
-                  </div>
-               </div>
-               <div class="col-md-12 bottom-publicacion ">
-                  <div class="col-md-12 post-footer well">
-                     <div class="col-md-6 estrellas-container" >								
-                        <span>
-                        <b>¿ Qué te parece esto ?</b>
-                        </span>
-                        <a href="javascript:void(0);" name="estrella-1" class="estrella" data-toggle="tooltip" title="Mala idea">
-                        <img alt="estrella" src="../../img/estrella-vacia.png"/>
-                        </a>
-                        <a href="javascript:void(0);" name="estrella-2" class="estrella" data-toggle="tooltip" title="Me da igual">
-                        <img alt="estrella" src="../../img/estrella-vacia.png"/>
-                        </a>
-                        <a href="javascript:void(0);" name="estrella-3" class="estrella" data-toggle="tooltip" title="Me parece bien">
-                        <img alt="estrella" src="../../img/estrella-vacia.png"/>
-                        </a>
-                        <a href="javascript:void(0);" name="estrella-4" class="estrella" data-toggle="tooltip" title="Interesante!">
-                        <img alt="estrella" src="../../img/estrella-vacia.png"/>
-                        </a>
-                        <a href="javascript:void(0);" name="estrella-5" class="estrella" data-toggle="tooltip" title="Tiene mi apoyo!">
-                        <img alt="estrella" src="../../img/estrella-vacia.png"/>
-                        </a>
-                     </div>
-                     <div class="col-md-4">
-                        <div class="promedio-estrellas-container">
-                           <span><b>Promedio: </b></span>
-                           <img class="promedio-estrella" alt="estrella" src="../../img/estrella-promedio25.png"/>
-                        </div>
-                     </div>
-                     <div class="col-md-2 publicacion-more-options-container"  >
-                        <div class="publicacion-more-options">
-                           <a alt="favorito" href="javascript:void(0);" >
-                           <span class="glyphicon glyphicon-heart icon" data-toggle="tooltip" title="Marcar como favorito">&nbsp;</span>											
-                           </a>
-                           <a alt="compartir publicacion" href="javascript:void(0);" data-toggle="tooltip" title="Compartir en facebook">
-                           <span class="glyphicon glyphicon-share-alt icon">&nbsp;</span>
-                           </a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
          </div>
          <div class="col-md-2 right-sidebar" >
             <div class="row-fluid">
