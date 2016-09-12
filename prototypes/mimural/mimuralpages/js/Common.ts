@@ -10,15 +10,16 @@ export class Common {
       		url: Common.serverUrl + '/' + moduleUrl,      		
       		type: method,
       		data: data,     
-      		jsonp: false,
-      		jsonpCallback : 'callbackFunction',
-	        dataType: 'json',
-      		error: (data) => {
-      			errorCallback(data, errorParams);
-      		},
-	        success: (data) => {
-        		successCallback(data, successParams);
-        	}
-	   });
+	        dataType: 'json'
+      	}).done( function (data, status) {
+      		
+	   		successCallback(data, successParams);
+			
+		}).fail( function (data, status) {
+     		//do whatever you want with the return data upon successful return
+     		debugger;
+      		errorCallback(data, errorParams);
+		 })
+
 	};
 }

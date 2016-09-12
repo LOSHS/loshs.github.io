@@ -393,10 +393,13 @@ a.menu-item:hover{
 	color: #fff;
 	min-height: inherit;
 	max-height: inherit;
-	overflow-y: scroll;
+	overflow-y: hidden;
 }
 .resultados-area, .mejora-div, .actividades-listado{
 	
+	margin-top: 10px;
+	
+	margin-bottom: 10px;
 	min-height: 300px;
 	max-height: 300px;
 	text-align: justify;
@@ -483,11 +486,9 @@ a.menu-item:hover{
 .notificaciones-expiracion-logo{
 	font-size: 1.1vw;
 }
-.publicacion-header{
+.publicacion-separator{
 	
-	border: 1px solid;
-	padding-top: 1.1vw;
-	padding-bottom: 1.1vw;	
+	border-top: 1px solid;
 	border-color: #ccc;
 }
 .publicacion-header-post{
@@ -500,13 +501,10 @@ a.menu-item:hover{
 
 	border: 1px solid;		
 	border-color: #ccc;	
-
 }
 .bottom-publicacion {
-	
-	border-bottom: 1px solid;
-	border-left: 1px solid;
-	border-right: 1px solid;
+
+	border-top: 1px solid;
 	border-color: #ccc;
 }
 .round-top-corners {
@@ -520,7 +518,9 @@ a.menu-item:hover{
 }
 .publicacion-accion {	
 	overflow: hidden;
-	
+	border: 1px solid;
+	border-color: #ccc;
+
 }
 .lista-resultados li{
 	background-color: #3F5363;
@@ -677,3 +677,137 @@ html, body, .main-container, .left-sidebar, .right-sidebar{
 .navbar{
 	margin-bottom: 0px;
 }
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 1) { 
+  	font-size: 3vw;
+}
+
+/* ----------- Retina Screens ----------- */
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (min-resolution: 192dpi) { 
+  	font-size: 3vw;
+}
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+  font-size: 3vw;
+
+}
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+  font-size: 3vw;
+}
+
+/* Landscape */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+  font-size: 3vw;
+
+}
+
+/* ----------- iPhone 5 and 5S ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+}
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+  font-size: 3vw;
+}
+
+/* Landscape */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+  font-size: 3vw;
+
+}
+
+/* ----------- iPhone 6 ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
+  font-size: 3vw;
+
+}
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) { 
+
+}
+
+/* Landscape */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) { 
+  font-size: 3vw;
+
+}
+
+/* ----------- iPhone 6+ ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 414px) 
+  and (max-device-width: 736px) 
+  and (-webkit-min-device-pixel-ratio: 3) { 
+  font-size: 3vw;
+
+}
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 414px) 
+  and (max-device-width: 736px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) { 
+  font-size: 3vw;
+
+}
+
+/* Landscape */
+@media only screen 
+  and (min-device-width: 414px) 
+  and (max-device-width: 736px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: landscape) { 
+  font-size: 3vw;
+
+}
+

@@ -6,4 +6,9 @@ export class Publicacion {
 	Indice: number;
 	Publicador: string;
 	Rol: string;
+	EsPost: boolean;
+	Titulo: string;
+	Actividades: Array<any>;
+	Resultados: string;
+	Prioridad: number;
 }	

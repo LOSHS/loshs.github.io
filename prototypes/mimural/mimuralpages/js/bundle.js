@@ -10,15 +10,13 @@ var Common = (function () {
             url: Common.serverUrl + '/' + moduleUrl,
             type: method,
             data: data,
-            jsonp: false,
-            jsonpCallback: 'callbackFunction',
-            dataType: 'json',
-            error: function (data) {
-                errorCallback(data, errorParams);
-            },
-            success: function (data) {
-                successCallback(data, successParams);
-            }
+            dataType: 'json'
+        }).done(function (data, status) {
+            successCallback(data, successParams);
+        }).fail(function (data, status) {
+            //do whatever you want with the return data upon successful return
+            debugger;
+            errorCallback(data, errorParams);
         });
     };
     return Common;
@@ -39,43 +37,61 @@ var MuralBusiness = (function () {
                 Contenido: comentario,
                 Indice: -1,
                 Publicador: null,
-                Rol: null
+                Rol: null,
+                EsPost: true,
+                Titulo: '',
+                Actividades: null,
+                Resultados: null,
+                Prioridad: null
             };
             Common_1.Common.makeAPICall(post, 'publicaciones/nueva', 'POST', _this.SubmitPostSuccess, null, _this.SubmitPostError, null);
         };
         //TODO: Implement datetime filter, to prevent retrieving posts older than the latest visible post
-        this.GetLatestPosts = function () {
-            Common_1.Common.makeAPICall(null, 'mural', 'GET', _this.PopulatePostsTable, null, _this.GetFeedError, null);
+        this.GetLatestPosts = function (initialLoad) {
+            Common_1.Common.makeAPICall(null, 'mural', 'GET', _this.PopulatePostsTable, initialLoad, _this.GetFeedError, null);
         };
         //prototype is still experimental
-        this.PopulatePostsTable = function (recentPosts) {
+        this.PopulatePostsTable = function (recentPosts, initialLoad) {
             $.each(recentPosts, function (recentPostIndex, recentPost) {
                 var publicacionFound = false;
                 _this.feedPosts().forEach(function (feedPost) {
-                    if (!!recentPost.post && recentPost.post.post_id == feedPost.Indice) {
+                    if (!!recentPost.post && recentPost.post.post_id == feedPost.Indice
+                        || !!recentPost.action && recentPost.action.action_id == feedPost.Indice) {
                         publicacionFound = true;
                         return;
                     }
                 });
-                if (!publicacionFound && !!recentPost.post) {
+                if (!publicacionFound) {
+                    var esPost = !!recentPost.post;
                     var newPublicacion = {
-                        Contenido: recentPost.post.content,
-                        Indice: recentPost.post.post_id,
-                        Publicador: recentPost.post.poster_name,
-                        Rol: ''
+                        Contenido: esPost ? recentPost.post.content : recentPost.action.description,
+                        Titulo: esPost ? null : recentPost.action.title,
+                        Indice: esPost ? recentPost.post.post_id : recentPost.action.action_id,
+                        Publicador: esPost ? recentPost.post.poster_name : recentPost.action.poster_name,
+                        Rol: esPost ? recentPost.post.poster_role : recentPost.action.poster_role,
+                        EsPost: esPost,
+                        Actividades: esPost ? null : recentPost.action.tasks,
+                        Resultados: esPost ? null : recentPost.action.results,
+                        Prioridad: esPost ? recentPost.post.category : null
                     };
-                    _this.feedPosts.push(newPublicacion);
+                    if (!!initialLoad) {
+                        _this.feedPosts.push(newPublicacion);
+                    }
+                    else {
+                        _this.feedPosts.unshift(newPublicacion);
+                    }
                 }
             });
         };
         this.SubmitPostSuccess = function (data) {
             alertify.success('Tu publicacion fue generada');
+            _this.GetLatestPosts(false);
         };
         this.SubmitPostError = function (data) {
-            alertify.error('Hubo un error al publicar tu cosa');
+            alertify.error('Hubo un error al publicar tu propuesta.');
         };
         this.GetFeedError = function (data) {
-            alertify.error('Hubo un error al intentar leer tu mural');
+            alertify.error('Hubo un error al intentar leer tu mural.');
         };
         this.feedPosts = ko.observableArray([]);
     }
@@ -84,8 +100,7 @@ var MuralBusiness = (function () {
 exports.MuralBusiness = MuralBusiness;
 $(document).ready(function () {
     var mural = new MuralBusiness();
-    debugger;
-    mural.GetLatestPosts();
+    mural.GetLatestPosts(true);
     $('#btnProponer').click(function () {
         var txtPropuesta = $('#txtPropuesta').val();
         mural.SubmitPost(txtPropuesta);

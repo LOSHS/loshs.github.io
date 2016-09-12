@@ -17,69 +17,86 @@ export class MuralBusiness {
 			Contenido: comentario,
 			Indice: -1,
 			Publicador: null,
-			Rol: null
+			Rol: null,
+			EsPost: true,
+			Titulo: '',
+			Actividades: null,
+			Resultados: null,
+			Prioridad: null
 		};
 		
 		Common.makeAPICall(post, 'publicaciones/nueva', 'POST', this.SubmitPostSuccess, null, this.SubmitPostError, null);	
 	}
 	
 	//TODO: Implement datetime filter, to prevent retrieving posts older than the latest visible post
-	public GetLatestPosts = () => {
+	public GetLatestPosts = (initialLoad: boolean) => {
 	
-		Common.makeAPICall(null, 'mural', 'GET', this.PopulatePostsTable, null, this.GetFeedError, null);	
+		Common.makeAPICall(null, 'mural', 'GET', this.PopulatePostsTable, initialLoad, this.GetFeedError, null);	
+		    	
 	}
 	
 	//prototype is still experimental
-	private PopulatePostsTable = (recentPosts: Array<any>) => {
+	private PopulatePostsTable = (recentPosts: Array<any>, initialLoad: boolean) => {
 		
 		$.each(recentPosts, (recentPostIndex: number, recentPost: any) => {
 
 			var publicacionFound: boolean = false;
-			
 			this.feedPosts().forEach((feedPost) => {
 			
-				if(!!recentPost.post && recentPost.post.post_id == feedPost.Indice) {
+				if(!!recentPost.post && recentPost.post.post_id == feedPost.Indice
+					|| !!recentPost.action && recentPost.action.action_id == feedPost.Indice
+					) {
 					publicacionFound = true;
 					return;
 				}
 			});
 			
-			if(!publicacionFound && !!recentPost.post) {
-			
+			if(!publicacionFound) {
+				var esPost = !!recentPost.post;
 				var newPublicacion : Publicacion = 
 									{
-								 		Contenido: recentPost.post.content, 
-								 		Indice: recentPost.post.post_id,
-								 		Publicador: recentPost.post.poster_name,
-										Rol: ''
+								 		Contenido: esPost ? recentPost.post.content : recentPost.action.description, 
+								 		Titulo: esPost ? null : recentPost.action.title,
+								 		Indice: esPost ? recentPost.post.post_id : recentPost.action.action_id,
+								 		Publicador: esPost ? recentPost.post.poster_name : recentPost.action.poster_name,
+										Rol: esPost ? recentPost.post.poster_role : recentPost.action.poster_role,
+										EsPost: esPost,
+										Actividades: esPost? null : recentPost.action.tasks,
+										Resultados: esPost ? null : recentPost.action.results,
+										Prioridad: esPost ? recentPost.post.category : null
 								 	};
-								 	
-				this.feedPosts.push(newPublicacion);
+								 		
+				if(!!initialLoad) {
+					this.feedPosts.push(newPublicacion);			
+				}
+				else {
+					
+					this.feedPosts.unshift(newPublicacion);	
+				}				 	
 			}						
 		});
 	}
 	
 	private SubmitPostSuccess = (data) => {		
 		alertify.success('Tu publicacion fue generada');
+		this.GetLatestPosts(false);
 	}	
 	
 	private SubmitPostError = (data) => {		
 		
-		alertify.error('Hubo un error al publicar tu cosa');
+		alertify.error('Hubo un error al publicar tu propuesta.');
 	}
 	
 	private GetFeedError = (data) => {		
 		
-		alertify.error('Hubo un error al intentar leer tu mural');
+		alertify.error('Hubo un error al intentar leer tu mural.');
 	}
-	
 }
 
 $(document).ready(function() {
 	
 	var mural = new MuralBusiness();	
-	debugger;
-	mural.GetLatestPosts();
+	mural.GetLatestPosts(true);
 	$('#btnProponer').click(function() {    	 	    	
      		var txtPropuesta = $('#txtPropuesta').val();                  		
          	
