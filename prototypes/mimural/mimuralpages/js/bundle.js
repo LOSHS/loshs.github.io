@@ -33,6 +33,10 @@ var MuralBusiness = (function () {
     function MuralBusiness() {
         var _this = this;
         this.SubmitPost = function (comentario) {
+            if (!comentario || comentario == '') {
+                alertify.error('Escribe una propuesta que no esté vacía.');
+                return;
+            }
             var post = {
                 Contenido: comentario,
                 Indice: -1,

@@ -12,7 +12,14 @@ export class MuralBusiness {
 		this.feedPosts = ko.observableArray([]);
 	}
 	    
-	public SubmitPost = (comentario: string) => {		
+	public SubmitPost = (comentario: string) => {	
+	
+		if(!comentario || comentario == ''){
+			
+			alertify.error('Escribe una propuesta que no esté vacía.');
+			return;
+		}
+		
 		var post : Publicacion = {
 			Contenido: comentario,
 			Indice: -1,
