@@ -440,11 +440,8 @@ a.menu-item:hover{
 	background-color: #fff;
 }
 .promedio-estrella{
-	height: 2.5vw;
+	height: 30px;
 	display: inline-block;
-}
-.promedio-estrellas-container{
-	float: right;	
 }
 .publicacion-more-options-container{
 	border-left: 1px solid #C6C5C5;
@@ -679,12 +676,27 @@ html, body, .main-container, .left-sidebar, .right-sidebar{
 }
 .user-area{
 	margin-right: 5px;
-}@media only screen and (max-width: 768px) {
+}
+.publicacion-more-options-accion{
+	font-size: 1.7vw;
+	float: right;
+}
+@media only screen and (max-width: 768px) {
 	.middle-content{
 		font-size: 2vw;
 	}
 	.post{
 		font-size: 3vw;
+	}
+	.publicacion-more-options{
+		font-size: 4vw;
+	}
+	.publicacion-more-options-accion{
+		font-size: 4vw;
+		float:none;
+	}
+	.publicacion-more-options-container{
+		border: 0;
 	}
 }
 

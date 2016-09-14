@@ -85,7 +85,7 @@ var auth = {
                         var dbUserObj = {
                           id: rows[0].user_id, // 1
                           name: username, //'LAAH000000XXX'
-                          role: rows[0].rol, //'Directivo'
+                          role: rows[0].rol, //'Director'
                           nombre: rows[0].first_name, //'Hugo'
                           apellido: rows[0].father_lastname, //'Labra'
                           cct: rows[0].user_cct
@@ -96,9 +96,9 @@ var auth = {
                         response.cookie('userLoginToken', generateLoginToken(dbUserObj), {path: '/', httpOnly: true});
                         //response.json(generateLoginToken(dbUserObj));
                         //response.sendStatus(200);
-                        if (dbUserObj.role === 'Superadmin') {
+                        if (dbUserObj.role === 'Super Administrador') {
                           response.redirect('/superadmin/usuarios');
-                        } else if (dbUserObj.role === 'Directivo') {  // diferentes roles
+                        } else if (dbUserObj.role === 'Director') {  // diferentes roles
                           response.redirect('/director/mural');
                         } else {  // Los perfiles de padres de familia deben ser redirigidos a su propia pagina
                           //response.redirect('/padres/mural');
@@ -145,7 +145,7 @@ var auth = {
                 apellido: rows[0].father_lastname,
                 cct: rows[0].user_cct
               };
-              if ((req.url.indexOf('superadmin') >= 0 && dbUserObj.role === 'Superadmin') ||
+              if ((req.url.indexOf('superadmin') >= 0 && dbUserObj.role === 'Super Administrador') ||
                       (req.url.indexOf('admin') < 0 && req.url.indexOf('/') >= 0)) {
                 next();
               } else {
