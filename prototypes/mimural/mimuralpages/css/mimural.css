@@ -22,7 +22,7 @@ Last change	: 2015/03/27
 html,
 body {
   background: #efefef;
-  font-size: 1vw;
+  font-size: 1.2vw;
   text-decoration: none;
 }
 /*=== 2. Anchor Link ===*/
@@ -679,10 +679,13 @@ html, body, .main-container, .left-sidebar, .right-sidebar{
 }
 .user-area{
 	margin-right: 5px;
-}@media only screen and (max-width: 768) {
-
-   .descripcion-color-chart { font-size: 4vw; }
-
+}@media only screen and (max-width: 768px) {
+	.middle-content{
+		font-size: 2vw;
+	}
+	.post{
+		font-size: 3vw;
+	}
 }
 
 
