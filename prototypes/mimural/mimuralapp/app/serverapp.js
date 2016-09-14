@@ -30,9 +30,9 @@ app.use('/', require('./routes/router'));
 app.use(function (req, res) {
   var user = (req.cookies && req.cookies.userLoginToken &&
           req.cookies.userLoginToken.user);
-  if (user && user.role === 'Superadmin') {
+  if (user && user.role === 'Super Administrador') {
     res.redirect('/superadmin/usuarios');
-  } else if (user && user.role === 'Directivo') {  // diferentes roles
+  } else if (user && user.role === 'Director') {  // diferentes roles
     res.redirect('/director/mural');
   } else {  // Los perfiles de padres de familia deben ser redirigidos a su propia pagina
     //response.redirect('/padres/mural');
