@@ -671,9 +671,6 @@ html, body, .main-container, .left-sidebar, .right-sidebar{
 	
 	margin-bottom: 5px;
 }
-.navbar{
-	margin-bottom: 0px;
-}
 .user-area{
 	margin-right: 5px;
 }
@@ -681,6 +678,10 @@ html, body, .main-container, .left-sidebar, .right-sidebar{
 	font-size: 1.7vw;
 	float: right;
 }
+
+	.navbar-test{
+		display: none;
+	}
 @media only screen and (max-width: 768px) {
 	.middle-content, .descripcion-color-chart{
 		font-size: 2vw;
@@ -696,6 +697,9 @@ html, body, .main-container, .left-sidebar, .right-sidebar{
 	}
 	.publicacion-more-options-container{
 		border: 0;
+	}
+	.navbar-test{
+		display: inline;
 	}
 }
 
