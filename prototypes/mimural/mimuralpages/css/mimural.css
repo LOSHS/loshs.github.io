@@ -682,17 +682,16 @@ html, body, .main-container, .left-sidebar, .right-sidebar{
 	float: right;
 }
 @media only screen and (max-width: 768px) {
-	.middle-content{
+	.middle-content, .descripcion-color-chart{
 		font-size: 2vw;
 	}
 	.post{
 		font-size: 3vw;
 	}
-	.publicacion-more-options{
+	.publicacion-more-options, .publicacion-more-options-accion{
 		font-size: 4vw;
 	}
-	.publicacion-more-options-accion{
-		font-size: 4vw;
+	.publicacion-more-options-accion {
 		float:none;
 	}
 	.publicacion-more-options-container{
