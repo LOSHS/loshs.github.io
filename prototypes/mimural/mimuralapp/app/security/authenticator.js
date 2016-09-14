@@ -35,6 +35,7 @@ var auth = {
     });
     response.clearCookie('loginMessage', {path: '/login'});
     response.clearCookie('antiCSRFToken', {path: '/'});
+    response.clearCookie('nr', {path: '/'});
     response.clearCookie('userLoginToken', {path: '/', httpOnly: true});
     response.redirect('/login');
   },
@@ -92,11 +93,12 @@ var auth = {
                         };
                         var CSRFToken = secureRandomBase64(25);
                         response.clearCookie('loginMessage', {path: '/login'});
-                        response.cookie('antiCSRFToken', CSRFToken, {path: '/'});
+                        response.cookie('antiCSRFToken', CSRFToken, {path: '/login'}); 
+                        response.cookie('nr', dbUserObj.nombre + ' ' + dbUserObj.apellido + '-' + dbUserObj.role, {path: '/'});
                         response.cookie('userLoginToken', generateLoginToken(dbUserObj), {path: '/', httpOnly: true});
                         //response.json(generateLoginToken(dbUserObj));
                         //response.sendStatus(200);
-                        if (dbUserObj.role === 'Super Administrador') {
+                        if (dbUserObj.role === 'Super Administrador' || dbUserObj.role === 'Tester') {
                           response.redirect('/superadmin/usuarios');
                         } else if (dbUserObj.role === 'Director') {  // diferentes roles
                           response.redirect('/director/mural');
@@ -145,7 +147,7 @@ var auth = {
                 apellido: rows[0].father_lastname,
                 cct: rows[0].user_cct
               };
-              if ((req.url.indexOf('superadmin') >= 0 && dbUserObj.role === 'Super Administrador') ||
+              if ((req.url.indexOf('superadmin') >= 0 && (dbUserObj.role === 'Super Administrador' || dbUserObj.role === 'Tester')) ||
                       (req.url.indexOf('admin') < 0 && req.url.indexOf('/') >= 0)) {
                 next();
               } else {

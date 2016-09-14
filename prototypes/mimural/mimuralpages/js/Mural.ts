@@ -25,13 +25,13 @@ export class MuralBusiness {
 			Prioridad: null
 		};
 		
-		Common.makeAPICall(post, 'rest/publicaciones/nueva', 'POST', this.SubmitPostSuccess, null, this.SubmitPostError, null);	
+		Common.makeAPICall(post, 'publicaciones/nueva', 'POST', this.SubmitPostSuccess, null, this.SubmitPostError, null);	
 	}
 	
 	//TODO: Implement datetime filter, to prevent retrieving posts older than the latest visible post
 	public GetLatestPosts = (initialLoad: boolean) => {
 	
-		Common.makeAPICall(null, 'rest/mural', 'GET', this.PopulatePostsTable, initialLoad, this.GetFeedError, null);	
+		Common.makeAPICall(null, 'mural', 'GET', this.PopulatePostsTable, initialLoad, this.GetFeedError, null);	
 		    	
 	}
 	

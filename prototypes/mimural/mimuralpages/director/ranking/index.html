@@ -61,12 +61,11 @@
     </nav>
       <div class="row container-fluid main-container">
       <div class="col-md-2 left-sidebar visible-md-block visible-lg-block" >
-				      
          <br/> <br/> <br/>       
             <div id="main-menu">
                
                   <div class="row">
-                     <a href="/director/mural" class="menu-item">
+                     <a href="/director/mural" class="menu-item" id="menuitmmural">
                      	<div class="col-md-4">
                      	<span class="icon-Fuente-Componentes-mi-mural--03 pull-right"></span></div>
                      	<span class="col-md-8">Mural</span>
@@ -83,7 +82,7 @@
                                        
                   <hr />
                   <div class="row">
-                     <a href="/superadmin/publicaciones" class="menu-item">
+                      <a href="javascript:void(0);" class="menu-item" id="menuitmreportes">
                      <div class="col-md-4">
                      	<span class="icon-Fuente-Componentes-mi-mural--05 pull-right"></span></div>
                      	<span class="col-md-8">Reportes</span>
@@ -105,7 +104,7 @@
                      	<span class="col-md-8">Directorio</span>
                      </a>  
                   </div>
-                  <div class="row">
+                  <div class="row" id="rowmenuitmusers">
                       <a href="/superadmin/usuarios" class="menu-item">
                      
                      <div class="col-md-4">
@@ -115,7 +114,7 @@
                   </div>
                   
                   <div class="row">
-                      <a href="/superadmin/escuelas" class="menu-item">
+                      <a href="/superadmin/escuelas" class="menu-item" id="rowmenuitmschools">
                      
                      <div class="col-md-4">
                      	<span class="icon-Fuente-Componentes-mi-mural--06 pull-right"></span></div>
@@ -467,6 +466,34 @@
             	});            	
             });          	
          </script>
+                  <script>
+     namerole = readCookie('nr');
+     if (namerole) {
+         namerole = namerole.replace(/%20/g, " ");
+         var nr = namerole.split('-');
+         $("#rol-tag").text(nr[0] + ' / ' + nr[1]);
+         if (nr[1] === 'Super Administrador' || nr[1] === 'Tester') {
+             $("#menuitmreportes").attr("href", "/superadmin/reportes");
+             $("#menuitmmural").attr("href", "/superadmin/publicaciones");
+         }
+         else {
+             $("#rowmenuitmschools").hide();
+             $("#rowmenuitmusers").hide();
+         }
+     } else {
+         $("#rol-tag").text('Director');
+     }
+     function readCookie(name) {
+         var nameEQ = name + "=";
+         var ca = document.cookie.split(';');
+         for (var i = 0; i < ca.length; i++) {
+             var c = ca[i];
+             while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+             if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+         }
+         return null;
+     }
+          </script>
       </footer>
    </body>
 </html>

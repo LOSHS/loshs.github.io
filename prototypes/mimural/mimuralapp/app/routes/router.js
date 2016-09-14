@@ -29,13 +29,11 @@ router.get('/acciones', acciones.all);
 // End test
 
 router.get('/rest/superadmin/usuarios', usuarios.all);
-//router.post('/rest/superadmin/usuario/:id', usuarios.new);
-//router.delete('/rest/superadmin/usuario/:id', usuarios.delete);
-router.get('/rest/superadmin/rest/publicaciones/:escuelacct', publicaciones.all);
-router.get('/rest/superadmin/rest/acciones/:escuelacct', acciones.all);
+router.get('/rest/superadmin/rest/publicaciones', publicaciones.all);
+router.get('/rest/superadmin/rest/acciones', acciones.all);
 
 router.post('/rest/publicaciones/nueva', publicaciones.new);
-router.get('/rest/mural/:escuelacct', mural.all);
+router.get('/rest/mural', mural.all);
 
 router.get('/rest/datospublicos', external.publicDataPlanea);
 

@@ -30,7 +30,7 @@ app.use('/', require('./routes/router'));
 app.use(function (req, res) {
   var user = (req.cookies && req.cookies.userLoginToken &&
           req.cookies.userLoginToken.user);
-  if (user && user.role === 'Super Administrador') {
+  if (user && (user.role === 'Super Administrador' || user.role === 'Tester')) {
     res.redirect('/superadmin/usuarios');
   } else if (user && user.role === 'Director') {  // diferentes roles
     res.redirect('/director/mural');
