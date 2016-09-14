@@ -679,9 +679,9 @@ html, body, .main-container, .left-sidebar, .right-sidebar{
 	float: right;
 }
 
-	.navbar-test{
-		display: none;
-	}
+.navbar-test{
+	display: none;
+}
 @media only screen and (max-width: 768px) {
 	.middle-content{
 		font-size: 2vw;
